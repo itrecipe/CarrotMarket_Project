@@ -19,13 +19,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 
 @Controller //빈으로 등록
+@Log4j
 @RequestMapping("/member") //경로로 등록
 public class MemberController {
 
 	@Setter(onMethod_=@Autowired)
 	private MemberService memberService;
+	
+//	//메인(홈)
+//	@GetMapping("/home")
+//	public void home(Model model) {
+//		log.info("home");
+//		model.addAttribute("home", model);
+//	}
 	
 	
 	//로그인폼

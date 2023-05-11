@@ -1,12 +1,17 @@
 package org.ezen.carrotmarket.service;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.ezen.carrotmarket.domain.MemberVO;
 import org.ezen.carrotmarket.mapper.MemberMapper;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Service
+@Log4j
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
 
@@ -32,5 +37,13 @@ public class MemberServiceImpl implements MemberService {
 	public void modifyUserPwd(MemberVO memberVO) {
 		memberMapper.modifyUserPwd(memberVO);
 	}
+	
+//	//목록보기
+//	@Override
+//	public List<MemberVO> getHome() {
+//		
+//		log.info("get home...");
+//		return memberMapper.getHome();
+//	}
 
 }
