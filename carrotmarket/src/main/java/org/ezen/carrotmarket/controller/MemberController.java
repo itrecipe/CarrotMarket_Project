@@ -29,14 +29,6 @@ public class MemberController {
 	@Setter(onMethod_=@Autowired)
 	private MemberService memberService;
 	
-//	//메인(홈)
-//	@GetMapping("/home")
-//	public void home(Model model) {
-//		log.info("home");
-//		model.addAttribute("home", model);
-//	}
-	
-	
 	//로그인폼
 	@GetMapping("/login")
 	public String loginForm(Model model, HttpServletRequest request) {
@@ -53,7 +45,12 @@ public class MemberController {
 		MemberVO memberVO = memberService.getMember(userid);
 		
 		if(memberVO == null) {
-			model.addAttribute("message", "ID or P/W가 맞지 않습니다.");
+			model.addAttribute("message", "ID가 틀리요");
+			return "member/loginForm";
+		}
+		
+		if(!memberVO.getUserpwd().equals(userpwd)) {
+			model.addAttribute("message", "P/W가 맞지 않습니다.");
 			return "member/loginForm";
 		}
 		session.setAttribute("loginUser", memberVO.getId());

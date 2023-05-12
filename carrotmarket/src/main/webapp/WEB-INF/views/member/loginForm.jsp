@@ -16,10 +16,10 @@
 	<form action="login" style="width:50%; margin: 0 auto;" method="post">
 		<input type="hidden" name="url" value="${url}"/>
 		<h1>ID</h1>
-		<input type="text" name="userid" style="width : 100%"/>
+		<input type="text" name="userid" style="width : 100%" required="required"/>
 		
 		<h1>PW</h1>
-		<input type="password" name="password" style="width : 100%"/>
+		<input type="password" name="password" style="width : 100%" required="required"/>
 		
 		<div style="color:red; font-size: 1.5rem">${message}</div>
 		
