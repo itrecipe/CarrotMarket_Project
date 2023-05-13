@@ -43,18 +43,18 @@ public class MemberController {
 	public String loginAction(HttpSession session, Model model, String userid, String userpwd, String url) {
 		
 		MemberVO memberVO = memberService.getMember(userid);
-		
+		System.out.println(memberVO);
 		if(memberVO == null) {
 			model.addAttribute("message", "ID가 틀리요");
 			return "member/loginForm";
 		}
-		
+		System.out.println(!memberVO.getUserpwd().equals(userpwd));
 		if(!memberVO.getUserpwd().equals(userpwd)) {
 			model.addAttribute("message", "P/W가 맞지 않습니다.");
 			return "member/loginForm";
 		}
 		session.setAttribute("loginUser", memberVO.getId());
-		
+		System.out.println(url);
 		return "redirect:" + url;
 	}
 	
