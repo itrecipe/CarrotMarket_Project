@@ -201,7 +201,7 @@
 			<version>1.16</version>
 		</dependency>
 		
-		<!-- servlet을 스프링 5버젼에서 업로드 등 웹 처리를  위해 수정-->		  
+		<!-- servlet을 스프링 5버젼에서 업로드 등 웹 처리를 위해 수정-->		  
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>javax.servlet-api</artifactId>

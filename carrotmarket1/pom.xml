@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.ezen</groupId>
-	<artifactId>carrotmarket</artifactId>
-	<name>carrotmarket</name>
+	<artifactId>carrotmarket1</artifactId>
+	<name>carrotmarket1</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -14,6 +14,7 @@
 		<org.slf4j-version>2.0.0</org.slf4j-version>
 	</properties>
 	<dependencies>
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -58,6 +59,7 @@
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
 		</dependency>
+		
 		<!-- up하고 lombok과 충돌 방지 하기 위해 주석 처리 -->
 		<!-- 
 		<dependency>
