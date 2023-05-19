@@ -1,9 +1,11 @@
-package org.ezen.carrotmarket_test.service;
+package org.ezen.carrotmarket_test.mapper;
 
 import org.ezen.carrotmarket_test.domain.MemberVO;
 
-public interface MemberService {
-	
+public interface MemberMapper {
+
+	//접근제어자, 멤버변수, 메소드명(데이터타입, 멤버변수); //작성형식
+
 	//회원정보
 	public MemberVO getMember(String userid);
 	
@@ -11,12 +13,12 @@ public interface MemberService {
 	public void joinMember(MemberVO memberVO);
 
 	//회원 ID 가져오기
-	public MemberVO getMemberId(int id);
+	public MemberVO getMemberID(int id);
 	
 	//회원 정보 수정
-	public void modifyMember(MemberVO memberVO);
+	public void ModifyMember(MemberVO memberVO);
 	
-	//회원 비밀번호 수정
+	//회원 비번 수정
 	public void modifyPasswd(int id, String hashpasswd);
 	
 	//회원 ID 삭제
