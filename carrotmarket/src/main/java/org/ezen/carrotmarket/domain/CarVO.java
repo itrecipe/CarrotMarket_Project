@@ -14,20 +14,19 @@ public class CarVO {
 	//차량 게시글 정보
 	private Long cno; //게시글 번호
 	private String title; //게시글 제목
+	private String writer; //게시글 작성자
 	private String content; //게시글 내용
 	private Date regDate; //게시글 등록 날짜
 	private Date updateDate; //게시글 수정일
 	
 	//차량 정보
-	private String cName; //차량명
-	private String cType; //차종
-	private String cYear; //차량 연식
-	private String cPrice; //차량의 금액
-	private String cDate; //차량 등록일
+	private String carName; //차량명
+	private String carType; //차종
+	private String carYear; //차량 연식
+	private String carPrice; //차량의 금액
+	private String carDate; //차량 등록일
 	private String fuel; //연료
 	private String disp; //배기량
 	private String Kilos; //키로수
 	private String mission; //변속기(종류, 타입)
-	
-	
 }
