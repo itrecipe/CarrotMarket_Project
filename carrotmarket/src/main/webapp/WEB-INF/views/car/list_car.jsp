@@ -58,17 +58,20 @@
   </button>
 </div>
 
-
 <!-- 리스트 영역 -->
 <!--  
-<div class="col-md-10">
-	<div id="submain">
-<div>
-	<button type="button" class="btn btn-primary float-right mb-3"
-		    id="regBtn">게시물 등록</button>
-</div>
-</div>
-</div>
+<div class="container mt-4 mb-4" id="mainContent">
+	<div class="row">
+		<div class="col-md-10">
+				<div id="submain">
+				<div>
+					<button type="button" class="btn btn-primary float-right mb-3"
+						    id="regBtn">게시물 등록</button>
+				</div>
+			</div>
+		</div>
+	</div> 
+</div> 
 
 <main>
   <div class="album py-5 bg-light">
@@ -250,6 +253,44 @@
 </main>
 -->
 
+<div class="container mt-4 mb-4" id="mainContent">
+	<div class="row">
+			<div class="table-responsive-md">
+						<table id="carTable" class="table table-bordered table-hover ">
+							<thead>
+								<tr>
+									<th>번호</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>내용</th>
+									<th>작성일</th>
+									<th>수정일</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${list_car}" var="car">
+									<tr>
+										<td class="cno"><c:out value="${car.cno}" /></td>
+										<td>
+											<!-- jquery로 페이지 이벤트 처리 전 -->
+									<a class="move" href='get_car?cno=<c:out value="${car.cno}"/>'>
+										<c:out value="${car.title}" />
+									</a>
+									 
+										</td>
+										<td><c:out value="${car.writer}" /></td>
+										<td><c:out value="${car.content}"/></td>
+										<td><fmt:formatDate pattern="yyyy-MM-dd"
+												value="${car.regDate}" /></td>
+										<td><fmt:formatDate pattern="yyyy-MM-dd"
+												value="${car.updateDate}" /></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 <%@ include file="../include/footer.jspf"%>
 </body>
 </html>

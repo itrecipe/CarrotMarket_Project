@@ -3,7 +3,21 @@
 <mapper namespace="org.ezen.carrotmarket.mapper.CarMapper">
 
 <select id="getList" resultType="org.ezen.carrotmarket.domain.CarVO">
-<![CDATA[select * from carrot_car where cno > 0 order by cno desc]]>
+	<![CDATA[select * from carrot_car where cno > 0 order by cno desc]]>
 </select>
+
+<insert id="insert">
+insert into carrot_car(cno,writer,title,content,carName,carType,carYear,carPrice,carDate,fuel,disp,kilos,mission) 
+values(car_seq.nextval, #{writer}, #{title}, #{content}, #{carName}, #{carType}, #{carYear}, #{carPrice}, #{carDate}, #{fuel}, #{disp}, #{kilos}, #{mission})
+
+</insert>
+
+<select id="read" resultType="org.ezen.carrotmarket.domain.CarVO">
+	select * from carrot_car where cno = #{cno}
+</select>
+
+<delete id="delete">
+	delete carrot_car where cno = #{cno}
+</delete>
 
 </mapper>
