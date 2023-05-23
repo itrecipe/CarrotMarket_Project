@@ -142,7 +142,7 @@
 
 	<!-- docBase는 프로젝트명 path는 컨텍스트 패스명 -->
 
-	<Context docBase="carrotmarket" path="/carrotmarket" reloadable="true" source="org.eclipse.jst.jee.server:carrotmarket"/><Context docBase="carrotmarket_test" path="/carrotmarket_test" reloadable="true" source="org.eclipse.jst.jee.server:carrotmarket_test"/></Host>
+	<Context docBase="carrotmarket" path="/carrotmarket" reloadable="true" source="org.eclipse.jst.jee.server:carrotmarket"/></Host>
     </Engine>
   </Service>
 </Server>

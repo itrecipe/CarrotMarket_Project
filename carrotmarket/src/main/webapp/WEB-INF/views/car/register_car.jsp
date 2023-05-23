@@ -12,12 +12,12 @@
 	
 	<div class="form-group">
 		<label for="writer">작성자 : </label>
-		<input type="text" class="form-control" id="writer" name="writer" placeholder="Writer">
+		<input type="text" class="form-control" id="writer" name="writer" placeholder="Writer" required="required">
 	</div>
 
 	<div class="form-group">
 		<label for="title">제목 : </label>
-		<input type="text" class="form-control" id="title" name="title" placeholder="Title">
+		<input type="text" class="form-control" id="title" name="title" placeholder="Title" required="required">
 	</div>
 
 	<div class="form-group">
@@ -27,47 +27,47 @@
 
 	<div class="form-group">
 		<label for="carName">차량명 : </label>
-		<input type="text" class="form-control" id="carName" name="carName" placeholder="carname">
+		<input type="text" class="form-control" id="carName" name="carName" placeholder="carname" required="required">
 	</div>
 
 	<div class="form-group">
 		<label for="carType">차종 : </label>
-		<input type="text" class="form-control" id="carType" name="carType" placeholder="cartype">
+		<input type="text" class="form-control" id="carType" name="carType" placeholder="cartype" required="required">
 	</div>
 	
 	<div class="form-group">
 		<label for="carYear">연식 : </label>
-		<input type="text" class="form-control" id="carYear" name="carYear" placeholder="caryear">
+		<input type="text" class="form-control" id="carYear" name="carYear" placeholder="caryear" required="required">
 	</div>
 
 	<div class="form-group">
 		<label for="carPrice">금액 : </label>
-		<input type="text" class="form-control" id="carPrice" name="carPrice" placeholder="carprice">
+		<input type="text" class="form-control" id="carPrice" name="carPrice" placeholder="carprice" required="required">
 	</div>
 	
 	<div class="form-group">
 		<label for="carDate">등록일 : </label>
-		<input type="text" class="form-control" id="carDate" name="carDate" placeholder="cardate">
+		<input type="text" class="form-control" id="carDate" name="carDate" placeholder="cardate" required="required">
 	</div>
 
 	<div class="form-group">
 		<label for="fuel">연료 : </label>
-		<input type="text" class="form-control" id="fuel" name="fuel" placeholder="fuel">
+		<input type="text" class="form-control" id="fuel" name="fuel" placeholder="fuel" required="required">
 	</div>
 
 	<div class="form-group">
 		<label for="disp">배기량 : </label>
-		<input type="text" class="form-control" id="disp" name="disp" placeholder="disp">
+		<input type="text" class="form-control" id="disp" name="disp" placeholder="disp" required="required">
 	</div>
 
 	<div class="form-group">
 		<label for="kilos">배기량 : </label>
-		<input type="text" class="form-control" id="kilos" name="kilos" placeholder="kilos">
+		<input type="text" class="form-control" id="kilos" name="kilos" placeholder="kilos" required="required">
 	</div>
 	
 	<div class="form-group">
 		<label for="mission">변속기 : </label>
-		<input type="text" class="form-control" id="mission" name="mission" placeholder="mission">
+		<input type="text" class="form-control" id="mission" name="mission" placeholder="mission" required="required">
 	</div>
 
 	<button type="submit" class="btn btn-success">작성</button>&nbsp;&nbsp;

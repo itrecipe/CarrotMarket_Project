@@ -24,7 +24,66 @@
 
 <body>
 <%@ include file="../include/header.jspf" %>
-  
+
+<div class="container mt-4 mb-4" id="mainContent">
+	<div class="row">
+		<div class="col-md-10">
+			<div id="submain">
+				<h4 class="text-center text-success">게시글 내용</h4>
+  				<form>
+  				 	<div class="form-group">
+  				 		<label for="cno">번호 : </label>
+  				 		<input type="text" class="form-control" id="cno" name="cno" readonly
+  				 			value='<c:out value="${car.cno}"/>' />
+  				 	</div>
+  				 	<div class="form-group">
+  				 		<label for="title">제목 : </label>
+  				 		<input type="text" class="form-control" id="title" name="title" readonly
+  				 			value='<c:out value="${car.title}"/>' />
+  				 	</div>
+  				 	<div class="form-group">
+  				 		<label for="writer">작성자 : </label>
+  				 		<input type="text" class="form-control" id="writer" name="writer" readonly
+  				 			value='<c:out value="${car.writer}"/>' />
+  				 	</div>
+  				 	<div class="form-group">
+  				 		<label for="content">내용 : </label>
+  				 		<textarea class="form-control" id="content" name="content" rows="10" readonly>
+  				 			<c:out value="${car.content}"/>
+  				 		</textarea>
+  				 	</div>
+  				</form>
+  				<button type="button" data-oper='modify_car' class="btn btn-info">수정</button>
+  				&nbsp;&nbsp;
+  				<button data-oper='list_car' class="btn btn-danger">목록</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 게시판 상세보기 - 관련 이벤트 (동적)처리 -->
+<script>
+//페이지 로드시 실행 코드를 정의해주는 함수, 즉 페이지가 로드되면 아래 코드 블록이 실행됨.
+$(document).ready(function(){
+	let operForm = $("#operForm"); 
+	//operForm이라는 변수를 선언하여 $("#operForm"); 을 선택자로 하여 id가 operForm인 요소를 가져온다
+	
+	$("button[data-oper='modify_car']").on("click", function(e){
+		operForm.attr("action", "modify_car").submit();
+	});
+	
+	$("button[data-oper='list_car']").on("click", function(e){
+		operForm.find("#cno").remove();
+		//id가 cno인 DOM 객체를 찾아서 제거한다.
+		operForm.attr("action", "list_car");
+		operForm.submit();
+	});
+});
+</script>
+
+<%@ include file="../include/footer.jspf" %>
+
+<!-- 데이터를 잘 받아오는지 확인용으로 작성해본 테스트 코드 
 <table style="margin-top:600px;">
   <tr>
     <th>번호</th>
@@ -39,8 +98,7 @@
     <td><c:out value="${car.content}"/></td>
   </tr>
 </table>
-
-<%@ include file="../include/footer.jspf" %>
+-->
 
 </body>
 </html>

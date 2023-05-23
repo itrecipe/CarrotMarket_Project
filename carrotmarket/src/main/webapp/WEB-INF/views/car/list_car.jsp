@@ -288,9 +288,27 @@
 								</c:forEach>
 							</tbody>
 						</table>
+						<div>
+							<button type="button" class="btn btn-primary float-right mb-3"
+								id="regBtn">게시물 등록</button>
+						</div>
 					</div>
 				</div>
 			</div>
+			
+			<script>
+			$(document).ready(function(){
+				let result = '<c:out value="${result}"></c:out>';
+				console.log("result : " + result);
+				
+				history.replaceState({}, null, null);
+				//현재 히스토리를 전부 비운다
+				
+				$("#regBtn").on("click", function(){
+					self.location = "register_car";
+				});
+			});
+			</script>
 <%@ include file="../include/footer.jspf"%>
 </body>
 </html>

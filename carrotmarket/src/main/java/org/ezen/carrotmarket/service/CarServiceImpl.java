@@ -56,5 +56,4 @@ public class CarServiceImpl implements CarService {
 		log.info("remove : " + cno);
 		return mapper.delete(cno) == 1;
 	}
-
 }

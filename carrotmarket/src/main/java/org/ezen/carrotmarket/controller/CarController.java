@@ -62,6 +62,25 @@ public class CarController {
 	
 	//@GetMapping("/get_car"): GET 요청이 "/get_car" 경로와 매핑된다. 
 	//Model 객체와 Long 타입의 cno 파라미터를 받아와서 get 메서드가 실행된다. 
-	//get 메서드는 로그를 출력하고 service.get()을 호출하여 cno에 해당하는 자동차 정보를 가져옵니다. 
+	//get 메서드는 로그를 출력하고 service.get()을 호출하여 cno에 해당하는 자동차 정보를 가져온다. 
 	//그리고 car라는 이름으로 모델에 추가해준다.
+	
+	@PostMapping("/modify_car")
+	public String modify(CarVO car, RedirectAttributes rttr) {
+		
+		log.info("modify" + car);
+		
+		if(service.modify(car)) {
+			
+			rttr.addFlashAttribute("result", "success");
+		}
+		return "redirect:list_car";
+	}
+	
+//		@PostMapping 어노테이션이 붙은 modify_car 메서드이며, 이 메서드는 car 게시글 정보를 수정하는 기능을 처리한다.
+//		CarVO 객체를 매개변수로 받고, 이 객체는 수정할 자동차의 정보를 담고 있고, 로그에 자동차 정보를 출력한다.
+//		service.modify(car)를 호출하여 자동차 정보를 수정합니다. modify 메서드는 수정 작업이 성공하면 true를 반환하고, 실패하면 false를 반환합니다.
+//		수정 작업이 성공한 경우, rttr.addFlashAttribute("result", "success")를 통해 "result"라는 이름으로 "success"라는 값을 리다이렉트 속성에 추가합니다. 이 값을 다음 페이지로 전달할 수 있습니다.
+//		마지막으로, "redirect:list_car"를 반환하여 수정 작업이 끝난 후 자동차 목록 페이지로 리다이렉트합니다.
+//		즉, 이 코드는 자동차 정보를 수정하고 수정 작업이 성공하면 "result" 속성에 "success" 값을 추가한 후 자동차 목록 페이지로 리다이렉트합니다.
 }
