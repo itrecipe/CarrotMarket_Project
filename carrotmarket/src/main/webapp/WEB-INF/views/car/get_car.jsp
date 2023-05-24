@@ -27,6 +27,7 @@
 
 <div class="container mt-4 mb-4" id="mainContent">
 	<div class="row">
+	<div class="col-md-2">
 		<div class="col-md-10">
 			<div id="submain">
 				<h4 class="text-center text-success">게시글 내용</h4>
@@ -57,16 +58,16 @@
   				&nbsp;&nbsp;
   				<button data-oper='list_car' class="btn btn-danger">목록</button>
   				
-  				<!-- 버튼 클릭을 처리하기 위해 form추가, 보이지 않게 설정해둠 -->
-  				<form id='operForm' action="modify" method="get">
-  					<input type="hidden" id="cno" name="cno"
-  						value='<c:out value="${car.cno}"/>'>
-  				</form>
+	  				<!-- 버튼 클릭을 처리하기 위해 form추가, 보이지 않게 설정해둠 -->
+	  				<form id='operForm' action="modify" method="get">
+	  					<input type="hidden" id="cno" name="cno"
+	  						value='<c:out value="${car.cno}"/>'>
+	  				</form>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 <!-- 게시판 상세보기 - 관련 이벤트 (동적)처리 -->
 <script>
 //페이지 로드시 실행 코드를 정의해주는 함수, 즉 페이지가 로드되면 아래 코드 블록이 실행됨.

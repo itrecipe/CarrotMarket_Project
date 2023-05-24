@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -54,8 +55,8 @@ public class CarController {
 	//"redirect:list_car"로 리다이렉트 한다.
 	
 	
-	@GetMapping("/get_car")
-	public void get(Model model, Long cno) {
+	@GetMapping({"/get_car", "/modify_car"})
+	public void get(Model model, @RequestParam("cno") Long cno) {
 		log.info("get_car");
 		model.addAttribute("car", service.get(cno));
 	}
@@ -83,4 +84,6 @@ public class CarController {
 //		수정 작업이 성공한 경우, rttr.addFlashAttribute("result", "success")를 통해 "result"라는 이름으로 "success"라는 값을 리다이렉트 속성에 추가합니다. 이 값을 다음 페이지로 전달할 수 있습니다.
 //		마지막으로, "redirect:list_car"를 반환하여 수정 작업이 끝난 후 자동차 목록 페이지로 리다이렉트합니다.
 //		즉, 이 코드는 자동차 정보를 수정하고 수정 작업이 성공하면 "result" 속성에 "success" 값을 추가한 후 자동차 목록 페이지로 리다이렉트합니다.
+
+
 }
