@@ -72,7 +72,7 @@
 
 	<button type="submit" class="btn btn-success">작성</button>&nbsp;&nbsp;
 	<button type="reset" class="btn btn-danger">취소</button>&nbsp;&nbsp;
-	<a id="listLink" href="list" class="btn btn-primary">목록보기</a>
+	<a id="listLink" href="list_car" class="btn btn-primary">목록보기</a>
 </form>
 
 </body>
