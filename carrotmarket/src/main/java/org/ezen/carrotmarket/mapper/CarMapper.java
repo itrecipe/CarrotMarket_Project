@@ -16,7 +16,7 @@ public interface CarMapper {
 	public CarVO read(Long cno);
 	
 	//U
-	public int update (CarVO car);
+	public int update(CarVO car);
 	
 	//D
 	public int delete(Long cno);

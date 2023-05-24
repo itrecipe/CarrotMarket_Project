@@ -30,6 +30,8 @@
 	<div class="col-md-2">
 		<div class="col-md-10">
 			<div id="submain">
+				<br/><br/>
+				<br/><br/>
 				<h4 class="text-center text-success">게시글 내용</h4>
   				<form>
   				 	<div class="form-group">
@@ -59,7 +61,7 @@
   				<button data-oper='list_car' class="btn btn-danger">목록</button>
   				
 	  				<!-- 버튼 클릭을 처리하기 위해 form추가, 보이지 않게 설정해둠 -->
-	  				<form id='operForm' action="modify" method="get">
+	  				<form id='operForm' action="modify_car" method="get">
 	  					<input type="hidden" id="cno" name="cno"
 	  						value='<c:out value="${car.cno}"/>'>
 	  				</form>

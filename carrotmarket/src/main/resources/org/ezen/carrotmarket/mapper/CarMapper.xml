@@ -16,6 +16,14 @@ values(car_seq.nextval, #{writer}, #{title}, #{content}, #{carName}, #{carType},
 	select * from carrot_car where cno = #{cno}
 </select>
 
+<update id="update">
+	update carrot_car
+	set title = #{title},
+		writer = #{writer},
+		content = #{content}
+	where cno = #{cno}
+</update>
+
 <delete id="delete">
 	delete carrot_car where cno = #{cno}
 </delete>
