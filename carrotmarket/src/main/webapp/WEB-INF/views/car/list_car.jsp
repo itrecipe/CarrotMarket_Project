@@ -76,11 +76,16 @@
               <p class="card-text">${car.title}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
+
+                  <a class="btn btn-sm btn-outline-secondary" href='get_car?cno=<c:out value="${car.cno}"/>'>상세보기</a>&nbsp;&nbsp;
+				  <a class="btn btn-sm btn-outline-secondary" href='modify_car?cno=<c:out value="${car.cno}"/>'>수정</a>
+				  <!--  
                   <a class="btn btn-primary btn-sm" href='get_car?cno=<c:out value="${car.cno}"/>'>상세보기</a>&nbsp;&nbsp;
-                  <!--  <button type="button" class="btn btn-sm btn-outline-secondary get_car">상세보기</button> -->
                   <a class="btn btn-primary btn-sm" href='modify_car?cno=<c:out value="${car.cno}"/>'>수정</a>&nbsp;&nbsp;
-                  <!--  <buttbtn btn-primary btn-smon type="button" class="btn btn-sm btn-outline-secondary">수정</button> -->
-                  <a class="btn btn-primary btn-sm" href='remove_car?cno=<c:out value="${car.cno}"/>'>삭제</a>
+                  <button type="submit" data-oper='remove' class="btn btn-danger">삭제</button>
+                  
+                	-->
+                	
                 </div>
                 <small class="text-muted">9 mins</small>
               </div>
@@ -149,22 +154,44 @@
 				</div>
 			</div>
 			
-			<script>
-			$(document).ready(function(){
+<script>
+$(document).ready(function(){
 				
-				/*
-				let result = '<c:out value="${result}"></c:out>';
-				console.log("result : " + result);
-				*/
-				
-				history.replaceState({}, null, null);
-				//현재 히스토리를 전부 비운다
-							
-				$("#regBtn").on("click", function(){
-					self.location = "register_car";
-				});
-			});
-			</script>
+	let result = '<c:out value="${result}"></c:out>';
+	//result는  redirect:로 URL이동시 RedirectAttributes에 저장한 속성값
+
+
+	console.log("result : " + result);
+
+	history.replaceState({}, null, null);
+	//현재 히스토리를 전부 비운다
+	
+	$("#regBtn").on("click", function(){
+		self.location = "register_car";
+		
+	});
+
+});
+</script>
+
+<script>
+$(function(){
+	
+let operForm = $("#operForm");
+
+	$("button[data-oper='modify_car']").on("click", function(){
+		operForm.attr("action", "modify_car").submit();
+	});
+	
+	$("buttnon[data-oper='get_car']").on("click", function(){
+		operForm.find("#cno").remove();
+		//id가 cno인 DOM 객체를 찾아 제거한다.
+		operFrom.attr("action", "get_car");
+		operForm.submit();
+	});
+});
+</script>
+
 <%@ include file="../include/footer.jspf"%>
 </body>
 </html>

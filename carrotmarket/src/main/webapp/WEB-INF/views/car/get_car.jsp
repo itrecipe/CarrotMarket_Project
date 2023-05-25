@@ -32,7 +32,7 @@
 			<div id="submain">
 				<br/><br/>
 				<br/><br/>
-				<h4 class="text-center text-success">게시글 내용</h4>
+				<h4 class="text-center text-success">상세보기</h4>
   				<form>
   				 	<div class="form-group">
   				 		<label for="cno">번호 : </label>
