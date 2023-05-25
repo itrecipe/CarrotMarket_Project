@@ -81,7 +81,7 @@ $(function(){
 		}
 		
 		else if(operation == "list_car") {
-			formObj.attr("action", "list_car").attr("method","get");	    
+			formObj.attr("action", "list_car").attr("method","get");
 		}
 		formObj.submit();
 	});

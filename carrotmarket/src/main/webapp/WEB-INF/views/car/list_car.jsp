@@ -62,174 +62,36 @@
 <main>
   <div class="album py-5 bg-light">
     <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">				
+		
+		<c:forEach items="${list_car}" var="car">        
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <img alt="qm6" width="300" height="300" src="../images/qm6.jpg">
-            <title>Placeholder</title>
-            <!-- <rect width="100%" height="50%" fill="#55595c">
-             <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail
-            </text>
-            </rect> -->
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>
+            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
             </svg>
 
             <div class="card-body">
-              <p class="card-text">qm6</p>
+              <p class="card-text">${car.title}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">삭제</button>
+                  <a class="btn btn-primary btn-sm" href='get_car?cno=<c:out value="${car.cno}"/>'>상세보기</a>&nbsp;&nbsp;
+                  <!--  <button type="button" class="btn btn-sm btn-outline-secondary get_car">상세보기</button> -->
+                  <a class="btn btn-primary btn-sm" href='modify_car?cno=<c:out value="${car.cno}"/>'>수정</a>&nbsp;&nbsp;
+                  <!--  <buttbtn btn-primary btn-smon type="button" class="btn btn-sm btn-outline-secondary">수정</button> -->
+                  <a class="btn btn-primary btn-sm" href='remove_car?cno=<c:out value="${car.cno}"/>'>삭제</a>
                 </div>
                 <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+	</c:forEach>  
+	</div>
+	</div>
+</div>
 
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">삭제</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">삭제</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">삭제</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">삭제</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">삭제</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">삭제</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">삭제</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">수정</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">삭제</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
@@ -265,10 +127,9 @@
 										<td class="cno"><c:out value="${car.cno}" /></td>
 										<td>
 											<!-- jquery로 페이지 이벤트 처리 전 -->
-									<a class="move" href='get_car?cno=<c:out value="${car.cno}"/>'>
-										<c:out value="${car.title}" />
-									</a>
-									 
+											<a class="move" href='get_car?cno=<c:out value="${car.cno}"/>'>
+												<c:out value="${car.title}" />
+											</a>
 										</td>
 										<td><c:out value="${car.writer}" /></td>
 										<td><c:out value="${car.content}"/></td>
@@ -290,12 +151,15 @@
 			
 			<script>
 			$(document).ready(function(){
+				
+				/*
 				let result = '<c:out value="${result}"></c:out>';
 				console.log("result : " + result);
+				*/
 				
 				history.replaceState({}, null, null);
 				//현재 히스토리를 전부 비운다
-				
+							
 				$("#regBtn").on("click", function(){
 					self.location = "register_car";
 				});
