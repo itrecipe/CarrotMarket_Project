@@ -1,6 +1,8 @@
 package org.ezen.carrotmarket.controller;
 
 import org.ezen.carrotmarket.domain.CarVO;
+import org.ezen.carrotmarket.domain.Criteria;
+import org.ezen.carrotmarket.domain.PageDTO;
 import org.ezen.carrotmarket.service.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,13 +22,28 @@ import lombok.extern.log4j.Log4j;
 public class CarController {
 	private CarService service; //CarService 인터페이스를 구현한 구현체를 주입받는 멤버 변수
 	
+	/* 페이징 처리 전 - list(R)
 	@GetMapping("/list_car") //보통 보여주는 페이지는 getmapping으로 처리 해준다.
 	public void list(Model model) {
 		log.info("list_car");
 		model.addAttribute("list_car", service.getList());
 	}
+	*/
 	//@GetMapping("/list_car"): GET 요청이 "/list_car" 경로와 매핑,
 	//Model 객체를 파라미터로 받아와서 list_car라는 이름으로 service.getList()의 결과를 모델에 추가
+	
+	//페이징 처리 후 - list(R)
+	@GetMapping("/list_car")
+	public void list(Criteria cri, Model model) {
+		log.info("list_car");
+		model.addAttribute("list_car", service.getList(cri));
+		
+		//실제 게시글의 개수
+		int total = service.getTotal(cri);
+		log.info("total : " + total);
+		
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
+	}
 	
 	@GetMapping("/register_car")
 	public void registerForm() {

@@ -17,8 +17,32 @@ public class PageDTO {
 	
 	
 	private int total; //데이터 전체 개수
+	private Criteria cri; //pageNum, amount
 
 	public PageDTO(Criteria cri, int total) {
 		
+		this.cri = cri;
+		
+		this.total  = total;
+		
+		//페이징 끝 번호 계산
+		this.endPage = (int)(Math.ceil(cri.getPageNum() / 10.0)) * 10;
+		//ceil은 .0인 윗수로 올림을 한다.
+
+		//페이징 시작 번호 계산
+		this.startPage = this.endPage - 9;
+		
+		//total을 이용해 endPage를 재계산 처리하기
+		int realEnd = (int)(Math.ceil((total * 1.0) / cri.getAmount()));
+		
+		if(realEnd <= this.endPage) {
+			this.endPage = realEnd;
+		}
+		
+		//이전 페이지 처리
+		this.prev = this.startPage > 1;
+		
+		//다음 페이지 처리
+		this.next = this.endPage < realEnd;
 	}
 }

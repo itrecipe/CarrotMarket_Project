@@ -3,6 +3,7 @@ package org.ezen.carrotmarket.service;
 import java.util.List;
 
 import org.ezen.carrotmarket.domain.CarVO;
+import org.ezen.carrotmarket.domain.Criteria;
 import org.ezen.carrotmarket.mapper.CarMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,8 @@ public class CarServiceImpl implements CarService {
 
 	private CarMapper mapper;
 	
-	//목록보기
+	//목록보기 - 페이징 처리 전
+	/*
 	@Override
 	public List<CarVO> getList() {
 		
@@ -27,7 +29,25 @@ public class CarServiceImpl implements CarService {
 		
 		return mapper.getList();
 	}
-
+	*/
+	
+	//목록보기 - 페이징 처리 후
+	@Override
+	public List<CarVO> getList(Criteria cri) {
+		
+		log.info("get List With Criteria : " + cri);
+		
+		return mapper.getListWithPaging(cri);
+	}
+	
+	//게시글 총 합계 - 페이징 처리
+	@Override
+	public int getTotal(Criteria cri) {
+		log.info("get total count");
+		
+		return mapper.getTotalCount(cri);
+	}
+	
 	@Override
 	public void register(CarVO car) {
 		log.info("register 호출 : " + car);

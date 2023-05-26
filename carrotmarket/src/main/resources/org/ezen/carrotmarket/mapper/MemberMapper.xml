@@ -6,7 +6,6 @@
 		select * from carrot_member where userid = #{userid}
 	</select>
 	
-	
 	<insert id="joinMember">
 		insert into carrot_member(id, userid, userpwd, username, usernickname, useraddress
 		<if test="useremail != null">

@@ -43,17 +43,14 @@ insert into carrot_car(cno,writer,title,content,carName,carType,carYear,carPrice
 values(car_seq.nextval, #{writer}, #{title}, #{content}, #{carName}, #{carType}, #{carYear}, #{carPrice}, #{carDate}, #{fuel}, #{disp}, #{kilos}, #{mission})
 </insert>
 
-<!--  
 <insert id="insertSelectKey">
-	<selectkey keyProperty="cno" order="BEFORE" resultType="Long">
+	<selectKey keyProperty="cno" order="BEFORE" resultType="Long">
 		select car_seq.nextval from dual
-	</selectkey>
+	</selectKey>
 	
-	insert into carrot_car(cno,writer,title,content,carname,cartype,caryear,carprice,cardate,fuel,disp,kilos,mission)
+	insert into carrot_car(cno,writer,title,content,carName,carType,carYear,carPrice,carDate,fuel,disp,kilos,mission) 
 	values(car_seq.nextval, #{writer}, #{title}, #{content}, #{carName}, #{carType}, #{carYear}, #{carPrice}, #{carDate}, #{fuel}, #{disp}, #{kilos}, #{mission})
-	
 </insert>
--->
 
 <select id="read" resultType="org.ezen.carrotmarket.domain.CarVO">
 	select * from carrot_car where cno = #{cno}
@@ -70,5 +67,10 @@ values(car_seq.nextval, #{writer}, #{title}, #{content}, #{carName}, #{carType},
 <delete id="delete">
 	delete carrot_car where cno = #{cno}
 </delete>
+
+<!-- getTotalCount : 검색처리 전 -->
+<select id="getTotalCount" resultType="int">
+	select count(*) from carrot_car where cno > 0
+</select>
 
 </mapper>

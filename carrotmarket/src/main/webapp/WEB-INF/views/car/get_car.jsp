@@ -51,9 +51,7 @@
   				 	</div>
   				 	<div class="form-group">
   				 		<label for="content">내용 : </label>
-  				 		<textarea class="form-control" id="content" name="content" rows="10" readonly>
-  				 			<c:out value="${car.content}"/>
-  				 		</textarea>
+<textarea class="form-control" id="content" name="content" rows="10" readonly><c:out value="${car.content}"/></textarea>
   				 	</div>
   				</form>
   				<button type="button" data-oper='modify_car' class="btn btn-info">수정</button>
