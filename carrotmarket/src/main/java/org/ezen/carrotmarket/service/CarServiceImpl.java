@@ -43,7 +43,7 @@ public class CarServiceImpl implements CarService {
 	//게시글 총 합계 - 페이징 처리
 	@Override
 	public int getTotal(Criteria cri) {
-		log.info("get total count");
+		log.info("get total count : ");
 		
 		return mapper.getTotalCount(cri);
 	}

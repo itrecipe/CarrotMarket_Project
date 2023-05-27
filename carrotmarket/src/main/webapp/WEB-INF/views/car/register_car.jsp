@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,11 @@
 </head>
 <body>
 
-<form action="register_car" method="post">
+<%@ include file="../include/header.jspf" %>
+
+<form action="register_car" method="post" enctype="multipart/form-data" style="margin-top: 100px">
+	
+	
 	
 	<div class="form-group">
 		<label for="writer">작성자 : </label>
@@ -73,7 +78,48 @@
 	<button type="submit" class="btn btn-success">작성</button>&nbsp;&nbsp;
 	<button type="reset" class="btn btn-danger">취소</button>&nbsp;&nbsp;
 	<a id="listLink" href="list_car" class="btn btn-primary">목록보기</a>
+
 </form>
+
+<input type="file" name="file" >
+
+<script>
+$(document).ready(function(){
+	$("input[name='file']").on("change", function(){
+		console.log("a");
+		
+		let formData = new FormData();
+		let inputFile = $("input[name='file']");
+		let files = inputFile[0].files;
+		
+		console.log("files");
+		
+		for(var i=0; i < files.length; i++) {
+			
+			formData.append("uploadFile", files[i]);
+		}
+		
+		$.ajax({
+			url : '../upload/uploadAjaxAction',
+			processData : false,
+			contentType : false,
+			data : formData,
+			type : 'POST',
+			dataType : 'json',
+			success : function(result) {
+				console.log(resut);
+				
+				showUploadResult(result);
+				$("#upload").val("");
+			},
+			error : function() {
+				alert("ajax upload failed");
+			}
+			
+		});
+	});
+});	
+</script>
 
 </body>
 </html>

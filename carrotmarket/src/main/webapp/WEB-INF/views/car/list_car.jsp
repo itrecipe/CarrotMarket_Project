@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -126,10 +127,9 @@
 	<c:forEach var="num" begin="${pageMaker.startPage}"
 		end="${pageMaker.endPage}">
 
-		<li class="page-item ${pageMaker.cri.pageNum == num ? 'active' : ''}">
+		<li class="page-item ${pageMaker.cri.pageNum == num ? 'active':''}">
 			<a class="page-link" href="${num}">${num}</a>
 		</li>
-
 	</c:forEach>
 	
 	<c:if test="${pageMaker.next}">
@@ -204,7 +204,7 @@ $(document).ready(function(){
 	
 	let actionForm = $("#actionForm");
 	$(".page-item a").on("click", function(e){
-		e.preventDafault(); //a 태그의 본래의 기능을 취소 시킨다.
+		e.preventDefault(); //a 태그의 본래의 기능을 취소 시킨다.
 		console.log('page 번호 클릭!');
 		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
 		//find(selector)메서드는 자식 엘리먼트에서 selector에 해당하는 엘리먼트를 선택한다.
@@ -218,12 +218,9 @@ $(document).ready(function(){
 		actionForm.append("<input type='hidden' name='cno' value='" 
 				+ $(this).attr("href") + "'>");
 		//메서드에 의해 구해지는 값이므로 +로 연결을 해준다. 뒤에는 변수 선언시가 아닌 표시를 의미하므로 보이는 대로 표시한다.
-		actionForm.attr("action", "get");
+		actionForm.attr("action", "get_car");
 		actionForm.submit();
 	});
-	
-
-
 });
 </script>
 

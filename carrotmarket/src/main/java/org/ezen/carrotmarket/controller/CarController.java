@@ -7,6 +7,7 @@ import org.ezen.carrotmarket.service.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,6 +37,7 @@ public class CarController {
 	@GetMapping("/list_car")
 	public void list(Criteria cri, Model model) {
 		log.info("list_car");
+		log.info(cri);
 		model.addAttribute("list_car", service.getList(cri));
 		
 		//실제 게시글의 개수
@@ -73,8 +75,9 @@ public class CarController {
 	
 	
 	@GetMapping({"/get_car", "/modify_car"})
-	public void get(Model model, @RequestParam("cno") Long cno) {
-		log.info("get_car");
+	public void get(@RequestParam("cno") Long cno, @ModelAttribute("cri") Criteria cri, Model model) {
+		log.info("get_car & modify");
+		
 		model.addAttribute("car", service.get(cno));
 	}
 	
