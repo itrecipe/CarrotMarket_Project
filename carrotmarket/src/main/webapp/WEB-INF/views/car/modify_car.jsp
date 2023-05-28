@@ -51,7 +51,6 @@
   					클라이언트 측 스크립트에서 해당 속성값을 활용하여 작업을 수행하거나 조건을 확인하는 데 활용 한다. 
   				-->
   				
-  				
 	  				<!-- 버튼 클릭을 처리하기 위해 form추가, 보이지 않게 설정해둠 -->
 	  				<form id='operForm' action="modify_car" method="get">
 	  					<input type="hidden" id="cno" name="cno"
@@ -75,6 +74,13 @@ $(function(){
 		console.log("operation : "  + operation);
 		
 		if(operation == "remove_car") {
+			if(confirm("정말 삭제 하시겠습니까? 삭제시 복구는 불가 합니다.")){
+				alert("삭제 성공!");
+				
+			} else {
+				alert("삭제 취소!");
+				return false;
+			}
 			formObj.attr("action", "remove_car");
 		}
 		

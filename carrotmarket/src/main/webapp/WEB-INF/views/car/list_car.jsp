@@ -67,8 +67,10 @@
         <h1 class="fw-light">인기 중고차 매물!</h1>
         <p class="lead text-muted">최근 인기있는 매물들을 소개 합니다!!</p>
         <p>
+        <!-- 
           <a href="#" class="btn btn-primary my-2">Main call to action</a>
           <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+         -->
         </p>
       </div>
       
@@ -97,11 +99,9 @@
                 <div class="btn-group">
 
                   <a class="btn btn-sm btn-outline-secondary" href='get_car?cno=<c:out value="${car.cno}"/>'>상세보기</a>&nbsp;&nbsp;
-				  <a class="btn btn-sm btn-outline-secondary" href='modify_car?cno=<c:out value="${car.cno}"/>'>수정</a>
+				  <!--  <a class="btn btn-sm btn-outline-secondary" href='modify_car?cno=<c:out value="${car.cno}"/>'>수정</a> -->
 				  
-				  <!--  
-                  <a class="btn btn-primary btn-sm" href='get_car?cno=<c:out value="${car.cno}"/>'>상세보기</a>&nbsp;&nbsp;
-                  <a class="btn btn-primary btn-sm" href='modify_car?cno=<c:out value="${car.cno}"/>'>수정</a>&nbsp;&nbsp;
+				  <!-- 참고용 코드  
                   <button type="submit" data-oper='remove' class="btn btn-danger">삭제</button>
                 	-->
                 	
@@ -150,6 +150,7 @@
 </main>
 
 <!-- 게시글 Test -->
+<!--  
 <div class="container mt-4 mb-4" id="mainContent">
 	<div class="row">
 			<div class="table-responsive-md">
@@ -169,10 +170,12 @@
 									<tr>
 										<td class="cno"><c:out value="${car.cno}" /></td>
 										<td>
-											<!-- jquery로 페이지 이벤트 처리 전 -->
+		
+											   jquery로 페이지 이벤트 처리 전  
 											<a class="move" href='get_car?cno=<c:out value="${car.cno}"/>'>
 												<c:out value="${car.title}" />
 											</a>
+											
 										</td>
 										<td><c:out value="${car.writer}" /></td>
 										<td><c:out value="${car.content}"/></td>
@@ -187,6 +190,7 @@
 					</div>
 				</div>
 			</div>
+-->		
 <script>
 $(document).ready(function(){
 				

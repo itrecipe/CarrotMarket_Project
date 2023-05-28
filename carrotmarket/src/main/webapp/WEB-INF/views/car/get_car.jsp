@@ -63,6 +63,13 @@
 	  					<input type="hidden" id="cno" name="cno"
 	  						value='<c:out value="${car.cno}"/>'>
 	  				</form>
+	  				
+	  				<!-- 첨부물 처리 창 (추가) -->
+	  				<div class="uplaodResult mt-3">
+	  					<div class="row" id="card">
+	  					</div>
+	  				</div>
+	  				
 				</div>
 			</div>
 		</div>
@@ -76,7 +83,17 @@ $(document).ready(function(){
 	//operForm이라는 변수를 선언하여 $("#operForm"); 을 선택자로 하여 id가 operForm인 요소를 가져온다
 	
 	$("button[data-oper='modify_car']").on("click", function(e){
+		
+		if(!confirm("수정 하시겠습니까?")){
+			alert("수정을 취소 합니다.");
+			return false;
+		} else {
+			alert("수정 창으로 이동 합니다.");
+		}
+		
 		operForm.attr("action", "modify_car").submit();
+		
+		
 	});
 	
 	$("button[data-oper='list_car']").on("click", function(e){
@@ -90,7 +107,7 @@ $(document).ready(function(){
 
 <%@ include file="../include/footer.jspf" %>
 
-<!-- 데이터를 잘 받아오는지 확인용으로 작성해본 테스트 코드 
+<!-- 데이터를 잘 받아오는지 확인용으로 작성해본 테스트 코드  
 <table style="margin-top:600px;">
   <tr>
     <th>번호</th>

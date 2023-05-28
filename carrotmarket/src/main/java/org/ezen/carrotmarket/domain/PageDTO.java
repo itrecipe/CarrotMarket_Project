@@ -24,7 +24,7 @@ public class PageDTO {
 		this.total  = total;
 		
 		//페이징 끝 번호 계산
-		this.endPage = (int)(Math.ceil(cri.getPageNum() / 12.0)) * 10;
+		this.endPage = (int)(Math.ceil(cri.getPageNum() / 10.0)) * 10;
 		//ceil은 .0인 윗수로 올림을 한다.
 
 		//페이징 시작 번호 계산
