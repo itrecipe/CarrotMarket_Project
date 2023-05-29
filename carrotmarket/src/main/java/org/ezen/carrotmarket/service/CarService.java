@@ -2,6 +2,7 @@ package org.ezen.carrotmarket.service;
 
 import java.util.List;
 
+import org.ezen.carrotmarket.domain.CarAttachVO;
 import org.ezen.carrotmarket.domain.CarVO;
 import org.ezen.carrotmarket.domain.Criteria;
 
@@ -30,4 +31,7 @@ public interface CarService {
 	
 	//D
 	public boolean remove(Long cno);
+	
+	//파일 첨부를 위한 처리
+	public List<CarAttachVO> getAttachList(Long cno);
 }

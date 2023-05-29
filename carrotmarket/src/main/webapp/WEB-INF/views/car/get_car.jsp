@@ -32,28 +32,105 @@
 			<div id="submain">
 				<br/><br/>
 				<br/><br/>
+				
 				<h4 class="text-center text-success">상세보기</h4>
+  				
   				<form>
+  				 	
   				 	<div class="form-group">
   				 		<label for="cno">번호 : </label>
   				 		<input type="text" class="form-control" id="cno" name="cno" readonly
   				 			value='<c:out value="${car.cno}"/>' />
   				 	</div>
-  				 	<div class="form-group">
-  				 		<label for="title">제목 : </label>
-  				 		<input type="text" class="form-control" id="title" name="title" readonly
-  				 			value='<c:out value="${car.title}"/>' />
-  				 	</div>
+  				 	
   				 	<div class="form-group">
   				 		<label for="writer">작성자 : </label>
   				 		<input type="text" class="form-control" id="writer" name="writer" readonly
   				 			value='<c:out value="${car.writer}"/>' />
   				 	</div>
+
+  				 	<div class="form-group">
+  				 		<label for="title">제목 : </label>
+  				 		<input type="text" class="form-control" id="title" name="title" readonly
+  				 			value='<c:out value="${car.title}"/>' />
+  				 	</div>
+  				 	
+  				 	
   				 	<div class="form-group">
   				 		<label for="content">내용 : </label>
 <textarea class="form-control" id="content" name="content" rows="10" readonly><c:out value="${car.content}"/></textarea>
   				 	</div>
-  				</form>
+
+	  				<br/><br/>
+	  					 
+	  				<div class="form-group">
+						<label for="carName">차량명 : </label>
+						<input type="text" class="form-control" id="carName" name="carName" 
+							readonly="readonly" value='<c:out value="${car.carName}"/>' />
+					</div>
+
+	  				<div class="form-group">
+						<label for="carType">차종 : </label>
+						<input type="text" class="form-control" id="carType" name="carType" 
+							readonly="readonly" value='<c:out value="${car.carType}"/>' />
+					</div>
+	  				
+	  				<div class="form-group">
+						<label for="carYear">연식 : </label>
+						<input type="text" class="form-control" id="carYear" name="carYear" 
+							readonly="readonly" value='<c:out value="${car.carType}"/>' />
+					</div>
+	  				
+	  				<div class="form-group">
+						<label for="carPrice">금액 : </label>
+						<input type="text" class="form-control" id="carPrice" name="carPrice" 
+							readonly="readonly" value='<c:out value="${car.carPrice}"/>' />
+					</div>
+
+	  				<div class="form-group">
+						<label for="carDate">차량 등록일 : </label>
+						<input type="text" class="form-control" id="carDate" name="carDate" 
+							readonly="readonly" value='<c:out value="${car.carDate}"/>' />
+					</div>
+
+	  				<div class="form-group">
+						<label for="fuel">연료 : </label>
+						<input type="text" class="form-control" id="fuel" name="fuel" 
+							readonly="readonly" value='<c:out value="${car.fuel}"/>' />
+					</div>
+					
+	  				<div class="form-group">
+						<label for="disp">배기량 : </label>
+						<input type="text" class="form-control" id="disp" name="disp" 
+							readonly="readonly" value='<c:out value="${car.disp}"/>' />
+					</div>
+
+	  				<div class="form-group">
+						<label for="kilos">키로수 : </label>
+						<input type="text" class="form-control" id="kilos" name="kilos" 
+							readonly="readonly" value='<c:out value="${car.kilos}"/>' />
+					</div>
+
+	  				<div class="form-group">
+						<label for="mission">변속기 : </label>
+						<input type="text" class="form-control" id="mission" name="mission" 
+							readonly="readonly" value='<c:out value="${car.mission}"/>' />
+					</div>
+					
+					<div class="form-group">
+  				 		<label for="regDate">게시글 등록일 : </label>
+  				 		<input type="text" class="form-control" id="regDate" name="regDate" readonly
+  				 			value='<fmt:formatDate pattern="yyyy/MM/dd" value="${car.regDate}"/>' />
+  				 	</div>
+
+  				 	<div class="form-group">
+  				 		<label for="updateDate">게시글 수정일 : </label>
+  				 		<input type="text" class="form-control" id="updateDate" name="updateDate" readonly
+  				 			value='<fmt:formatDate pattern="yyyy/MM/dd" value="${car.updateDate}"/>' />
+  				 	</div>
+					
+	  				</form>
+  				
   				<button type="button" data-oper='modify_car' class="btn btn-info">수정</button>
   				&nbsp;&nbsp;
   				<button data-oper='list_car' class="btn btn-danger">목록</button>
@@ -63,6 +140,14 @@
 	  					<input type="hidden" id="cno" name="cno"
 	  						value='<c:out value="${car.cno}"/>'>
 	  				</form>
+	  				
+	  				<!-- 페이지 정보를 추가 -->	
+					<input
+						type='hidden' name='pageNum'
+						value='<c:out value="${cri.pageNum}"/>'> 
+					<input
+						type='hidden' name='amount'
+						value='<c:out value="${cri.amount}"/>'>
 	  				
 	  				<!-- 첨부물 처리 창 (추가) -->
 	  				<div class="uplaodResult mt-3">
@@ -103,6 +188,71 @@ $(document).ready(function(){
 		operForm.submit();
 	});
 });
+</script>
+
+<!-- 첨부파일 처리 자바스크립트 -->
+<script>
+$(document).ready(function(){
+	//즉시실행함수(1회)
+	(function(){
+		let cno = '<c:out value="${car.cno}"/>';
+		$.getJSON("getAttachList", {cno : cno}, function(arr){
+		      //GET방식으로 콘트롤라의 getAttachList로 cno값을 보내서 결과를 arr로 받아서 처리
+		      console.log(arr);	
+		      
+		      let str = "";
+		      
+		      $(arr).each(function(i, obj){
+		    	  
+		    	  if (!obj.fileType)  {	 //일반 파일일시
+		    		  
+		    		    //한글 이나ㅣ 공백등이 URL에 포함되어 있을시를 해결 encodeURIComponent()
+						let fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);
+						//YYYY/MM/DD/uuid_파일명
+						//BS4의 카드 방식으로 표시
+						str += "<div class='card col-md-3'>";
+						str += "<div class='card-body'>";
+						str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'>";
+						str += "<a href='../upload/download?fileName=" + fileCallPath +"'>";						
+						str += "<img class='mx-auto d-block' src='../images/attach.png' >";
+						str += "</a>";
+						str += "</p>";
+						//str += "<h4><span class='d-block w-50 mx-auto' data-file='"+fileCallPath+"' data-type='file'> &times; </span></h4>";
+						str += "</div>";
+						str += "</div>";
+						
+					}				    	  
+					else { //이미지 일시
+														
+						let fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid+"_"+obj.fileName);
+						let originPath = obj.uploadPath+ "\\"+obj.uuid +"_"+obj.fileName; //원본파일 경로
+						originPath = originPath.replace(new RegExp(/\\/g),"/"); //\\를 /로 대체 
+						
+						str += "<div class='card col-md-3'>";
+						str += "<div class='card-body'>";
+						str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'>";
+						str += "<a href=\"javascript:showImage(\'"+originPath+"\')\">"; //원본 파일 보기 위해 클릭 이벤트 처리
+						str += "<img class='mx-auto d-block' src='../upload/display?fileName=" +fileCallPath+"'></a>"; //클릭 링크 이미지,직접 자원에 접근 못함
+						str += "</p>";
+						//str += "<h4><span class='d-block w-50 mx-auto' data-file='"+fileCallPath+"' data-type='image'> &times; </span></h4>";
+						str += "</div>";
+						str += "</div>";
+					}
+		    	  				    	  
+		      });
+		      
+		      $(".uploadResult #card").html(str);
+		 });
+	})(); //()는 즉시 실행 연산자	
+});
+
+function showImage(fileCallPath) {
+	//<a>태그에서 직접 호출시 대비
+	
+	$('.imageModal .modal-body').html("<img class='d-block w-75 mx-auto' src='../upload/display?fileName="+encodeURI(fileCallPath)+"&size=1'>");
+
+    $(".imageModal").modal("show");
+}
 </script>
 
 <%@ include file="../include/footer.jspf" %>

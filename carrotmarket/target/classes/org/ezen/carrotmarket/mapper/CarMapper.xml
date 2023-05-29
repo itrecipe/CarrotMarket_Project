@@ -49,7 +49,7 @@ values(car_seq.nextval, #{writer}, #{title}, #{content}, #{carName}, #{carType},
 	</selectKey>
 	
 	insert into carrot_car(cno,writer,title,content,carName,carType,carYear,carPrice,carDate,fuel,disp,kilos,mission) 
-	values(car_seq.nextval, #{writer}, #{title}, #{content}, #{carName}, #{carType}, #{carYear}, #{carPrice}, #{carDate}, #{fuel}, #{disp}, #{kilos}, #{mission})
+	values(car_seq.nextval, #{title}, #{writer}, #{content}, #{carName}, #{carType}, #{carYear}, #{carPrice}, #{carDate}, #{fuel}, #{disp}, #{kilos}, #{mission})
 </insert>
 
 <select id="read" resultType="org.ezen.carrotmarket.domain.CarVO">
@@ -60,7 +60,17 @@ values(car_seq.nextval, #{writer}, #{title}, #{content}, #{carName}, #{carType},
 	update carrot_car
 	set title = #{title},
 		writer = #{writer},
-		content = #{content}
+		content = #{content},
+		updateDate = sysdate,
+		carName = #{carName},
+		carType = #{carType},
+		carYear = #{carYear},
+		carPrice = #{carPrice},
+		carDate = #{carDate},
+		fuel = #{fuel},
+		disp = #{disp},
+ 		kilos = #{kilos},
+		mission = #{mission}
 	where cno = #{cno}
 </update>
 

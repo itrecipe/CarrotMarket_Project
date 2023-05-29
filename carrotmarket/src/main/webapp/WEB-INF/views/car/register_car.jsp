@@ -15,6 +15,13 @@
 
 <title>Insert title here</title>
 
+<style>
+.card img {
+	width : 150px;
+	height : 150px;
+}
+</style>
+
 </head>
 <body>
 
@@ -80,7 +87,7 @@
 			</div>
 		
 			<div class="form-group">
-				<label for="kilos">배기량 : </label>
+				<label for="kilos">키로수 : </label>
 				<input type="text" class="form-control" id="kilos" name="kilos" placeholder="kilos" required="required">
 			</div>
 			
@@ -94,51 +101,182 @@
 			<a id="listLink" href="list_car" class="btn btn-primary">목록보기</a>
 		
 		</form>
-			<!-- 첨부파일 창 -->
+		
+			<!-- 테스트용 첨부파일 창 -->
+			<!--  
 			<form action="uploadFormAction" method="post" enctype="multipart/form-data">
 				<input type="file" name="uploadFile" multiple="multiple">
 			</form>
+			-->
 			
+			<!-- 파일 첨부 창 (추가) -->
+			<div class="attach mt-4">
+				<h1 class="text-center threeDEffect text-success mb-5">파일 업로드!</h1>
+				<div class="row">
+					<div class="form-group uploadDiv col-md-12">
+						<label for="upload">&nbsp;&nbsp;&nbsp;&nbsp;FileUpload</label>
+						<!-- 라벨의 for는 html 요소와 라벨 요소를 연결하는데 사용되는 속성,
+						 -->
+						<input type="file" class="form-control" id="upload" name="uploadFile" multiple="multiple"/>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 업로드 된 파일의 결과를 보여 줄 창 (추가) -->
+			<div class="uplaodResult mt-3">
+				<div class="row" id="card">
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
 <script>
 $(document).ready(function(){
-	$("input[name='file']").on("change", function(){
-		console.log("a");
+	let formObj = $("form[role='form']"); //게시글 등록
+	let regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); //확장자를 지정 해둔것은 업로드를 제한 한다. 
+	
+	let uploadUL = $(".uploadResult #card");
+	
+	$("button[type='submit']").on("click", function(e){ //게시글 작성시 submit 버튼
+		e.preventDefault();
+		console.log("submit clicked");
 		
-		let formData = new FormData();
-		let inputFile = $("input[name='file']");
-		let files = inputFile[0].files;
+		let str = "";
 		
-		console.log("files");
-		
-		for(var i=0; i < files.length; i++) {
+		$(".uploadResult .card p").each(function(i, obj){
 			
-			formData.append("uploadFile", files[i]);
-		}
+			let jobj = $(obj);
+			
+			console.dir(jobj);
+			console.log("-----------");
+			console.log(jobj.data("filename"));
+			
+			//List<BoardAttachVO> attachList;멤버변수로 수집됨
+		      str += "<input type='hidden' name='attachList["+i+"].fileName' value='"+jobj.data("filename")+"'>";
+		      str += "<input type='hidden' name='attachList["+i+"].uuid' value='"+jobj.data("uuid")+"'>";
+		      str += "<input type='hidden' name='attachList["+i+"].uploadPath' value='"+jobj.data("path")+"'>";
+		      str += "<input type='hidden' name='attachList["+i+"].fileType' value='"+ jobj.data("type")+"'>";
+			
+		      console.log(str);
+			    
+			  formObj.prepend(str).submit();
+		      
+		});
+	});
+	
+	$("input[type='file']").change(function(e){			
+		let formData = new FormData(); //가상의 form엘리먼트 생성
+		let inputFile = $("input[name='uploadFile']");
+		let files = inputFile[0].files; 
+		//첫번째 inputFile DOM의 files들 type이 file인경우 선택한 파일들(value값)
+		console.log(files);
+			
+		for(var i = 0; i < files.length; i++)  {
+			if (!checkExtension(files[i].name, files[i].size)) {
+				return false;
+			}			
+			formData.append("uploadFile", files[i]); 
+			 //선택한 파일들을 input type="file" name="uploadFile" value="files[i]"로 만들어 붙이기
+		}		
 		
 		$.ajax({
-			url : '../upload/uploadAjaxAction',
-			processData : false,
-			contentType : false,
-			data : formData,
-			type : 'POST',
-			dataType : 'json',
+			//url: '../upload/uploadAjaxAction?${_csrf.parameterName}=${_csrf.token}',
+			url: '../upload/uploadAjaxAction',
+			processData: false,
+			contentType: false,
+			data: formData,
+			type: 'POST',				    
+		    dataType : 'json', //생략해도 무방	
+		  //beforeSend: function(xhr) { 
+		    //      xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+		    //},	
 			success : function(result) {
-				console.log(resut);
-				
+				console.log(result);
+				//List<AttachFileDTO>가 결과로 옴
 				showUploadResult(result);
-				$("#upload").val("");
+				$("#upload").val(""); //파일 입력창 초기화
 			},
 			error : function() {
 				alert("ajax upload failed");
 			}
-			
 		});
 	});
-});	
+	
+	$(".uploadResult").on("click", "span", function(e) { // 삭제 x클릭
+		console.log("delete file");
+		      
+	    let targetFile = $(this).data("file"); //삭제 파일 경로
+		let type = $(this).data("type");
+		
+		let targetLi = $(this).closest(".card");
+		
+		$.ajax({
+			//url: '../upload/deleteFile?${_csrf.parameterName}=${_csrf.token}',
+			url : '../upload/deleteFile',
+		    data: {fileName: targetFile, type:type},
+		    dataType:'text',
+		    type: 'POST',		    
+		    //beforeSend: function(xhr) {
+		    //      xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+		    //},		    
+		    success: function(result){		             
+		           targetLi.remove();
+		    }
+		}); 
+	});
+	
+	function checkExtension(fileName, fileSize) {
+		
+		if(fileSize >= maxSize) {
+			alert("파일 사이즈 초과");
+		    return false;
+		}
+		if(regex.test(fileName)) {
+			 alert("해당 종류의 파일은 업로드할 수 없습니다.");
+		     return false;
+		}
+		return true;
+	}
+	
+	function showUploadResult(uploadResultArr) {
+		
+		if(!uploadResultArr || uploadResultArr.length == 0)
+			return;		
+				
+		$(uploadResultArr).each(function(i, obj) {
+			let str ="";
+			if(obj.image) {
+				
+				let fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid +"_"+obj.fileName);				
+				str += "<div class='card col-md-3'>";
+				str += "<div class='card-body'>";
+				str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'" ;
+				str +=  "data-path='"+obj.uploadPath +"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'>";						
+				str += "<img class='mx-auto d-block' src='../upload/display?fileName="+fileCallPath+"'>";						
+				str += "</p>";
+				str += "<h4><span class='d-block w-50 mx-auto badge badge-secondary badge-pill' data-file='"+fileCallPath+"' data-type='image'> &times; </span></h4>";				
+				str += "</div></div>";				
+			}
+			else {
+				
+				let fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);
+				let fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");				
+				str += "<div class='card col-md-3'>";
+				str += "<div class='card-body'>";	
+				str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'" ;
+				str += "data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"' >";
+				str += "<img class='mx-auto d-block' src='../images/attach.png' >";				
+				str += "</p>";
+				str += "<h4><span class='d-block w-50 mx-auto badge badge-secondary badge-pill' data-file='"+fileCallPath+"' data-type='file'> &times; </span></h4>";
+				str += "</div></div>";		
+								
+			}
+			
+			uploadUL.append(str);
+		});		
+	}
+});
 </script>
 
 </body>

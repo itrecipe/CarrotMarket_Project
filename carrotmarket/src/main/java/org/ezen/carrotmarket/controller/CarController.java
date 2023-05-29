@@ -1,9 +1,20 @@
 package org.ezen.carrotmarket.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+import org.ezen.carrotmarket.domain.CarAttachVO;
 import org.ezen.carrotmarket.domain.CarVO;
 import org.ezen.carrotmarket.domain.Criteria;
 import org.ezen.carrotmarket.domain.PageDTO;
 import org.ezen.carrotmarket.service.CarService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -47,6 +59,7 @@ public class CarController {
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
+	//게시글 등록창 보기
 	@GetMapping("/register_car")
 	public void registerForm() {
 		log.info("registerForm : ");
@@ -55,7 +68,7 @@ public class CarController {
 	//반환 타입이 void이면 보여주는 페이지라고 생각하면 이해가 쉽다.
 	//void는 반환타입이 없다는 의미이며, 스프링에서는 void를 사용하여 get 요청이 들어오면 "/register_car" 경로와 자동으로 매핑 해준다. 
 	
-	
+	//게시글 등록 처리
 	@PostMapping("/register_car")
 	public String register(CarVO car, RedirectAttributes rttr) {
 		
@@ -124,5 +137,47 @@ public class CarController {
 //		RedirectAttributes는 리다이렉트 시에 속성을 전달하기 위한 객체다. 
 // 		rttr.addFlashAttribute("result", "success")는 리다이렉트 후에 "result"라는 이름으로 "success"라는 값을 전달한다. (1회성 데이터 처리 목적으로 사용)
 //	    리다이렉트된 페이지에서 사용할 수 있는 속성으로 전달된다.
+	
+	//클라이언트에서 특정 게시물에 대한 첨부물 정보 요청
+		@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_VALUE)	
+		@ResponseBody
+		public ResponseEntity<List<CarAttachVO>> getAttachList(Long bno) {
+
+			log.info("getAttachList " + bno);
+
+			return new ResponseEntity<>(service.getAttachList(bno), HttpStatus.OK);
+
+		}
+		
+		//첨부파일 삭제
+		private void deleteFiles(List<CarAttachVO> attachList) {
+
+			if (attachList == null || attachList.size() == 0) {
+				return;
+			}
+
+			log.info("delete attach files...................");
+			log.info(attachList);
+
+			attachList.forEach(attach -> {
+				try {
+					Path file = Paths.get(
+							"C:/upload/" + attach.getUploadPath() + "/" + attach.getUuid() + "_" + attach.getFileName());
+
+					Files.deleteIfExists(file);
+
+					if (Files.probeContentType(file).startsWith("image")) {
+
+						Path thumbNail = Paths.get("C:/upload/" + attach.getUploadPath() + "/s_" + attach.getUuid() + "_"
+								+ attach.getFileName());
+
+						Files.delete(thumbNail);
+					}
+
+				} catch (Exception e) {
+					log.error("delete file error" + e.getMessage());
+				} // end catch
+			});// end foreachd
+		}
 
 }

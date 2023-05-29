@@ -2,23 +2,29 @@ package org.ezen.carrotmarket.service;
 
 import java.util.List;
 
+import org.ezen.carrotmarket.domain.CarAttachVO;
 import org.ezen.carrotmarket.domain.CarVO;
 import org.ezen.carrotmarket.domain.Criteria;
+import org.ezen.carrotmarket.mapper.CarAttachMapper;
 import org.ezen.carrotmarket.mapper.CarMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Service //서비스 계층 로직임을 알리는 어노테이션
-@AllArgsConstructor //모든 멤버변수를 갖는 생성자로서 멤버변수가 한개일때 사용한다.
+//@AllArgsConstructor //모든 멤버변수를 갖는 생성자로서 멤버변수가 한개일때 사용한다.
 //서비스 계층 로직 실제 구현체
 public class CarServiceImpl implements CarService {
 
+	@Setter(onMethod_= @Autowired)
 	private CarMapper mapper;
+	
+	@Setter(onMethod_ = @Autowired)
+	private CarAttachMapper attachMapper;
 	
 	//목록보기 - 페이징 처리 전
 	/*
@@ -48,11 +54,22 @@ public class CarServiceImpl implements CarService {
 		return mapper.getTotalCount(cri);
 	}
 	
+	@Transactional
 	@Override
 	public void register(CarVO car) {
 		log.info("register 호출 : " + car);
 		
-		mapper.insert(car);
+		mapper.insertSelectKey(car);
+		
+		if (car.getAttachList() == null || car.getAttachList().size() <= 0) {
+			return;
+		}
+
+		car.getAttachList().forEach(attach -> {
+
+			attach.setCno(car.getCno()); 
+			attachMapper.insert(attach);
+		});
 	}
 
 	@Override
@@ -61,7 +78,8 @@ public class CarServiceImpl implements CarService {
 		
 		return mapper.read(cno);
 	}
-
+	
+	/* 첨부파일 처리 전 (수정)
 	@Override
 	public boolean modify(CarVO car) {
 		
@@ -69,11 +87,61 @@ public class CarServiceImpl implements CarService {
 		
 		return mapper.update(car) == 1;
 	}
-
+	 */
+	
+	/* 첨부파일 처리 전 (삭제)
 	@Override
 	public boolean remove(Long cno) {
 		
 		log.info("remove : " + cno);
 		return mapper.delete(cno) == 1;
 	}
+	 */
+
+	
+	//첨부파일 처리 후 (수정)
+	@Transactional //두개 테이블 처라하므로 트랜젝션
+	@Override
+	public boolean modify(CarVO car) {
+
+		log.info("modify......" + car);
+
+		attachMapper.deleteAll(car.getCno()); //기존 특정 게시물에 대한 첨부물은 모두 삭제
+
+		boolean modifyResult = mapper.update(car) == 1; //일반게시물은 업데이트
+		
+		if(car.getAttachList() == null) {
+			return modifyResult;
+		}
+		
+		if (modifyResult && car.getAttachList().size() > 0) {
+
+			car.getAttachList().forEach(attach -> {				
+				attach.setCno(car.getCno());
+				attachMapper.insert(attach);
+			});
+		}
+
+		return modifyResult;
+	}
+	
+	//첨부파일 처리 후 (삭제)
+	@Transactional
+	@Override
+	public boolean remove(Long cno) {
+
+		log.info("remove...." + cno);
+		
+		attachMapper.deleteAll(cno);
+
+		return mapper.delete(cno) == 1;
+	}
+	
+	@Override
+	public List<CarAttachVO> getAttachList(Long cno) {
+
+		log.info("get Attach list by cno" + cno);
+
+		return attachMapper.findByCno(cno);	}
+
 }

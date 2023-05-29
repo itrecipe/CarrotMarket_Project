@@ -1,6 +1,7 @@
 package org.ezen.carrotmarket.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -18,6 +19,9 @@ public class CarVO {
 	private String content; //게시글 내용
 	private Date regDate; //게시글 등록 날짜
 	private Date updateDate; //게시글 수정일
+	
+	//게시판에서 특정 게시글에 첨부되는 첨부파일 리스트
+	private List<CarAttachVO> attachList; 
 	
 	//차량 정보
 	private String carName; //차량명

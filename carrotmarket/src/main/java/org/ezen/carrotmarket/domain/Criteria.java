@@ -1,5 +1,7 @@
 package org.ezen.carrotmarket.domain;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
