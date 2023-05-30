@@ -138,6 +138,7 @@ public class CarServiceImpl implements CarService {
 	//첨부파일 리스트 처리
 	@Override
 	public List<CarAttachVO> getAttachList(Long cno) {
+		
 		log.info("get Attach list buy cno 호출 : " + cno);
 		
 		return attachMapper.findByCno(cno);

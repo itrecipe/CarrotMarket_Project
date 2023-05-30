@@ -30,7 +30,7 @@
 <div class="container mt-4 mb-4 pl-0" id="content">
 	<div class="row">
 	<div class="col-md-10">
-		<form action="register_car" method="post" enctype="multipart/form-data" style="margin-top: 100px">
+		<form action="register_car" method="post" id="freg" name="freg" role="form" enctype="multipart/form-data" style="margin-top: 100px">
 			
 			<br/><br/>
 			
@@ -120,12 +120,13 @@
 						<input type="file" class="form-control" id="upload" name="uploadFile" multiple="multiple"/>
 					</div>
 				</div>
-			</div>
 			
 			<!-- 업로드 된 파일의 결과를 보여 줄 창 (추가) -->
-			<div class="uplaodResult mt-3">
+			<div class="uploadResult mt-3">
 				<div class="row" id="card">
 				</div>
+			</div>
+
 			</div>
 		</div>
 	</div>
@@ -141,6 +142,7 @@ $(document).ready(function(){
 	
 	$("button[type='submit']").on("click", function(e){ //게시글 작성시 submit 버튼
 		e.preventDefault();
+	
 		console.log("submit clicked");
 		
 		let str = "";
@@ -253,7 +255,7 @@ $(document).ready(function(){
 				str += "<div class='card-body'>";
 				str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'" ;
 				str +=  "data-path='"+obj.uploadPath +"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'>";						
-				str += "<img class='mx-auto d-block' src='../upload/display?fileName="+fileCallPath+"'>";						
+				str += "<img class='mx-auto d-block' src='../car/display?fileName="+fileCallPath+"'>";						
 				str += "</p>";
 				str += "<h4><span class='d-block w-50 mx-auto badge badge-secondary badge-pill' data-file='"+fileCallPath+"' data-type='image'> &times; </span></h4>";				
 				str += "</div></div>";				
@@ -270,7 +272,6 @@ $(document).ready(function(){
 				str += "</p>";
 				str += "<h4><span class='d-block w-50 mx-auto badge badge-secondary badge-pill' data-file='"+fileCallPath+"' data-type='file'> &times; </span></h4>";
 				str += "</div></div>";		
-								
 			}
 			
 			uploadUL.append(str);

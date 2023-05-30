@@ -150,8 +150,8 @@
 						value='<c:out value="${cri.amount}"/>'>
 	  				
 	  				<!-- 첨부물 처리 창 (추가) -->
-	  				<div class="uplaodResult mt-3">
-	  					<div class="row" id="card">
+	  				<div class='uplaodResult mt-3'>
+	  					<div class='row' id='card'>
 	  					</div>
 	  				</div>
 	  				
@@ -197,7 +197,7 @@ $(document).ready(function(){
 	(function(){
 		let cno = '<c:out value="${car.cno}"/>';
 		$.getJSON("getAttachList", {cno : cno}, function(arr){
-		      //GET방식으로 콘트롤라의 getAttachList로 cno값을 보내서 결과를 arr로 받아서 처리
+		      //GET방식으로 컨트롤러의 getAttachList로 cno값을 보내서 결과를 arr로 받아서 처리
 		      console.log(arr);	
 		      
 		      let str = "";
@@ -213,7 +213,7 @@ $(document).ready(function(){
 						str += "<div class='card col-md-3'>";
 						str += "<div class='card-body'>";
 						str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'>";
-						str += "<a href='../upload/download?fileName=" + fileCallPath +"'>";						
+						str += "<a href='../car/download?fileName=" + fileCallPath +"'>";						
 						str += "<img class='mx-auto d-block' src='../images/attach.png' >";
 						str += "</a>";
 						str += "</p>";
@@ -232,7 +232,7 @@ $(document).ready(function(){
 						str += "<div class='card-body'>";
 						str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'>";
 						str += "<a href=\"javascript:showImage(\'"+originPath+"\')\">"; //원본 파일 보기 위해 클릭 이벤트 처리
-						str += "<img class='mx-auto d-block' src='../upload/display?fileName=" +fileCallPath+"'></a>"; //클릭 링크 이미지,직접 자원에 접근 못함
+						str += "<img class='mx-auto d-block' src='../car/display?fileName=" +fileCallPath+"'></a>"; //클릭 링크 이미지,직접 자원에 접근 못함
 						str += "</p>";
 						//str += "<h4><span class='d-block w-50 mx-auto' data-file='"+fileCallPath+"' data-type='image'> &times; </span></h4>";
 						str += "</div>";
@@ -249,7 +249,7 @@ $(document).ready(function(){
 function showImage(fileCallPath) {
 	//<a>태그에서 직접 호출시 대비
 	
-	$('.imageModal .modal-body').html("<img class='d-block w-75 mx-auto' src='../upload/display?fileName="+encodeURI(fileCallPath)+"&size=1'>");
+	$('.imageModal .modal-body').html("<img class='d-block w-75 mx-auto' src='../car/display?fileName=" + encodeURI(fileCallPath)+"&size=1'>");
 
     $(".imageModal").modal("show");
 }

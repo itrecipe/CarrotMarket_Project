@@ -2,6 +2,8 @@ package org.ezen.carrotmarket.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,12 +11,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.tomcat.util.http.parser.MediaType;
 import org.ezen.carrotmarket.domain.CarAttachFileDTO;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,7 +72,7 @@ public class CarUploadController {
 	}
 	
 	//브라우저에서 업로드 된 결과를 보여주기 위해 JSON을 첨부파일 관련 객체인(AttachFileDTO) 보내기
-	@PostMapping(value = "/uplaodAjaxAction", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public ResponseEntity<List<CarAttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile) {
 		
@@ -105,9 +111,9 @@ public class CarUploadController {
 			
 			attachDTO.setFileName(uploadFileName);
 			
+			//임의의 UUID 객체 생성
 			UUID uuid = UUID.randomUUID();
 			
-			//임의의 UUID 객체 생성
 			uploadFileName = uuid.toString() + "_" + uploadFileName;
 			
 			File saveFile = new File(uploadPath, uploadFileName); //날짜 형식의 경로, 객체 생성
@@ -145,11 +151,12 @@ public class CarUploadController {
 		
 		Date date = new Date();
 		
-		String str = sdf.format(date); //날짜를 yyyy/MM/dd형식으 문자열로 변환 시켜준다.
+		String str = sdf.format(date); //날짜를 yyyy/MM/dd형식의 문자열로 변환 시켜준다.
 		
 		return str.replace("-", File.separator); //파일 구분자로 - 문자를 변경한다.
 	}
 	
+	//이미지 체크
 	private boolean checkImageType(File file) {
 		
 		try {
@@ -166,6 +173,104 @@ public class CarUploadController {
 		return false;
 	}
 	
+	@GetMapping(value = "/display", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<byte[]> getFile(String fileName) {
+		
+		/*
+		실제 이미지 데이터를 바이트 배열로 보낸다(외부 경로에 있는 파일에는 직접 접근할 수가 없어서 바이트 배열로 데이터를 보내준다.)
+		fileName은 전체 경로를 보내준다.(YYYY/MM/DD/S_UUID/이름) 형식
+		*/
+		log.info("fileName : " + fileName);
+		
+		File file = new File("c:/upload/" + fileName);
+		
+		log.info("file" + file);
+		
+		ResponseEntity<byte[]> result = null;
+		
+		try {
+			HttpHeaders header = new HttpHeaders();
+			
+			header.add("Content-Type", Files.probeContentType(file.toPath()));
+			//header에 Content-Type MIME를 추가한다.
+			
+			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+			//file 객체를 btye 배열로 변환하여 JSON으로 반환한다.
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
+	//다운로드 파일 메서드
+	@GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@ResponseBody
+	public ResponseEntity<Resource> downloadFile(String fileName) {
+		log.info("download file : " + fileName);
+		
+		Resource resource = new FileSystemResource("c:/upload/" + fileName);
+		
+		if(resource.exists() == false) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);		
+		}
+		
+		String resourceName = resource.getFilename();
+		
+		//remove UUID
+		String resourceOriginalName = resourceName.substring(resourceName.indexOf("_") + 1);
+		
+		HttpHeaders headers = new HttpHeaders();
+		
+		try {
+			String downloadName = null;
+			downloadName = new String(resourceOriginalName.getBytes("UTF-8"), "ISO-8859-1");
+			
+			// headers.add("Content-Disposition,attachment; filename=" + new
+			// String(resourceName.getBytes("UTF-8"), "ISO-8859-1"));
+			// UTF-8로된 문자열을 바이트배열로 변경후 ISO-8859-1로 인코딩된 문자열로 변경,파일이름을 지정
+			
+			headers.add("Content-Disposition", "attachment; filename" + downloadName);
+			
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
+	}
 	
+	//파일 삭제 메서드
+	@PostMapping(value = "/deleteFile", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<String> deleteFile(String fileName, String type) {
+		//ajax로 객체형으로 보낸 데이터는 객체, 속성명으로 받으면 된다.
+		
+		log.info("deleteFile : " + fileName);
+		
+		File file = null;
+		
+		try {
+			file = new File("c:/upload/" + URLDecoder.decode(fileName, "UTF-8"));
+			// file = new File("c:/upload/" + fileName);
+			
+			file.delete(); //섬네일 또는 일반 파일을 지운다.
+			
+		if(type.equals("image")) {
+			String largeFileName = file.getAbsolutePath().replace("s_", "");
+			
+			log.info("largeFileName" + largeFileName);
+			
+			file = new File(largeFileName);
+			
+			file.delete(); //원본 파일 삭제
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<String>("deleted", HttpStatus.OK);
+	}
 }

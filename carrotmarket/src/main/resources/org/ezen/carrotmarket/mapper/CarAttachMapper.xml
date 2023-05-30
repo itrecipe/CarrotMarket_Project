@@ -5,8 +5,8 @@
 
 <!-- java의 boolean인 fileType은 문자 '0'이나 '1'로 처리(true는 '1') -->
 <insert id="insert">
-	insert into tbl_attach (uuid, uploadpath, filename, filetype, cno)
-	values (#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{cno})
+	insert into carrot_attach (uuid,uploadpath,filename,filetype,cno)
+	values (#{uuid},#{uploadPath},#{fileName},#{fileType},#{cno})
 </insert>
 
 <!-- uuid가 pk인 첨부 파일 하나를 지우기 -->
@@ -26,7 +26,7 @@
 
 <!-- 어제 날짜로 등록된 경로를 찾아 첨부파일 데이터를 반환해주는 쿼리 -->
 <select id="getOldFiles" resultType="org.ezen.carrotmarket.domain.CarAttachVO">
-	select * from carrot_attach where uploadpath = to_char(sysdate -1, 'yyyy/mm/dd')
+	select * from carrot_attach where uploadpath = to_char(sysdate -1,'yyyy/mm/dd')
 </select>
 
 </mapper>

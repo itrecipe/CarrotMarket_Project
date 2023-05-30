@@ -27,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import net.coobird.thumbnailator.Thumbnailator;
 
 @Controller //컨트롤러 클래스로서 스프링 빈으로 등록한다.
 @Log4j //log를 출력하기 위해 사용
@@ -68,7 +69,8 @@ public class CarController {
 	//반환 타입이 void이면 보여주는 페이지라고 생각하면 이해가 쉽다.
 	//void는 반환타입이 없다는 의미이며, 스프링에서는 void를 사용하여 get 요청이 들어오면 "/register_car" 경로와 자동으로 매핑 해준다. 
 	
-	//게시글 등록 처리
+	/*
+	//게시글 등록 처리 - 첨부파일 처리 전
 	@PostMapping("/register_car")
 	public String register(CarVO car, RedirectAttributes rttr) {
 		
@@ -85,7 +87,26 @@ public class CarController {
 	//register 메서드는 로그를 출력하고 service.register()를 호출하여 CarVO 객체를 등록한다.
 	//그리고 RedirectAttributes 객체에 result라는 속성과 car.getCno()의 값을 추가한 후
 	//"redirect:list_car"로 리다이렉트 한다.
+	*/
 	
+	//게시글 등록 처리 - 첨부파일 처리 후
+	
+	//게시글 등록 처리 - 첨부파일 처리 전
+		@PostMapping("/register_car")
+		public String register(CarVO car, RedirectAttributes rttr) {
+			
+			log.info("register : " + car);
+		
+			if(car.getAttachList() != null) {
+				car.getAttachList().forEach(attach -> log.info(attach));
+			}
+			
+			service.register(car);
+			
+			rttr.addFlashAttribute("result", car.getCno());
+			
+			return "redirect:list_car";
+		}
 	
 	@GetMapping({"/get_car", "/modify_car"})
 	public void get(@RequestParam("cno") Long cno, @ModelAttribute("cri") Criteria cri, Model model) {
@@ -99,6 +120,7 @@ public class CarController {
 	//get 메서드는 로그를 출력하고 service.get()을 호출하여 cno에 해당하는 자동차 정보를 가져온다. 
 	//그리고 car라는 이름으로 모델에 추가 해준다.
 	
+	/* 첨부파일, 페이징 처리 전
 	@PostMapping("/modify_car")
 	public String modify(CarVO car, RedirectAttributes rttr) {
 		
@@ -117,7 +139,26 @@ public class CarController {
 //		수정 작업이 성공한 경우, rttr.addFlashAttribute("result", "success")를 통해 "result"라는 이름으로 "success"라는 값을 리다이렉트 속성에 추가합니다. 이 값을 다음 페이지로 전달할 수 있습니다.
 //		마지막으로, "redirect:list_car"를 반환하여 수정 작업이 끝난 후 자동차 목록 페이지로 리다이렉트 한다.
 //		즉, 이 코드는 자동차 정보를 수정하고 수정 작업이 성공하면 "result" 속성에 "success" 값을 추가한 후 자동차 목록 페이지로 리다이렉트합니다.
-
+	 */
+	
+	
+	// 첨부파일, 페이징 처리 후
+	@PostMapping("/modify_car")
+	public String modify(CarVO car, Criteria cri, RedirectAttributes rttr) {
+		
+		log.info("modify_car" + car);
+		
+		if(service.modify(car)) {
+			
+			rttr.addFlashAttribute("result", "success");
+		}
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		
+		return "redirect:list_car";
+	}
+	
+	/* 페이징, 첨부파일 처리 전
 	@PostMapping("/remove_car")
 	public String remove(@RequestParam("cno") Long cno, RedirectAttributes rttr ) {
 		
@@ -137,6 +178,30 @@ public class CarController {
 //		RedirectAttributes는 리다이렉트 시에 속성을 전달하기 위한 객체다. 
 // 		rttr.addFlashAttribute("result", "success")는 리다이렉트 후에 "result"라는 이름으로 "success"라는 값을 전달한다. (1회성 데이터 처리 목적으로 사용)
 //	    리다이렉트된 페이지에서 사용할 수 있는 속성으로 전달된다.
+	*/
+	
+	// 페이징, 첨부파일 처리 후
+	@PostMapping("/remove_car")
+	public String remove(@RequestParam("cno") Long cno, Criteria cri, RedirectAttributes rttr ) {
+		
+		log.info("remove_car : " + cno);
+		
+		List<CarAttachVO> attachList = service.getAttachList(cno);
+		
+		if(service.remove(cno)) {
+			
+			//폴더에 있는 파일들을 삭제 한다.
+			deleteFiles(attachList);
+			
+			rttr.addFlashAttribute("result", "success");
+		}
+		
+		rttr.addFlashAttribute("pageNum" + cri.getPageNum());
+		rttr.addFlashAttribute("amount" + cri.getAmount());
+		
+		return "redirect:list_car";
+	}
+	
 	
 	//클라이언트에서 특정 게시물에 대한 첨부파일 정보를 요청하는 메서드
 	@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -145,5 +210,37 @@ public class CarController {
 		log.info("getAttachList : " + cno);
 		
 		return new ResponseEntity<>(service.getAttachList(cno), HttpStatus.OK);
+	}
+	
+	//첨부파일을 삭제하는 메서드
+	
+	private void deleteFiles(List<CarAttachVO> attachList) {
+		
+		if(attachList == null || attachList.size() == 0) {
+	
+			return;		
+		}
+		log.info("delete attach files...");
+		log.info(attachList);
+		
+		attachList.forEach(attach -> {
+			try {
+				Path file = Paths.get(
+						"c:/upload/" + attach.getUploadPath() + "/" + attach.getUuid() + "_" + attach.getFileName());
+				
+				Files.deleteIfExists(file);
+				
+				if(Files.probeContentType(file).startsWith("image")) {
+					
+					Path thumbNail = Paths.get("c:/uplaod/" + attach.getUploadPath() + "/s_" + attach.getUuid() + "_"
+							+ attach.getFileName());
+					
+					Files.delete(thumbNail);
+				}
+			
+			} catch (Exception e) {
+				log.error("delete file error" + e.getMessage());
+			}
+		});
 	}
 }
