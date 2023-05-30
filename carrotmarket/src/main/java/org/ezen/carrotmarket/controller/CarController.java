@@ -138,46 +138,12 @@ public class CarController {
 // 		rttr.addFlashAttribute("result", "success")는 리다이렉트 후에 "result"라는 이름으로 "success"라는 값을 전달한다. (1회성 데이터 처리 목적으로 사용)
 //	    리다이렉트된 페이지에서 사용할 수 있는 속성으로 전달된다.
 	
-	//클라이언트에서 특정 게시물에 대한 첨부물 정보 요청
-		@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_VALUE)	
-		@ResponseBody
-		public ResponseEntity<List<CarAttachVO>> getAttachList(Long bno) {
-
-			log.info("getAttachList " + bno);
-
-			return new ResponseEntity<>(service.getAttachList(bno), HttpStatus.OK);
-
-		}
+	//클라이언트에서 특정 게시물에 대한 첨부파일 정보를 요청하는 메서드
+	@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<CarAttachVO>> getAttachList(Long cno) {
+		log.info("getAttachList : " + cno);
 		
-		//첨부파일 삭제
-		private void deleteFiles(List<CarAttachVO> attachList) {
-
-			if (attachList == null || attachList.size() == 0) {
-				return;
-			}
-
-			log.info("delete attach files...................");
-			log.info(attachList);
-
-			attachList.forEach(attach -> {
-				try {
-					Path file = Paths.get(
-							"C:/upload/" + attach.getUploadPath() + "/" + attach.getUuid() + "_" + attach.getFileName());
-
-					Files.deleteIfExists(file);
-
-					if (Files.probeContentType(file).startsWith("image")) {
-
-						Path thumbNail = Paths.get("C:/upload/" + attach.getUploadPath() + "/s_" + attach.getUuid() + "_"
-								+ attach.getFileName());
-
-						Files.delete(thumbNail);
-					}
-
-				} catch (Exception e) {
-					log.error("delete file error" + e.getMessage());
-				} // end catch
-			});// end foreachd
-		}
-
+		return new ResponseEntity<>(service.getAttachList(cno), HttpStatus.OK);
+	}
 }

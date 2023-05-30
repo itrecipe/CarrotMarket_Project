@@ -18,7 +18,4 @@ public interface ArticlesMapper {
 	ArticleVO getArticle(int id);
 
 	List<ImageVO> getArticleImage(int id);
-
-	
-	
 }

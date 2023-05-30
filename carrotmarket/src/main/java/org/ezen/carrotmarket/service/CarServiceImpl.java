@@ -79,7 +79,7 @@ public class CarServiceImpl implements CarService {
 		return mapper.read(cno);
 	}
 	
-	/* 첨부파일 처리 전 (수정)
+	/* 첨부파일 처리 전 (modify)
 	@Override
 	public boolean modify(CarVO car) {
 		
@@ -89,7 +89,33 @@ public class CarServiceImpl implements CarService {
 	}
 	 */
 	
-	/* 첨부파일 처리 전 (삭제)
+	//첨부파일 처리 후 (modify)
+	@Transactional //두개의 테이블을 처리해야 하므로 트랜잭션을 걸어준다.
+	@Override
+	public boolean modify(CarVO car) {
+		
+		log.info("modify... 호출 : " + car);
+		
+		attachMapper.deleteAll(car.getCno()); //기존의 특정 게시물에 대한 첨부 파일들은 모두 삭제한다.
+		
+		boolean modifyResult = mapper.update(car) == 1; //일반 게시물은 업데이트 처리를 해준다.
+		
+		if(car.getAttachList() == null) {
+			return modifyResult;
+		}
+		
+		if(modifyResult && car.getAttachList().size() > 0) {
+			
+			car.getAttachList().forEach(attach -> {
+				attach.setCno(car.getCno());
+				attachMapper.insert(attach);
+			});
+		}
+		return modifyResult;
+	}
+	
+	
+	/* 첨부파일 처리 전 (remove)
 	@Override
 	public boolean remove(Long cno) {
 		
@@ -97,51 +123,23 @@ public class CarServiceImpl implements CarService {
 		return mapper.delete(cno) == 1;
 	}
 	 */
-
 	
-	//첨부파일 처리 후 (수정)
-	@Transactional //두개 테이블 처라하므로 트랜젝션
-	@Override
-	public boolean modify(CarVO car) {
-
-		log.info("modify......" + car);
-
-		attachMapper.deleteAll(car.getCno()); //기존 특정 게시물에 대한 첨부물은 모두 삭제
-
-		boolean modifyResult = mapper.update(car) == 1; //일반게시물은 업데이트
-		
-		if(car.getAttachList() == null) {
-			return modifyResult;
-		}
-		
-		if (modifyResult && car.getAttachList().size() > 0) {
-
-			car.getAttachList().forEach(attach -> {				
-				attach.setCno(car.getCno());
-				attachMapper.insert(attach);
-			});
-		}
-
-		return modifyResult;
-	}
-	
-	//첨부파일 처리 후 (삭제)
+	//첨부파일 처리 후 (remove)
 	@Transactional
 	@Override
 	public boolean remove(Long cno) {
-
-		log.info("remove...." + cno);
+		log.info("remove... 호출 : " + cno);
 		
 		attachMapper.deleteAll(cno);
-
+		
 		return mapper.delete(cno) == 1;
 	}
 	
+	//첨부파일 리스트 처리
 	@Override
 	public List<CarAttachVO> getAttachList(Long cno) {
-
-		log.info("get Attach list by cno" + cno);
-
-		return attachMapper.findByCno(cno);	}
-
+		log.info("get Attach list buy cno 호출 : " + cno);
+		
+		return attachMapper.findByCno(cno);
+	}
 }

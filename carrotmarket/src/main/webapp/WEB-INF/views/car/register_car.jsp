@@ -135,6 +135,7 @@
 $(document).ready(function(){
 	let formObj = $("form[role='form']"); //게시글 등록
 	let regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); //확장자를 지정 해둔것은 업로드를 제한 한다. 
+	let maxSize = 5242880; //5MB, 파일의 최대 크기를 지정
 	
 	let uploadUL = $(".uploadResult #card");
 	
@@ -181,8 +182,7 @@ $(document).ready(function(){
 		}		
 		
 		$.ajax({
-			//url: '../upload/uploadAjaxAction?${_csrf.parameterName}=${_csrf.token}',
-			url: '../upload/uploadAjaxAction',
+			url: '../car/uploadAjaxAction',
 			processData: false,
 			contentType: false,
 			data: formData,
@@ -213,7 +213,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			//url: '../upload/deleteFile?${_csrf.parameterName}=${_csrf.token}',
-			url : '../upload/deleteFile',
+			url : '../car/deleteFile',
 		    data: {fileName: targetFile, type:type},
 		    dataType:'text',
 		    type: 'POST',		    
