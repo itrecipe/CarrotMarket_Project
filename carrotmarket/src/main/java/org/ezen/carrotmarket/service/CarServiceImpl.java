@@ -1,4 +1,4 @@
-package org.ezen.carrotmarket.service;
+	package org.ezen.carrotmarket.service;
 
 import java.util.List;
 
@@ -79,6 +79,13 @@ public class CarServiceImpl implements CarService {
 		log.info("get : " + cno);
 		
 		return mapper.read(cno);
+	}
+	
+	@Override
+	public CarAttachVO getImage(Long cno) {
+		log.info("get Image : cno" + cno);
+		
+		return attachMapper.getImage(cno);
 	}
 	
 	/* 첨부파일 처리 전 (modify)

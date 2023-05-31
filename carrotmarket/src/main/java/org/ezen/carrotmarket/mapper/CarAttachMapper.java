@@ -17,6 +17,9 @@ public interface CarAttachMapper {
 	public List<CarAttachVO> findByCno(Long cno); 
 	//게시물 번호로 첨부파일의 목록을 찾는 메서드
 	
+	//게시물 이미지 1개 가져오기
+	public CarAttachVO getImage(Long cno);
+	
 	//D
 	public void deleteAll(Long cno);
 	

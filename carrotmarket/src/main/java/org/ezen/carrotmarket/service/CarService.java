@@ -34,4 +34,7 @@ public interface CarService {
 	
 	//파일 첨부를 위한 처리
 	public List<CarAttachVO> getAttachList(Long cno);
+	
+	//이미지 1개 가져올 메서드
+	public CarAttachVO getImage(Long cno);
 }

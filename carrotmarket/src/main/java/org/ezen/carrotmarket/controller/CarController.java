@@ -1,7 +1,7 @@
 package org.ezen.carrotmarket.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,13 +12,16 @@ import org.ezen.carrotmarket.domain.CarVO;
 import org.ezen.carrotmarket.domain.Criteria;
 import org.ezen.carrotmarket.domain.PageDTO;
 import org.ezen.carrotmarket.service.CarService;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,7 +30,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-import net.coobird.thumbnailator.Thumbnailator;
 
 @Controller //컨트롤러 클래스로서 스프링 빈으로 등록한다.
 @Log4j //log를 출력하기 위해 사용
@@ -51,6 +53,7 @@ public class CarController {
 	public void list(Criteria cri, Model model) {
 		log.info("list_car");
 		log.info(cri);
+		log.info(service.getList(cri));
 		model.addAttribute("list_car", service.getList(cri));
 		
 		//실제 게시글의 개수
@@ -210,6 +213,38 @@ public class CarController {
 		log.info("getAttachList : " + cno);
 		log.info(service.getAttachList(cno));
 		return new ResponseEntity<>(service.getAttachList(cno), HttpStatus.OK);
+	}
+	
+
+	@GetMapping(value = "/display/{cno}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<byte[]> getImage(@PathVariable("cno") Long cno) {
+		
+		CarAttachVO vo = service.getImage(cno);
+		
+		// 실제 이미지 데이터를 바이트 배열로 보냄(외부 경로에 있는 파일에는 직접 접근이 불가능해서 바이트 배열로 데이터를 보냄)
+		// fileName은 전체 경로 보냄(YYYY/MM/DD/S_UUID/이름
+		log.info("fileName: " + vo);
+
+		File file = new File("c:/upload/" + vo.getUploadPath() + "\\s_" + vo.getUuid()+"_" + vo.getFileName());
+		log.info("file: " + file);
+
+		ResponseEntity<byte[]> result = null;
+
+		try {
+			HttpHeaders header = new HttpHeaders();
+
+			header.add("Content-Type", Files.probeContentType(file.toPath()));
+			// header에 Content-Type에 MIME추가
+
+			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+			// file객체를 byte배열로 변환하여 JSON으로 반환
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 	//첨부파일을 삭제하는 메서드

@@ -19,6 +19,13 @@
 	select * from carrot_attach where cno = #{cno}
 </select>
 
+<!-- 게시물 번호를 이용해서 이미지 1개를 가져올 쿼리 -->
+<select id="getImage" resultType="org.ezen.carrotmarket.domain.CarAttachVO">
+	<![CDATA[
+		select * from carrot_attach where cno = #{cno} and rownum <= 1
+	]]> 
+</select>
+
 <!-- 게시물 번호에 해당하는 cno 번호 모두 삭제하는 쿼리 -->
 <delete id="deleteAll">
 	delete carrot_attach where cno = #{cno}
