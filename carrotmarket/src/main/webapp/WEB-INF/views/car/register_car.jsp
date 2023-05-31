@@ -30,8 +30,9 @@
 <div class="container mt-4 mb-4 pl-0" id="content">
 	<div class="row">
 	<div class="col-md-10">
-		<form action="register_car" method="post" id="freg" name="freg" role="form" enctype="multipart/form-data" style="margin-top: 100px">
+		<form action="register_car" method="post" id="freg" name="freg" role="form" enctype="multipart/form-data">
 			
+			<br/><br/>
 			<br/><br/>
 			
 			<div class="form-group">
@@ -123,6 +124,7 @@
 			
 			<!-- 업로드 된 파일의 결과를 보여 줄 창 (추가) -->
 			<div class="uploadResult mt-3">
+				
 				<div class="row" id="card">
 				</div>
 			</div>
@@ -143,6 +145,12 @@ $(document).ready(function(){
 	$("button[type='submit']").on("click", function(e){ //게시글 작성시 submit 버튼
 		e.preventDefault();
 	
+		if(confirm("작성하시겠어요?")){
+			alert("게시글 작성을 완료 하였습니다.");
+		} else {
+			alert("작성을 취소 합니다.");
+		}
+		
 		console.log("submit clicked");
 		
 		let str = "";
@@ -162,10 +170,8 @@ $(document).ready(function(){
 		      str += "<input type='hidden' name='attachList["+i+"].fileType' value='"+ jobj.data("type")+"'>";
 			
 		      console.log(str);
-			    
-			  formObj.prepend(str).submit();
-		      
 		});
+		formObj.prepend(str).submit();
 	});
 	
 	$("input[type='file']").change(function(e){			
@@ -273,7 +279,6 @@ $(document).ready(function(){
 				str += "<h4><span class='d-block w-50 mx-auto badge badge-secondary badge-pill' data-file='"+fileCallPath+"' data-type='file'> &times; </span></h4>";
 				str += "</div></div>";		
 			}
-			
 			uploadUL.append(str);
 		});		
 	}

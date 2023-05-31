@@ -28,15 +28,11 @@
 <div class="container mt-4 mb-4" id="mainContent">
 	<div class="row">
 	<div class="col-md-2">
-		<div class="col-md-10">
+		<div class="col-md-10" style="position: static; margin-top: 100px">
 			<div id="submain">
-				<br/><br/>
-				<br/><br/>
-				
 				<h4 class="text-center text-success">상세보기</h4>
   				
   				<form>
-  				 	
   				 	<div class="form-group">
   				 		<label for="cno">번호 : </label>
   				 		<input type="text" class="form-control" id="cno" name="cno" readonly
@@ -62,7 +58,6 @@
   				 	</div>
 
 	  				<br/><br/>
-	  					 
 	  				<div class="form-group">
 						<label for="carName">차량명 : </label>
 						<input type="text" class="form-control" id="carName" name="carName" 
@@ -128,7 +123,6 @@
   				 		<input type="text" class="form-control" id="updateDate" name="updateDate" readonly
   				 			value='<fmt:formatDate pattern="yyyy/MM/dd" value="${car.updateDate}"/>' />
   				 	</div>
-					
 	  				</form>
   				
   				<button type="button" data-oper='modify_car' class="btn btn-info">수정</button>
@@ -148,13 +142,13 @@
 					<input
 						type='hidden' name='amount'
 						value='<c:out value="${cri.amount}"/>'>
-	  				
-	  				<!-- 첨부물 처리 창 (추가) -->
-	  				<div class='uplaodResult mt-3'>
-	  					<div class='row' id='card'>
+
+					<!-- 첨부물 처리 창 (추가) -->
+	  				<div class='uploadResult mt-3'>
+	  					<div class='row' id='card' style="position: static; margin-bottom: 300px; margin-left: 100px; margin-right: 100px;">
 	  					</div>
-	  				</div>
-	  				
+	  				</div>	 
+
 				</div>
 			</div>
 		</div>
@@ -240,7 +234,7 @@ $(document).ready(function(){
 					}
 		    	  				    	  
 		      });
-		      
+		      console.log(str);
 		      $(".uploadResult #card").html(str);
 		 });
 	})(); //()는 즉시 실행 연산자	

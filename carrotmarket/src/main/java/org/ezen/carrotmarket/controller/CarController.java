@@ -208,7 +208,7 @@ public class CarController {
 	@ResponseBody
 	public ResponseEntity<List<CarAttachVO>> getAttachList(Long cno) {
 		log.info("getAttachList : " + cno);
-		
+		log.info(service.getAttachList(cno));
 		return new ResponseEntity<>(service.getAttachList(cno), HttpStatus.OK);
 	}
 	
@@ -217,7 +217,6 @@ public class CarController {
 	private void deleteFiles(List<CarAttachVO> attachList) {
 		
 		if(attachList == null || attachList.size() == 0) {
-	
 			return;		
 		}
 		log.info("delete attach files...");

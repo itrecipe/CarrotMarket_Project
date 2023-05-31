@@ -66,8 +66,10 @@ public class CarServiceImpl implements CarService {
 		}
 
 		car.getAttachList().forEach(attach -> {
-
-			attach.setCno(car.getCno()); 
+			
+			attach.setCno(car.getCno());
+			
+			log.info(attach);
 			attachMapper.insert(attach);
 		});
 	}
