@@ -26,7 +26,7 @@
 		from
 		(
 			select /* +INDEX_DESC(carrot_car pk_carrot_car) */
-			rownum rn, cno, title, content, writer, regdate, updatedate
+			rownum cno, title, content, writer, regdate, updatedate
 			from carrot_car
 			where rownum <= #{pageNum} * #{amount}
 		)
