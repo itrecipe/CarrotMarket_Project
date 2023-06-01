@@ -30,7 +30,7 @@
 			from carrot_car
 			where rownum <= #{pageNum} * #{amount}
 		)
-		where rn > (#{pageNum} -1) * #{amount}
+		where cno > (#{pageNum} -1) * #{amount}
 	]]>
 </select>
 

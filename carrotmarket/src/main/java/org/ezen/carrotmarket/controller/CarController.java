@@ -220,13 +220,13 @@ public class CarController {
 	@ResponseBody
 	public ResponseEntity<byte[]> getImage(@PathVariable("cno") Long cno) {
 		
-		CarAttachVO vo = service.getImage(cno);
+		CarAttachVO attach = service.getImage(cno);
 		
 		// 실제 이미지 데이터를 바이트 배열로 보냄(외부 경로에 있는 파일에는 직접 접근이 불가능해서 바이트 배열로 데이터를 보냄)
 		// fileName은 전체 경로 보냄(YYYY/MM/DD/S_UUID/이름
-		log.info("fileName: " + vo);
+		log.info("fileName: " + attach);
 
-		File file = new File("c:/upload/" + vo.getUploadPath() + "\\s_" + vo.getUuid()+"_" + vo.getFileName());
+		File file = new File("c:/upload/" + attach.getUploadPath() + "\\s_" + attach.getUuid()+"_" + attach.getFileName());
 		log.info("file: " + file);
 
 		ResponseEntity<byte[]> result = null;
