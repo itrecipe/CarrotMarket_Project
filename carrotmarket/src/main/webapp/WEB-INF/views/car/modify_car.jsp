@@ -25,15 +25,39 @@
 
 <%@ include file="../include/header.jspf" %>
 
-<div class="container mt-4 mb-4" id="mainContent">
+<div class="container mt-5 mb-5" id="mainContent">
 	<div class="row">
-	<div class="col-md-2">
-		<div class="col-md-10">
+	<div class="col-md-30">
+		<div class="col-md-20">
 			<div id="submain">
 				<br/><br/>
 				<br/><br/>
 				
 				<h4 class="text-center text-success">게시글 수정</h4>
+				
+					<!-- 버튼 클릭을 처리하기 위해 form추가, 보이지 않게 설정해둠 -->
+	  				<form id='operForm' action="modify_car" method="get">
+	  					<input type="hidden" id="cno" name="cno"
+	  						value='<c:out value="${car.cno}"/>'>
+	  				</form>
+				
+					<!-- 첨부 파일 리스트 출력 창 -->
+	  				<div class="attach mt-5">
+	  					<h5 class="text-center multiEffect text-success mb-5">첨부파일 수정</h5>
+	  					<div class="row">
+	  						<div class="form-group uploadDiv col-md-12">
+	  							<label for="upload">&nbsp;&nbsp;&nbsp;&nbsp;파일 수정 및 업로드 : </label>
+	  							<input type="file" class="form-control" id="upload" name="uploadFile" multiple="multiple"/>
+	  							<!-- submit 버튼없이 change JS 이벤트로 처리  -->
+	  						</div>
+	  					</div>
+	  				</div>
+	  				
+	  				<!-- 첨부파일 리스트 창 출력 -->
+	  				<div class="uploadResult mt-5">
+	  					<div class="row" id="card">
+	  					</div>	  				
+	  				</div>
   				
   				<form id="mform" name="mform" action="modify_car" method="post">
   				
@@ -134,36 +158,12 @@
   				
   				<button type="button" data-oper='modify_car' class="btn btn-info">수정</button>&nbsp;&nbsp;
   				<button type="button" data-oper='remove_car' class="btn btn-danger">삭제</button>&nbsp;&nbsp;
-  				<button type="submit" data-oper='list_car' class="btn btn-primary">목록</button>
+  				<button type="button" data-oper='list_car' class="btn btn-primary">목록</button>
   				
   				<!-- data-oper 속성은 HTML 요소에 사용자 정의 데이터를 저장하기 위해 사용되는 속성으로, 
   					클라이언트 측 스크립트에서 해당 속성값을 활용하여 작업을 수행하거나 조건을 확인하는데 활용 한다. 
   				-->
   				
-	  				<!-- 버튼 클릭을 처리하기 위해 form추가, 보이지 않게 설정해둠 -->
-	  				<form id='operForm' action="modify_car" method="get">
-	  					<input type="hidden" id="cno" name="cno"
-	  						value='<c:out value="${car.cno}"/>'>
-	  				</form>
-	  				
-	  				<!-- 첨부 파일 리스트 출력 창 -->
-	  				<div class="attach mt-4">
-	  					<h5 class="text-center multiEffect text-success mb-5">첨부파일 수정(Ajax)</h5>
-	  					<div class="row">
-	  						<div class="form-group uploadDiv col-md-12">
-	  							<label for="upload">&nbsp;&nbsp;&nbsp;&nbsp;파일 수정 업로드 : </label>
-	  							<input type="file" class="form-control" id="upload" name="uploadFile" multiple="multiple"/>
-	  							<!-- submit 버튼없이 change JS 이벤트로 처리  -->
-	  						</div>
-	  					</div>
-	  				</div>
-	  				
-	  				<!-- 첨부파일 리스트 창 출력 -->
-	  				<div class="uploadResult mt-3">
-	  					<div class="row" id="card">
-	  					</div>	  				
-	  				</div>
-	  				
 				</div>
 			</div>
 		</div>
@@ -222,7 +222,7 @@ $(function(){
 				str += "<input type='hidden' name='attachList["+i+"].fileName' value='" + jobj.data("filename") + "'>";
 				str += "<input type='hidden' name='attachList["+i+"].uuid' value='" + jobj.data("uuid") + "'>";
 				str += "<input type='hidden' name='attachList["+i+"].uploadPath' value='" + jobj.data("path") + "'>";
-				str += "<input type='hidden' name='attachList["+i+"].fileName' value='" + jobj.data("type") + "'>";
+				str += "<input type='hidden' name='attachList["+i+"].fileType' value='" + jobj.data("type") + "'>";
 			});
 			console.log(str);
 			
@@ -250,7 +250,7 @@ $(document).ready(function(){
 		    	  
 		    	  if (!obj.fileType)  {					
 						let fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);
-						str += "<div class='card col-md-3'>";
+						str += "<div class='card col-md-5'>";
 						str += "<div class='card-body'>";
 						str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'" ;
 						str +=  "data-path='"+obj.uploadPath +"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.fileType+"'>";						
@@ -268,7 +268,7 @@ $(document).ready(function(){
 						originPath = originPath.replace(new RegExp(/\\/g),"/"); //\\를 /로 대체 
 						//let originPath = obj.uploadPath+ "/"+obj.uuid +"_"+obj.fileName;  //위 2줄대신 바로 사용해도 됨
 						
-						str += "<div class='card col-md-3'>";
+						str += "<div class='card col-md-5'>";
 						str += "<div class='card-body'>";
 						str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'" ;
 						str +=  "data-path='"+obj.uploadPath +"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.fileType+"'>";
@@ -372,7 +372,7 @@ $(document).ready(function(){
 				str += "<div class='card-body'>";
 				str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'" ;
 				str +=  "data-path='"+obj.uploadPath +"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'>";				
-				str += "<img class='mx-auto d-block' src='../upload/display?fileName="+fileCallPath+"'>";
+				str += "<img class='mx-auto d-block' src='../car/display?fileName="+fileCallPath+"'>";
 				str += "</p>";
 				str += "<h4><span class='d-block w-50 mx-auto badge badge-secondary badge-pill' data-file='"+fileCallPath+"' data-type='image'> &times; </span></h4>";
 				str += "</div></div>";

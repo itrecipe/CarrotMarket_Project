@@ -17,8 +17,8 @@
 
 <style>
 .card img {
-	width : 150px;
-	height : 150px;
+	width : 200px;
+	height : 200px;
 }
 </style>
 
@@ -27,7 +27,7 @@
 
 <%@ include file="../include/header.jspf" %>
 
-<div class="container mt-4 mb-4 pl-0" id="content">
+<div class="container mt-5 mb-5 pl-0" id="content">
 	<div class="row">
 	<div class="col-md-10">
 		<form action="register_car" method="post" id="freg" name="freg" role="form" enctype="multipart/form-data">
@@ -111,7 +111,7 @@
 			-->
 			
 			<!-- 파일 첨부 창 (추가) -->
-			<div class="attach mt-4">
+			<div class="attach mt-5">
 				<h1 class="text-center threeDEffect text-success mb-5">파일 업로드!</h1>
 				<div class="row">
 					<div class="form-group uploadDiv col-md-12">
@@ -123,7 +123,7 @@
 				</div>
 			
 			<!-- 업로드 된 파일의 결과를 보여 줄 창 (추가) -->
-			<div class="uploadResult mt-3">
+			<div class="uploadResult mt-5">
 				
 				<div class="row" id="card">
 				</div>

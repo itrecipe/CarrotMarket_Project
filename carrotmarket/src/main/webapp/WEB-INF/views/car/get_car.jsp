@@ -25,12 +25,23 @@
 <body>
 <%@ include file="../include/header.jspf" %>
 
-<div class="container mt-4 mb-4" id="mainContent">
+<div class="container mt-5 mb-5" id="mainContent">
 	<div class="row">
-	<div class="col-md-2">
-		<div class="col-md-10" style="position: static; margin-top: 100px">
+	<div class="col-md-30">
+		<div class="col-md-20">
 			<div id="submain">
-				<h4 class="text-center text-success">상세보기</h4>
+				<br/><br/>
+				<br/><br/>
+				
+				<h4 class="text-center multiEffect text-success">상세보기</h4>
+
+				<!-- 첨부물 처리 창 (추가) -->
+	  				<div class='uploadResult mt-4'>
+	  					<div class='row' id='card'>
+	  					</div>
+	  				</div>	
+				
+				<br/><br/>
   				
   				<form>
   				 	<div class="form-group">
@@ -143,12 +154,6 @@
 						type='hidden' name='amount'
 						value='<c:out value="${cri.amount}"/>'>
 
-					<!-- 첨부물 처리 창 (추가) -->
-	  				<div class='uploadResult mt-3'>
-	  					<div class='row' id='card' style="position: static; margin-bottom: 300px; margin-left: 100px; margin-right: 100px;">
-	  					</div>
-	  				</div>	 
-
 				</div>
 			</div>
 		</div>
@@ -204,7 +209,7 @@ $(document).ready(function(){
 						let fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);
 						//YYYY/MM/DD/uuid_파일명
 						//BS4의 카드 방식으로 표시
-						str += "<div class='card col-md-3'>";
+						str += "<div class='card col-md-5'>";
 						str += "<div class='card-body'>";
 						str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'>";
 						str += "<a href='../car/download?fileName=" + fileCallPath +"'>";						
@@ -222,7 +227,7 @@ $(document).ready(function(){
 						let originPath = obj.uploadPath+ "\\"+obj.uuid +"_"+obj.fileName; //원본파일 경로
 						originPath = originPath.replace(new RegExp(/\\/g),"/"); //\\를 /로 대체 
 						
-						str += "<div class='card col-md-3'>";
+						str += "<div class='card col-md-5'>";
 						str += "<div class='card-body'>";
 						str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'>";
 						str += "<a href=\"javascript:showImage(\'"+originPath+"\')\">"; //원본 파일 보기 위해 클릭 이벤트 처리
@@ -242,9 +247,15 @@ $(document).ready(function(){
 
 function showImage(fileCallPath) {
 	//<a>태그에서 직접 호출시 대비
+	alert(fileCallPath);
+			
+	$(".bigPictureWrapper").css("display","block").show();
+			
+	$(".bigPicture")
+		.html("<img class='d-block w-75 mx-auto' src='../car/display?fileName="+ encodeURI(fileCallPath)+"'>")
+		.animate({width:'100%', height: '100%'}, 1000);
 	
 	$('.imageModal .modal-body').html("<img class='d-block w-75 mx-auto' src='../car/display?fileName=" + encodeURI(fileCallPath)+"&size=1'>");
-
     $(".imageModal").modal("show");
 }
 </script>

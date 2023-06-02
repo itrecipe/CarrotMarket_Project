@@ -132,8 +132,8 @@ public class CarUploadController {
 					//섬네일 이라는 이름의 출력 스트림 객체를 생성 해준다.
 					FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
 				
-					//출력 스트림에 저장되는 섬네일 먼저 읽어와서 크기가 100*100인 섬네일 파일을 생성 해준다.
-					Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
+					//출력 스트림에 저장되는 섬네일 먼저 읽어와서 크기가 400*400인 섬네일 파일을 생성 해준다.
+					Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 400, 400);
 					thumbnail.close();
 				}
 				

@@ -19,44 +19,88 @@
 
 <%@ include file="../include/header.jspf"%>
 
-<!-- 캐러셀 영역 -->
-<div id="carouselExampleCaptions" class="carousel slide carousel-dark w-75 m-auto" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active w-70 m-auto">
-      <img src="../images/qm6.jpg" class="d-block w-80 m-auto" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h1>최근 인기 매물 중형 SUV - TOP1</h1>
-        <p>Renault Korea - THE NEW QM6</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="../images/스포티지.png" class="d-block w-80 m-auto" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-     	<h1>최근 인기 매물 준중형 SUV - TOP2</h1>
-        <p>KIA - Sportage</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="../images/xc90.jpg" class="d-block w-80 m-auto" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h1>최근 인기 매물 준중형 SUV - TOP3</h1>
-        <p>안전함에 끝판왕! Volvo - xc90</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+<div class="container mt-5 mb-5" id="mainContent">
+	<div class="row">
+		<div class="col-md-2">
+
+			<div class="container mt-10 mb-10 p-0 m-0 mx-auto">
+
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+					<!-- Indicators -->
+					<ul class="carousel-indicators ">
+						<li data-target="#myCarousel" data-slide-to="0"
+							class="active bg-danger"></li>
+						<li data-target="#myCarousel" data-slide-to="1"
+							class=" bg-danger"></li>
+						<li data-target="#myCarousel" data-slide-to="2"
+							class=" bg-danger"></li>
+						<li data-target="#myCarousel" data-slide-to="3"
+							class=" bg-danger"></li>
+					</ul>
+
+					<!-- The slideshow -->
+					<div class="carousel-inner ">
+						<div class="carousel-item active">
+							<img src="../images/qm6.jpg" alt="Los Angeles" class="d-block mx-auto">
+							<div class="carousel-caption">
+								<h1>최근 인기 매물 TOP-1</h1>
+								<p>르노 코리아 - QM6</p>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<img src="../images/xc90.jpg" alt="Chicago" class="d-block mx-auto ">
+							<div class="carousel-caption">
+								<h1>최근 인기 매물 TOP-2</h1>
+								<p>볼보 - XC90</p>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<img src="../images/스포티지.png" alt="New York" class="d-block mx-auto ">
+							<div class="carousel-caption">
+								<h1>최근 인기 매물 TOP-3</h1>
+								<p>기아 - 스포티지</p>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<img src="../images/펠리세이드.jpg" alt="New York" class="d-block mx-auto ">
+							<div class="carousel-caption">
+								<h2>최근 인기 매물 TOP-4</h2>
+								<p>현대 - 펠리세이드</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Left and right controls -->
+					<a class="carousel-control-prev bg-primary" href="#myCarousel"
+						data-slide="prev"> <span class="carousel-control-prev-icon"></span>
+					</a> <a class="carousel-control-next bg-primary" href="#myCarousel"
+						data-slide="next"> <span class="carousel-control-next-icon"></span>
+					</a>
+				</div>
+			</div>
+
+			<!--  
+			<h2>TITLE HEADING</h2>
+			<h5>Title description, Dec 7, 2017</h5>
+			<div class="fakeimg">
+				<img src="../images/스포티지.png" class="w-100 h-100" />
+			</div>
+			<p>Some text..</p>
+			<p>Some text.. Some text.. Some text..</p>
+			<br />
+			<h2>TITLE HEADING</h2>
+			<h5>Title description, Dec 7, 2017</h5>
+			<div class="fakeimg">
+				<img src="../images/qm6.jpg" class="w-100 h-100" />
+			</div>
+			<p>Some text..</p>
+			<p>Some text.. Some text.. Some text..</p>
+			<br />
+			-->
+			
+		</div>
+	</div>
 </div>
 
 <!-- 리스트 영역 -->
@@ -72,12 +116,13 @@
           <a href="#" class="btn btn-secondary my-2">Secondary action</a>
          -->
         </p>
-      </div>
-      
+
       <!-- 게시글 등록 -->
       <div>
-			<button type="button" class="btn btn-primary float-right mb-3" id="regBtn">게시글 등록</button>
+			<button type="button" class="btn btn-primary float-center mb-3" id="regBtn">게시글 등록</button>
 	  </div>
+
+      </div>
     </div>
 </section>
 
@@ -89,9 +134,8 @@
         <div class="col">
           <div class="card shadow-sm">
             <svg style="background: url(display/${car.cno});background-repeat: no-repeat;
-    background-size: cover;" class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+    background-size: cover;" class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
             
-           
             <!-- 
             <title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>
             <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
@@ -118,7 +162,7 @@
         </div>
 	</c:forEach>  
 	</div>
-	</div>
+	</div>4
 </div>
 
 <!-- 페이지 표시 -->
