@@ -9,8 +9,8 @@ import java.util.List;
 
 import org.ezen.carrotmarket.domain.CarAttachVO;
 import org.ezen.carrotmarket.domain.CarVO;
-import org.ezen.carrotmarket.domain.Criteria;
-import org.ezen.carrotmarket.domain.PageDTO;
+import org.ezen.carrotmarket.domain.CarCriteria;
+import org.ezen.carrotmarket.domain.CarPageDTO;
 import org.ezen.carrotmarket.service.CarService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -50,7 +50,7 @@ public class CarController {
 	
 	//페이징 처리 후 - list(R)
 	@GetMapping("/list_car")
-	public void list(Criteria cri, Model model) {
+	public void list(CarCriteria cri, Model model) {
 		log.info("list_car");
 		log.info(cri);
 		log.info(service.getList(cri));
@@ -60,7 +60,7 @@ public class CarController {
 		int total = service.getTotal(cri);
 		log.info("total : " + total);
 		
-		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		model.addAttribute("pageMaker", new CarPageDTO(cri, total));
 	}
 	
 	//게시글 등록창 보기
@@ -112,7 +112,7 @@ public class CarController {
 		}
 	
 	@GetMapping({"/get_car", "/modify_car"})
-	public void get(@RequestParam("cno") Long cno, @ModelAttribute("cri") Criteria cri, Model model) {
+	public void get(@RequestParam("cno") Long cno, @ModelAttribute("cri") CarCriteria cri, Model model) {
 		log.info("get_car & modify");
 		
 		model.addAttribute("car", service.get(cno));
@@ -147,7 +147,7 @@ public class CarController {
 	
 	// 첨부파일, 페이징 처리 후
 	@PostMapping("/modify_car")
-	public String modify(CarVO car, Criteria cri, RedirectAttributes rttr) {
+	public String modify(CarVO car, CarCriteria cri, RedirectAttributes rttr) {
 		
 		log.info("modify_car" + car);
 		
@@ -185,7 +185,7 @@ public class CarController {
 	
 	// 페이징, 첨부파일 처리 후
 	@PostMapping("/remove_car")
-	public String remove(@RequestParam("cno") Long cno, Criteria cri, RedirectAttributes rttr ) {
+	public String remove(@RequestParam("cno") Long cno, CarCriteria cri, RedirectAttributes rttr ) {
 		
 		log.info("remove_car : " + cno);
 		

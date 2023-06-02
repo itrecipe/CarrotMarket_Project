@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.ezen.carrotmarket.domain.CarAttachVO;
 import org.ezen.carrotmarket.domain.CarVO;
-import org.ezen.carrotmarket.domain.Criteria;
+import org.ezen.carrotmarket.domain.CarCriteria;
 
 //비즈니스 계청 인터페이스
 public interface CarService {
@@ -14,10 +14,10 @@ public interface CarService {
 	
 	//페이징을 위한 처리
 	//R - 리스트 출력(목록 select - 페이징 처리 후)
-	public List<CarVO> getList(Criteria cri);
+	public List<CarVO> getList(CarCriteria cri);
 	
 	//게시글 총 합계, 페이징을 위한 처리
-	public int getTotal(Criteria cri);
+	public int getTotal(CarCriteria cri);
 	
 	//기본 CRUD
 	//C

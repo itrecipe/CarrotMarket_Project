@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.ezen.carrotmarket.domain.CarAttachVO;
 import org.ezen.carrotmarket.domain.CarVO;
-import org.ezen.carrotmarket.domain.Criteria;
+import org.ezen.carrotmarket.domain.CarCriteria;
 import org.ezen.carrotmarket.mapper.CarAttachMapper;
 import org.ezen.carrotmarket.mapper.CarMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class CarServiceImpl implements CarService {
 	
 	//목록보기 - 페이징 처리 후
 	@Override
-	public List<CarVO> getList(Criteria cri) {
+	public List<CarVO> getList(CarCriteria cri) {
 		
 		log.info("get List With Criteria : " + cri);
 		
@@ -48,7 +48,7 @@ public class CarServiceImpl implements CarService {
 	
 	//게시글 총 합계 - 페이징 처리
 	@Override
-	public int getTotal(Criteria cri) {
+	public int getTotal(CarCriteria cri) {
 		log.info("get total count : ");
 		
 		return mapper.getTotalCount(cri);

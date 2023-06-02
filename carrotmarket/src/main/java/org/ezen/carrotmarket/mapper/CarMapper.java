@@ -3,7 +3,7 @@ package org.ezen.carrotmarket.mapper;
 import java.util.List;
 
 import org.ezen.carrotmarket.domain.CarVO;
-import org.ezen.carrotmarket.domain.Criteria;
+import org.ezen.carrotmarket.domain.CarCriteria;
 
 public interface CarMapper {
 
@@ -11,7 +11,7 @@ public interface CarMapper {
 	public List<CarVO> getList();
 	
 	//페이징 관련 메서드, Criteria객체를 파라미터로 갖는 메서드
-	public List<CarVO> getListWithPaging(Criteria cri);
+	public List<CarVO> getListWithPaging(CarCriteria cri);
 	
 	//C
 	public void insert(CarVO car);
@@ -39,6 +39,6 @@ public interface CarMapper {
 	public int delete(Long cno);
 	
 	//페이징 관련 메서드, 게시글 총 갯수를 반환
-	public int getTotalCount(Criteria cri);
+	public int getTotalCount(CarCriteria cri);
 	
 }
