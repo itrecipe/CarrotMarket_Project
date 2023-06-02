@@ -32,15 +32,7 @@
 			<div id="submain">
 				<br/><br/>
 				<br/><br/>
-				
-				<h4 class="text-center text-success">게시글 수정</h4>
-				
-					<!-- 버튼 클릭을 처리하기 위해 form추가, 보이지 않게 설정해둠 -->
-	  				<form id='operForm' action="modify_car" method="get">
-	  					<input type="hidden" id="cno" name="cno"
-	  						value='<c:out value="${car.cno}"/>'>
-	  				</form>
-				
+
 					<!-- 첨부 파일 리스트 출력 창 -->
 	  				<div class="attach mt-5">
 	  					<h5 class="text-center multiEffect text-success mb-5">첨부파일 수정</h5>
@@ -58,7 +50,15 @@
 	  					<div class="row" id="card">
 	  					</div>	  				
 	  				</div>
-  				
+				
+				<h4 class="text-center text-success">게시글 수정</h4>
+				
+					<!-- 버튼 클릭을 처리하기 위해 form추가, 보이지 않게 설정해둠 -->
+	  				<form id='operForm' action="modify_car" method="get">
+	  					<input type="hidden" id="cno" name="cno"
+	  						value='<c:out value="${car.cno}"/>'>
+	  				</form>
+				
   				<form id="mform" name="mform" action="modify_car" method="post">
   				
   				 	<br/><br/>
@@ -250,7 +250,7 @@ $(document).ready(function(){
 		    	  
 		    	  if (!obj.fileType)  {					
 						let fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);
-						str += "<div class='card col-md-5'>";
+						str += "<div class='card col-md-4'>";
 						str += "<div class='card-body'>";
 						str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'" ;
 						str +=  "data-path='"+obj.uploadPath +"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.fileType+"'>";						
@@ -268,7 +268,7 @@ $(document).ready(function(){
 						originPath = originPath.replace(new RegExp(/\\/g),"/"); //\\를 /로 대체 
 						//let originPath = obj.uploadPath+ "/"+obj.uuid +"_"+obj.fileName;  //위 2줄대신 바로 사용해도 됨
 						
-						str += "<div class='card col-md-5'>";
+						str += "<div class='card col-md-4'>";
 						str += "<div class='card-body'>";
 						str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'" ;
 						str +=  "data-path='"+obj.uploadPath +"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.fileType+"'>";
@@ -368,7 +368,7 @@ $(document).ready(function(){
 				originPath = originPath.replace(new RegExp(/\\/g),"/"); //\\를 /로 대체 
 				//let originPath = obj.uploadPath+ "/"+obj.uuid +"_"+obj.fileName;  //위 2줄대신 바로 사용해도 됨
 				
-				str += "<div class='card col-md-3'>";
+				str += "<div class='card col-md-4'>";
 				str += "<div class='card-body'>";
 				str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'" ;
 				str +=  "data-path='"+obj.uploadPath +"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'>";				
@@ -380,7 +380,7 @@ $(document).ready(function(){
 			else {
 				let fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);
 					
-				str += "<div class='card col-md-3'>";
+				str += "<div class='card col-md-4'>";
 				str += "<div class='card-body'>";
 				str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'" ;
 				str +=  "data-path='"+obj.uploadPath +"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'>";

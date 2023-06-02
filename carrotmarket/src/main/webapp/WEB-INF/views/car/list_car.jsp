@@ -21,8 +21,7 @@
 
 <div class="container mt-5 mb-5" id="mainContent">
 	<div class="row">
-		<div class="col-md-2">
-
+		<div class="col-md-30">
 			<div class="container mt-10 mb-10 p-0 m-0 mx-auto">
 
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -35,38 +34,29 @@
 							class=" bg-danger"></li>
 						<li data-target="#myCarousel" data-slide-to="2"
 							class=" bg-danger"></li>
-						<li data-target="#myCarousel" data-slide-to="3"
-							class=" bg-danger"></li>
 					</ul>
 
 					<!-- The slideshow -->
 					<div class="carousel-inner ">
 						<div class="carousel-item active">
-							<img src="../images/qm6.jpg" alt="Los Angeles" class="d-block mx-auto">
+							<img src="../images/펠리세이드.jpg" alt="Los Angeles" class="d-block mx-auto">
 							<div class="carousel-caption">
 								<h1>최근 인기 매물 TOP-1</h1>
 								<p>르노 코리아 - QM6</p>
 							</div>
 						</div>
 						<div class="carousel-item">
-							<img src="../images/xc90.jpg" alt="Chicago" class="d-block mx-auto ">
+							<img src="../images/펠리세이드.jpg" alt="Chicago" class="d-block mx-auto ">
 							<div class="carousel-caption">
 								<h1>최근 인기 매물 TOP-2</h1>
 								<p>볼보 - XC90</p>
 							</div>
 						</div>
 						<div class="carousel-item">
-							<img src="../images/스포티지.png" alt="New York" class="d-block mx-auto ">
+							<img src="../images/펠리세이드.jpg" alt="New York" class="d-block mx-auto ">
 							<div class="carousel-caption">
 								<h1>최근 인기 매물 TOP-3</h1>
 								<p>기아 - 스포티지</p>
-							</div>
-						</div>
-						<div class="carousel-item">
-							<img src="../images/펠리세이드.jpg" alt="New York" class="d-block mx-auto ">
-							<div class="carousel-caption">
-								<h2>최근 인기 매물 TOP-4</h2>
-								<p>현대 - 펠리세이드</p>
 							</div>
 						</div>
 					</div>
@@ -134,7 +124,7 @@
         <div class="col">
           <div class="card shadow-sm">
             <svg style="background: url(display/${car.cno});background-repeat: no-repeat;
-    background-size: cover;" class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+    background-size: cover;" class="bd-placeholder-img card-img-top" width="100%" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
             
             <!-- 
             <title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>

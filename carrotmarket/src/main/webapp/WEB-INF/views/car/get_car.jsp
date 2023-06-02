@@ -33,7 +33,7 @@
 				<br/><br/>
 				<br/><br/>
 				
-				<h4 class="text-center multiEffect text-success">상세보기</h4>
+				<h3 class="text-center multiEffect text-success">상세보기</h3>
 
 				<!-- 첨부물 처리 창 (추가) -->
 	  				<div class='uploadResult mt-4'>
@@ -209,7 +209,7 @@ $(document).ready(function(){
 						let fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);
 						//YYYY/MM/DD/uuid_파일명
 						//BS4의 카드 방식으로 표시
-						str += "<div class='card col-md-5'>";
+						str += "<div class='card col-md-4'>";
 						str += "<div class='card-body'>";
 						str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'>";
 						str += "<a href='../car/download?fileName=" + fileCallPath +"'>";						
@@ -227,7 +227,7 @@ $(document).ready(function(){
 						let originPath = obj.uploadPath+ "\\"+obj.uuid +"_"+obj.fileName; //원본파일 경로
 						originPath = originPath.replace(new RegExp(/\\/g),"/"); //\\를 /로 대체 
 						
-						str += "<div class='card col-md-5'>";
+						str += "<div class='card col-md-4'>";
 						str += "<div class='card-body'>";
 						str += "<p class='mx-auto' style='width:90%;' title='"+ obj.fileName + "'>";
 						str += "<a href=\"javascript:showImage(\'"+originPath+"\')\">"; //원본 파일 보기 위해 클릭 이벤트 처리

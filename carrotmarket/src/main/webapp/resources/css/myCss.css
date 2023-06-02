@@ -21,7 +21,6 @@ html,body {
 	/*RWD를 위해 처리 */
 	width: 100%;
 	height : 100%;
-}
 
 .wordArtEffect { /*워드아트 형태글자로 줌 */
 	color :white;
