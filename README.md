@@ -1,5 +1,5 @@
-# carrotmarket_clone_project
-당근마켓 클론코딩 프로젝트
+# carrotmarket_project
+당근마켓 벤치마킹 프로젝트
 
 #개발환경
 STS 3.9.18, 
