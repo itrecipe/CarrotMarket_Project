@@ -45,9 +45,9 @@
 	</beans:bean>
 	-->
 	
-	<context:component-scan base-package="org.ezen.carrotmarket" />
+	<context:component-scan base-package="org.ezen.ex02" />
 	
-	<context:component-scan base-package="org.ezen.carrotmarket.controller"></context:component-scan>
+	<context:component-scan base-package="org.ezen.ex02.controller"></context:component-scan>
 	
 	<!-- servlet제공 multipart-config사용 -->
 	<beans:bean id="multipartResolver"

@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="org.ezen.carrotmarket">
+	<logger name="org.ezen.ex02">
 		<level value="info" />
 	</logger>
 	

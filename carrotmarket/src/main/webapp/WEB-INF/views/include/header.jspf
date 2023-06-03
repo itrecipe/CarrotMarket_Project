@@ -81,7 +81,7 @@ crossorigin="anonymous">
 		<div class="light-theme">
 			<div class="_1knjz490">
 				<div class="_1knjz491 _1s38h9c0">
-					<a class="_1knjz492" href="/carrotmarket" aria-label="logo">
+					<a class="_1knjz492" href="/ex02" aria-label="logo">
 					<span class="_1knjz493">
 						<svg width="100" height="28" viewBox="0 0 100 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
@@ -110,12 +110,16 @@ crossorigin="anonymous">
 									fill="#FF7E36"></path></svg></span></a>
 					<nav class="_1knjz49k _1s38h9c0">
 						<ul class="_1knjz49m _1s38h9c5">
+						
+						<!--  
 							<li class="_1knjz49o"><a
 								class="_1knjz49p _1s38h9c4 _1s38h9c2 _1knjz49q"
-								href="/carrotmarket/search/search">중고거래</a></li>
+								href="/ex02/search/search">중고거래</a></li>
+						-->
+						
 							<li class="_1knjz49o"><a
 								class="_1knjz49p _1s38h9c4 _1s38h9c2 _1knjz49q"
-								href="/carrotmarket/car/list_car">중고차 직거래</a></li>
+								href="/ex02/car/list_car">중고차 직거래</a></li>
 								
 								<!-- 
 							<li class="_1knjz49o"><a
@@ -163,13 +167,13 @@ crossorigin="anonymous">
 									      마이 메뉴
 									    </button>
 									    <ul class="dropdown-menu">
-									      <li><a class="dropdown-item" href="/carrotmarket/member/myInfo">회원정보</a></li>
-									      <li><a class="dropdown-item" href="/carrotmarket/member/logoutAction" onclick="return confirm('로그아웃 하시겠습니까?')">로그아웃</a></li>
+									      <li><a class="dropdown-item" href="/ex02/member/myInfo">회원정보</a></li>
+									      <li><a class="dropdown-item" href="/ex02/member/logoutAction" onclick="return confirm('로그아웃 하시겠습니까?')">로그아웃</a></li>
 									    </ul>
 									  </div>
 								</c:if>
 								<c:if test="${loginUser == null }">
-									<button type="button" class="karrot-button r14vym0 _1s38h9c3 _1s38h9c4 r14vym4 r14vym7 _1knjz49j" onclick="location.href='/carrotmarket/member/login'">로그인</button>
+									<button type="button" class="karrot-button r14vym0 _1s38h9c3 _1s38h9c4 r14vym4 r14vym7 _1knjz49j" onclick="location.href='/ex02/member/login'">로그인</button>
 								</c:if>
 					</div>
 				</div>

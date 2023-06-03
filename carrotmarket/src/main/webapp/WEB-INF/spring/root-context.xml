@@ -48,18 +48,17 @@
 	
 	<!-- mybatis사용시는 별도로 scan -->
 	<mybatis-spring:scan
-		base-package="org.ezen.carrotmarket.mapper" />
+		base-package="org.ezen.ex02.mapper" />
 
 	<context:component-scan
-		base-package="org.ezen.carrotmarket"></context:component-scan>
+		base-package="org.ezen.ex02"></context:component-scan>
 	
 	<!-- AOP -->
 	<context:annotation-config></context:annotation-config>
 	
-	<context:component-scan base-package="org.ezen.carrotmarket.service"></context:component-scan>
-	<context:component-scan base-package="org.ezen.carrotmarket.aop"></context:component-scan>
+	<context:component-scan base-package="org.ezen.ex02.service"></context:component-scan>
+	<context:component-scan base-package="org.ezen.ex02.aop"></context:component-scan>
 	
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	
 	
 </beans>
