@@ -2,7 +2,7 @@
 당근마켓 벤치마킹 프로젝트
 
 #개발환경
-JDK 15.0.2
+- JDK 15.0.2
 STS 3.9.18, 
 ApacheTomcat9.0, 
 DB(Oracle),
