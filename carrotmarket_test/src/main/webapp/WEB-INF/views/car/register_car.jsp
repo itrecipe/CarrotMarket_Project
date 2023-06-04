@@ -140,6 +140,9 @@
 		</div>
 	</div>
 </div>
+
+<%@ include file="../include/imageModal_car.jsp"%>
+
 <script>
 $(document).ready(function(){
 	let formObj = $("form[role='form']"); //게시글 등록

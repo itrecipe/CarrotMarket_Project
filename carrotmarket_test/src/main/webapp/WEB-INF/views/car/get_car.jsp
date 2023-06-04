@@ -159,6 +159,9 @@
 		</div>
 	</div>
 </div>
+
+<%@ include file="../include/imageModal_car.jsp"%>
+
 <!-- 게시판 상세보기 - 관련 이벤트 (동적)처리 -->
 <script>
 //페이지 로드시 실행 코드를 정의해주는 함수, 즉 페이지가 로드되면 아래 코드 블록이 실행됨.
