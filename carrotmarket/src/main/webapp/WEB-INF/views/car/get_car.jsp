@@ -34,6 +34,11 @@
 				<br/><br/>
 				
 				<h3 class="text-center multiEffect text-success">상세보기</h3>
+				
+				<div class='bigPictureWrapper w-100 mb-5 h-100'>
+					<div class='bigPicture'>
+					</div>
+				</div>
 
 				<!-- 첨부물 처리 창 (추가) -->
 	  				<div class='uploadResult mt-4'>
@@ -153,12 +158,57 @@
 					<input
 						type='hidden' name='amount'
 						value='<c:out value="${cri.amount}"/>'>
-
+					
+					<div id="map" style="width:500px;height:400px;"></div>
+					<p><em>지도를 클릭해주세요!</em></p> 
+					<div id="clickLatlng"></div>
+				
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<!-- 카카오맵 api 사용 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=?"></script>
+
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(37.541494514251, 126.84040179518), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };
+	
+		//지도를 생성합니다.
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		
+		// 지도를 클릭한 위치에 표출할 마커입니다
+		var marker = new kakao.maps.Marker({ 
+		    // 지도 중심좌표에 마커를 생성합니다 
+		    position: map.getCenter() 
+		}); 
+		// 지도에 마커를 표시합니다
+		marker.setMap(map);
+		
+		// 지도에 클릭 이벤트를 등록합니다
+		// 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+		kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+		    
+		    // 클릭한 위도, 경도 정보를 가져옵니다 
+		    var latlng = mouseEvent.latLng; 
+		    
+		    // 마커 위치를 클릭한 위치로 옮깁니다
+		    marker.setPosition(latlng);
+		    
+		    var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+		    message += '경도는 ' + latlng.getLng() + ' 입니다';
+		    
+		    var resultDiv = document.getElementById('clickLatlng'); 
+		    resultDiv.innerHTML = message;
+		    
+		});
+	</script>
+
 <!-- 게시판 상세보기 - 관련 이벤트 (동적)처리 -->
 <script>
 //페이지 로드시 실행 코드를 정의해주는 함수, 즉 페이지가 로드되면 아래 코드 블록이 실행됨.
@@ -248,15 +298,15 @@ $(document).ready(function(){
 function showImage(fileCallPath) {
 	//<a>태그에서 직접 호출시 대비
 	alert(fileCallPath);
-			
+	
 	$(".bigPictureWrapper").css("display","block").show();
 			
 	$(".bigPicture")
 		.html("<img class='d-block w-75 mx-auto' src='../car/display?fileName="+ encodeURI(fileCallPath)+"'>")
 		.animate({width:'100%', height: '100%'}, 1000);
 	
-	$('.imageModal .modal-body').html("<img class='d-block w-75 mx-auto' src='../car/display?fileName=" + encodeURI(fileCallPath)+"&size=1'>");
-    $(".imageModal").modal("show");
+	$('.imageModal_car .modal-body').html("<img class='d-block w-75 mx-auto' src='../car/display?fileName=" + encodeURI(fileCallPath)+"&size=1'>");
+    $('.imageModal_car').modal('show');
 }
 </script>
 
@@ -278,6 +328,12 @@ function showImage(fileCallPath) {
   </tr>
 </table>
 -->
+
+<!-- 카카오맵 api 라이브러리 추가  -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
+
+<!-- 카카오맵 api - services와 clusterer, drawing 라이브러리 불러오기 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
 
 </body>
 </html>
