@@ -1,3 +1,5 @@
+<공통 파트>
+
 --테이블 및 제약조건 완전삭제
 drop table carrot_member CASCADE CONSTRAINTS;
 
@@ -27,6 +29,9 @@ select * from carrot_member;
 --테이블 데이터 삭제 쿼리
 delete from carrot_member
 where carrot_member.id = '21';
+
+=================================================================================
+<내 파트>
 
 --중고차 직거래 테이블 생성
 create table carrot_car(
