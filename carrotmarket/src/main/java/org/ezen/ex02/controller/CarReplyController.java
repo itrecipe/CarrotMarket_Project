@@ -40,7 +40,7 @@ public class CarReplyController {
 	
 	@GetMapping(value = "/pages/{cno}/{page}",
 			produces = {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<CarReplyPageDTO> getList(@PathVariable("page") int page, @PathVariable("bno") Long cno) {
+	public ResponseEntity<CarReplyPageDTO> getList(@PathVariable("page") int page, @PathVariable("cno") Long cno) {
 		
 		CarCriteria cri = new CarCriteria(page, 10);
 		
