@@ -35,6 +35,37 @@ import net.coobird.thumbnailator.Thumbnailator;
 @Log4j
 public class CarUploadController {
 
+	@GetMapping("/uploadForm")
+		public void uploadForm() {
+			log.info("GetMapping uploadForm Test");
+			//car 폴더의 uploadForm.jsp로 이동한다.
+		}
+	
+	@PostMapping("/uploadFormAction")
+		public void uplodFormPost(MultipartFile[] uploadFile, Model model) {
+		//name속성과 파라메터형이 다를시는 @Requestparam에 보내는 속성 이름 사용
+		//uploadFile은 name속성값이고 muptiple일시 배열로 처리 한다.
+
+		log.info("PostMapping uploadFormAction");
+		
+		String uploadFolder = "c:/upload";
+		
+		for(MultipartFile multipartFile : uploadFile) {
+			log.info("----------------------------");
+			log.info("Upload File Name : " + multipartFile.getOriginalFilename()); //원본 파일명
+			log.info("Upload File size : " +  multipartFile.getSize()); //파일의 크기
+			
+			File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+			//경로와 파일명을 사용하는 File 객체를 생성한다.
+			
+			try {
+				multipartFile.transferTo(saveFile); //해당 경로에 file 객체를 저장한다.
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+			}
+		}
+	
 	@GetMapping("/uploadAjax")
 	public void uploadAjax() {
 		log.info("upload ajax");

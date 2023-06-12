@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div class="imageModal_car modal fade" tabindex="-2" role="dialog">
+<div class="imageModal modal fade" tabindex="-2" role="dialog">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
