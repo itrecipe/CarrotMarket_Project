@@ -6,28 +6,71 @@
 		select * from carrot_member where userid = #{userid}
 	</select>
 	
+	<select id="getMemberId" resultType="org.ezen.ex02.domain.MemberVO">
+		select * from carrot_member where id = #{id}
+	</select>
+	
+		<select id="getWriterImg" resultType="org.ezen.ex02.domain.MemberVO">
+	
+	select uuid, uploadpath, filename from carrot_member where id = #{id}
+	
+	</select>
+	
+	
 	<insert id="joinMember">
-		insert into carrot_member(id, userid, userpwd, username, usernickname, useraddress
+		insert into carrot_member(id, userid, userpwd, username, usernickname, useraddress, isbusiness
+		
+		<if test="uuid != null">
+		,uuid
+		</if>
+		<if test="uploadPath != null">
+		,uploadPath
+		</if>
+		<if test="fileName != null">
+		,fileName
+		</if>
+		
+		
 		<if test="useremail != null">
 		, useremail
 		</if>
 		<if test="usergender != null">
 		, usergender
 		</if>
+		<if test="category != null">
+		, category
+		</if>
 		)
-		values(carr_mem_id_seq.nextval, #{userid},#{userpwd},#{username},#{usernickname},#{useraddress}
+		values(carr_mem_id_seq.nextval, #{userid},#{userpwd},#{username},#{usernickname},#{useraddress},#{isbusiness}
+		
+		<if test="uuid != null">
+		, #{uuid}
+		</if>
+		<if test="uploadPath != null">
+		, #{uploadPath}
+		</if>
+		<if test="fileName != null">
+		, #{fileName}
+		</if>
+		
+		
 		<if test="useremail != null">
 		, #{useremail}
 		</if>
 		<if test="usergender != null">
 		, #{usergender}
 		</if>
+		<if test="category != null">
+		, #{category}
+		</if>
 		)
 	</insert>
 	
-	<select id="getMemberId" resultType="org.ezen.ex02.domain.MemberVO">
-		select * from carrot_member where id = #{id}
-	</select>
+	
+	  
+
+	
+	
 	
 	<update id="modifyMember">
 		update carrot_member
@@ -35,6 +78,7 @@
 		, usergender = #{usergender}
 		, useremail = #{useremail}
 		, useraddress = #{useraddress}
+		, isbusiness = #{isbusiness}
 		where id = #{id}
 	</update>
 	

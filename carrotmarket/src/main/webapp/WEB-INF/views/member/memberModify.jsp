@@ -30,7 +30,8 @@
 			<input type="text" name="userid" readonly="readonly" value="${member.userid}" class="readonly"/>
 		
 			<h1>비밀번호</h1>
-			<input type="password" name="userpwd"/>
+			<input type="password" name="userpwd" required oninvalid="this.setCustomValidity('비밀번호를 입력하세요.')" oninput="this.setCustomValidity('')" />
+			
 			
 			<h1>성별</h1>
 			<div class="w-75 form-check d-flex justify-content-between m-auto">

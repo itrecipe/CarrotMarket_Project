@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@ include file="../include/header.jspf"%>
-<link rel="stylesheet" type="text/css" href="/resources/css/member.css">
+<link rel="stylesheet" type="text/css" href="../css/member.css">
 <link rel="stylesheet" media="all" href="https://d1unjqcospf8gs.cloudfront.net/assets/home/users/show-b2c7250e62f851bf2967ba56a6ee71752f170e773072e6c74ab741ff9572737b.css" />
 
 <section id="content">
@@ -32,7 +32,8 @@
 	         
 	         <h1>새 비밀번호 확인</h1>
 	         <input type="password" name="newPasswdConfirm" required oninvalid="this.setCustomValidity('새 비밀번호를 다시 한 번 입력하세요.')" oninput="this.setCustomValidity('')" />
-			<br><br>
+
+			
 			<input type="submit" value="비밀번호 변경" class="common_button"/>
 			<input type="button" value="뒤로가기" onclick="history.back()" class="common_button"/>
 	</form>

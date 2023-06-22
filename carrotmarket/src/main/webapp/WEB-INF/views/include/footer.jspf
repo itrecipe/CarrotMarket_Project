@@ -3,7 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>    
 
-<div id="footer-root">
+
+
+<div id="footer-root" style="padding-top: 30px;">
 	<div class="light-theme">
 		<footer class="_1trxeqs0">
 			<div class="_1trxeqs1 _1y9kelh2">

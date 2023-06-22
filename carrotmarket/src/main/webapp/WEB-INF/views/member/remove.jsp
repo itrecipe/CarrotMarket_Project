@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@ include file="../include/header.jspf"%>
-<link rel="stylesheet" type="text/css" href="/resources/css/member.css">
+<link rel="stylesheet" type="text/css" href="../css/member.css">
 <link rel="stylesheet" media="all" href="https://d1unjqcospf8gs.cloudfront.net/assets/home/users/show-b2c7250e62f851bf2967ba56a6ee71752f170e773072e6c74ab741ff9572737b.css" />
 
 <section id="content">
@@ -18,7 +18,7 @@
 		
 		<form action="remove" style = "padding-top: 30px; width: 80%; margin : 0 auto;" id="join_form" method="post">	
 			<h1>비밀번호</h1>
-			<input type="password" name="passwd" required oninvalid="this.setCustomValidity('현재 비밀번호를 입력하세요.')" oninput="this.setCustomValidity('')" />
+			<input type="password" name="passwd" required oninvalid="this.setCustomValidity('비밀번호를 입력하세요.')" oninput="this.setCustomValidity('')" />
 			<!-- 
 			<button id="id_check" type="button" class="karrot-button r14vym0 _1s38h9c3 _1s38h9c4 r14vym4 r14vym7 _1knjz49j"  style="width : 100px; height : 40px; font-size: 1.5rem ">중복확인</button>
 			 -->
