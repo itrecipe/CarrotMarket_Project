@@ -1,13 +1,23 @@
 # carrotmarket_project
 # 당근마켓 벤치마킹 프로젝트 (중고차 직거래 파트 구현)
 
-## 개발환경
+## 개발환경 & 라이브러리
 - JDK 15.0.2,
-- STS 3.9.18, 
+- STS 3.9.18,
 - ApacheTomcat9.0,
-- DB(Oracle),
+- DB & SQL(Oracle),
 - mybatis,
 - spring framework(5.3.26) - Spring Legacy Project
+- BootStrap4
+- Java Script
+- JSP
+- HTML5
+- JAVA
+- CSS3
+- J-Query
+- Mybatis
+- Maven
+- A-jax 
 
 ## 설계의 주안점
 - 프론트단 디자인은 벤치마킹한 원본 사이트와 최대한 비슷하게 구현 하였습니다.
