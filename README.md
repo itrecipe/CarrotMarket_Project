@@ -4,13 +4,14 @@
 #개발환경
 - JDK 15.0.2,
 - STS 3.9.18, 
-- ApacheTomcat9.0, 
+- ApacheTomcat9.0,
 - DB(Oracle),
 - mybatis,
 - spring framework(5.3.26) - Spring Legacy Project
 
 #설계의 주안점
-- 프론트단은 벤치마킹한 사이트
+- 프론트단 디자인은 벤치마킹한 원본 사이트와 최대한 비슷하게 구현하였으며,
+백엔드 부분 중점을 두고 개발하였습니다.
 
 #구현한 기능
 - 로그인/로그인/회원가입)
