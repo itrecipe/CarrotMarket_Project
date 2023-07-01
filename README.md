@@ -1,4 +1,6 @@
 # carrotmarket_project
+- carrotmarket_test는 개인파트 분리 및 테스트용 파일
+
 # 당근마켓 벤치마킹 프로젝트 (중고차 직거래 파트 구현)
 
 ## 개발환경 & 라이브러리
