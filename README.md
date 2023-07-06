@@ -1,7 +1,7 @@
 # carrotmarket_project 
 - (당근마켓 벤치마킹 프로젝트 - 중고차 직거래 파트 구현)
 
-## 개발환경 & 라이브러리
+## 개발환경(Tool) & 라이브러리
 - JDK 15.0.2
 - STS 3.9.18
 - ApacheTomcat9.0
