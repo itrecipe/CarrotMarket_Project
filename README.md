@@ -65,6 +65,10 @@
 <details>
   <summary>메인</summary>
   
+  ![carrotmarket_메인](https://github.com/itrecipe/carrotmarket_project/assets/40875025/0459cb81-e3bb-44f4-81bc-2209f6e12ddc)
+
+  <summary>로그인 & 회원가입</summary>
+
 </details>
 
 
