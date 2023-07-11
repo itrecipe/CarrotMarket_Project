@@ -8,14 +8,14 @@
   
 - 개발기간 : 23.05.15 ~ 23.
 
-# Development Environment & Libraly
+## Development Environment & Libraly
 - BE : Java(jdk15.0.2), SpringFramework(5.3.26) - Spring Legacy Project, Mybatis, Maven
 - FE : HTML5, CSS3, JSP(Servlet), J-Query(A-Jax), JavaScript, BootStrap4 
 - DB : Oracle (DB & SQL)
 - Server(WAS) : Apache Tomcat 9.0
 - IDE(TOOL) : STS(3.9.18 version)
 
-# 설계의 주안점
+## 설계의 주안점
 - 프론트단 디자인은 벤치마킹한 원본 사이트와 최대한 비슷하게 구현 하였습니다.
 - 백엔드 부분을 중점적으로 개발 하였습니다.
 - 당근마켓 웹사이트에는 로그인/회원가입 기능은 QR코드로 인증받아서 연동되도록 처리 되어 있어,
@@ -25,7 +25,7 @@
  
 
 
-# 구현 기능
+## 구현 기능
 - 로그인/회원가입
 - 게시판 (C, R, U, D) 기능 구현 (쇼핑몰 이미지 리스트 형식)
 - 파일 업로드 & 다운로드, 썸네일 (구현)
