@@ -161,6 +161,28 @@ public class CarController {
 		return result;
 	}
 	
+	/*
+	이 코드는 /display/{cno} 경로로 GET 요청이 들어왔을 때 이미지 파일을 서버에서 읽어와 클라이언트에게 전송하는 기능을 구현한 핸들러 메서드입니다.
+	
+	@GetMapping 어노테이션은 /display/{cno} 경로에 대한 GET 요청을 처리합니다.
+	
+	@PathVariable("cno") 어노테이션을 사용하여 경로 변수 cno를 매개변수 Long cno에 바인딩합니다.
+	service.getImage(cno)를 호출하여 cno 값에 해당하는 이미지 파일 정보를 가져옵니다.
+	이미지 파일의 실제 경로를 생성하기 위해 attach 객체의 정보를 사용합니다.
+	
+	File 객체를 생성하여 이미지 파일에 대한 전체 경로를 지정합니다.
+	HttpHeaders 객체를 생성하여 Content-Type 헤더를 설정합니다. 
+	Files.probeContentType() 메서드를 사용하여 파일의 MIME 타입을 확인하고,
+	이를 Content-Type 헤더에 추가합니다.
+	
+	FileCopyUtils.copyToByteArray() 메서드를 사용하여 이미지 파일을 바이트 배열로 읽어옵니다.
+	ResponseEntity 객체를 생성하여 바이트 배열과 헤더를 설정하고, 상태 코드는 HttpStatus.OK로 설정합니다.
+	생성된 ResponseEntity 객체를 반환하여 클라이언트에게 이미지 파일 데이터를 전송합니다.
+	이 코드는 클라이언트에서 /display/{cno} 경로로 GET 요청을 보내면,
+	해당 cno 값을 사용하여 서버에 저장된 이미지 파일을 읽어와서 클라이언트에게 전송합니다.
+	클라이언트는 응답을 받아 이미지 파일 데이터를 화면에 표시할 수 있습니다.
+	*/
+	
 	//첨부파일을 삭제하는 메서드
 	private void deleteFiles(List<CarAttachVO> attachList) {
 		
