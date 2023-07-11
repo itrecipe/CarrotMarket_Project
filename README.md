@@ -31,3 +31,4 @@
 - 카카오맵 or 구글맵 지도 api 연동
 
 ### 현재 readme 내용 추가 및 수정 작업 진행중!
+![apple](https://github.com/itrecipe/carrotmarket_project/assets/40875025/52229ff1-4182-429e-87ba-34b23c687b66)
