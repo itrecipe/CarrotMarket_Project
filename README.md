@@ -16,11 +16,11 @@
 - **개발기간 : 23.05.15 ~ 23.6.13**
 
 ## Development Environment & Libraly
-- **BE : Java(jdk15.0.2), SpringFramework(5.3.26) - Spring Legacy Project, Mybatis, Maven**
+- **BE : Java(jdk15.0.2 version), SpringFramework(5.3.26 version) - Spring Legacy Project, Mybatis, Maven**
 - **FE : HTML5, CSS3, JSP(Servlet), J-Query(A-Jax), JavaScript, BootStrap4**
 - **DB : Oracle (DB & SQL)**
 - **Server(WAS) : Apache Tomcat 9.0**
-- **IDE(TOOL) : STS(3.9.18 version)**
+- **IDE(TOOL) : STS(3.9.18 version), SQLDEVELOPER(Oracle11g)**
 
 ## 설계의 주안점
 - **당근마켓 웹사이트에는 로그인/회원가입 기능이 QR코드로 인증받아서 앱과 연동되도록<br>
@@ -31,11 +31,12 @@
 ## 중고차 직거래 파트 구현 기능
 - **로그인/회원가입**
 - **게시판 (C, R, U, D) 기능 구현 (쇼핑몰 이미지 리스트 형식)**
-- **파일 업로드 & 다운로드, 썸네일 (구현)**
+- **파일 업로드 & 다운로드 기능 구현, 업로드 이미지 썸네일 형식으로 출력 (구현)**
 - **페이징 처리**
 - **카카오맵 api 연동**
 
-## Oracle DB - 테이블 구조
-![carrotmarket_car - DB 테이블 구조](https://github.com/itrecipe/carrotmarket_project/assets/40875025/fe6e5a3d-1dbc-43c0-b25a-b61cb7b7cb8d)
+## Oracle DB (CarrotMarket_Car) - 테이블 구조
+<details>
+<summary>![carrotmarket_car - DB 테이블 구조](https://github.com/itrecipe/carrotmarket_project/assets/40875025/fe6e5a3d-1dbc-43c0-b25a-b61cb7b7cb8d)</summary>
+</details>
 
-## 
