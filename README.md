@@ -63,11 +63,15 @@
 
 ## CarrotMarket - 중고차 직거래 실행 화면
 <details>
+  <summary>접기 & 상세보기</summary><br><br>
+  
   <summary>메인</summary>
   
   ![carrotmarket_메인](https://github.com/itrecipe/carrotmarket_project/assets/40875025/0459cb81-e3bb-44f4-81bc-2209f6e12ddc)
 
   <summary>로그인 & 회원가입</summary>
+
+  ![carrotmarket_로그인 회원가입](https://github.com/itrecipe/carrotmarket_project/assets/40875025/8915a1f1-ae69-45a8-8c2a-f48b08a2c27e)
 
 </details>
 
