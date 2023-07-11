@@ -1,6 +1,6 @@
 # Spring Final Project - CarrotMarket
 
-## 주제 : 당근마켓 웹 클론코딩 프로젝트 - 중고차 직거래 파트 구현
+## 주제 : 당근마켓 웹 클론코딩(Back-End) 팀 프로젝트 - 중고차 직거래 파트 구현
 <details>
   <summary>프로젝트 소개</summary>
 
@@ -56,9 +56,15 @@
 
 ## CarrotMarket - 중고차 직거래 테이블 구조
 <details>
-<summary>Carrot_Car 테이블 구조</summary>
+<summary>Carrot_Car 테이블 구조</summary><br><br>
   
 ![carrot_car - DB 테이블 구조](https://github.com/itrecipe/carrotmarket_project/assets/40875025/5174a4fc-688b-47e5-b287-f3bcd23016b3)
+</details>
+
+## CarrotMarket - 중고차 직거래 실행 화면
+<details>
+  <summary>메인</summary>
+  
 </details>
 
 
