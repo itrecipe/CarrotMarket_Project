@@ -63,7 +63,7 @@
 
 ## CarrotMarket - 중고차 직거래 - 구현 코드
 
-### DB
+### DB (Oracle_SQL)
 <details>
 <summary>CarrotMarket.sql</summary>
 
