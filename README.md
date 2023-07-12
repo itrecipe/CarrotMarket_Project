@@ -56,7 +56,7 @@
 
 ## CarrotMarket - 중고차 직거래 테이블 구조
 <details>
-<summary>Carrot_Car 테이블 구조</summary><br><br>
+<summary>테이블명 : Carrot_Car 구조</summary><br><br>
   
 ![carrot_car - DB 테이블 구조](https://github.com/itrecipe/carrotmarket_project/assets/40875025/5174a4fc-688b-47e5-b287-f3bcd23016b3)
 </details>
