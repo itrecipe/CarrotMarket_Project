@@ -117,5 +117,10 @@
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/f2d234e4-ab08-47a0-8a3a-081d4b9c139c)
 
   <summary>중고차 직거래_삭제</summary><br>
+  - 삭제 버튼도 수정 버튼과 동일하게 누르면 alert창이 뜨면서 삭제 처리가 수행되고,<br>
+    취소를 누르면 해당 작업이 종료 되도록 구현 되어 있습니다.
   
+  
+  ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/d6e6eb03-5d32-49ab-aaf2-4758b28f7870)
+
 </details>
