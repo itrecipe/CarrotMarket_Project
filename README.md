@@ -2784,8 +2784,8 @@ $(document).ready(function(){
 
   
   <summary>중고차 직거래_수정</summary><br>
-  - 수정 버튼을 누르면 alert창이 뜨며 확인을 누를시 수정 페이지로 이동하게 되고,<br>
-    취소를 누르면 종료가 되도록 구현하였습니다.<br><br>
+  - 수정 버튼을 누르면 alert창이 뜨며 확인을 누를시 수정 페이지로<br>
+  이동하게 되고, 취소를 누르면 종료가 되도록 구현하였습니다.<br><br>
 
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/be801a1b-b0f6-4c2e-abc7-3e8ea0d5e484)
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/0ace3eda-8c50-453b-92fb-db0e30200cf5)
@@ -2793,8 +2793,9 @@ $(document).ready(function(){
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/f2d234e4-ab08-47a0-8a3a-081d4b9c139c)
 
   <summary>중고차 직거래_삭제</summary><br>
-  - 삭제 버튼도 수정 버튼과 동일하게 누르면 alert창이 뜨면서 삭제 처리가 수행되고,<br>
-    취소를 누르면 해당 작업이 종료 되도록 구현 되어 있습니다.<br><br>  
+  - 삭제 버튼도 수정 버튼과 동일하게 누르면 alert창이 뜨면서 삭제<br>
+  처리가 수행되고, 취소를 누르면 해당 작업이 종료 되도록 구현 되어 있습니다.<br><br>  
+  
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/d6e6eb03-5d32-49ab-aaf2-4758b28f7870)
 
 </details>
