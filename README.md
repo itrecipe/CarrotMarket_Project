@@ -90,6 +90,8 @@
 
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/67d84119-9246-4d6f-b327-abf305f63231)
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/6da0c9ce-45bb-416a-a7a5-6b5446fc0e05)
+  ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/ed88f0c5-8859-4eff-bf58-74b2d3f9b5e0)
+  
 
   <summary>중고차 직거래_수정</summary><br>
   <summary>중고차 직거래_삭제</summary><br>
