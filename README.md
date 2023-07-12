@@ -61,6 +61,28 @@
 ![carrot_car - DB 테이블 구조](https://github.com/itrecipe/carrotmarket_project/assets/40875025/5174a4fc-688b-47e5-b287-f3bcd23016b3)
 </details>
 
+## CarrotMarket - 중고차 직거래 구현 코드
+<details>
+  <summary>Domain</summary>
+</details>
+
+<details>
+  <summary>Mapper</summary>
+</details>
+
+<details>
+  <summary>Service</summary>
+</details>
+
+<details>
+  <summary>Controller</summary>
+</details>
+
+<details>
+  <summary>View</summary>
+</details>
+
+
 ## CarrotMarket - 중고차 직거래 실행 화면
 <details>
   <summary>접기 & 상세보기</summary><br><br>
@@ -86,7 +108,7 @@
   ![carrotmarket_중고차직거래_메인](https://github.com/itrecipe/carrotmarket_project/assets/40875025/b3a0177b-b698-461f-abd3-e2a2cfae7114)
 
   <summary>중고차 직거래_게시글 등록 & 파일 업로드</summary><br>
-  - 게시글 등록을 할 수 있는 페이지이며, 파일(사진) 업로드와 함께 수행 할 수 있도록 구현 되었습니다.<br>
+  - 게시글 등록을 할 수 있는 페이지이며, 파일(사진) 업로드와 함께 수행 할 수 있도록 구현 되었습니다.<br><br>
 
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/90b9a6be-1d6f-4858-bc18-3eb2a192e69d)
 
@@ -118,7 +140,7 @@
 
   <summary>중고차 직거래_삭제</summary><br>
   - 삭제 버튼도 수정 버튼과 동일하게 누르면 alert창이 뜨면서 삭제 처리가 수행되고,<br>
-    취소를 누르면 해당 작업이 종료 되도록 구현 되어 있습니다.
+    취소를 누르면 해당 작업이 종료 되도록 구현 되어 있습니다.<br><br>
   
   
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/d6e6eb03-5d32-49ab-aaf2-4758b28f7870)
