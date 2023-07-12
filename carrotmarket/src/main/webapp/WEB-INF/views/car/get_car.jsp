@@ -296,7 +296,7 @@ $(document).ready(function(){
 					}				    	  
 					else { //이미지 일시
 														
-						let fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid+"_"+obj.fileName);
+						let fileCallPath = encodeURIComponent( obj.uploadPath + "/s_"+obj.uuid+"_" + obj.fileName);
 						let originPath = obj.uploadPath+ "\\"+obj.uuid +"_"+obj.fileName; //원본파일 경로
 						originPath = originPath.replace(new RegExp(/\\/g),"/"); //\\를 /로 대체 
 						

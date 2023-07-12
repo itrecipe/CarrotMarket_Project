@@ -6,7 +6,7 @@ import org.ezen.ex02.domain.CarAttachVO;
 import org.ezen.ex02.domain.CarCriteria;
 import org.ezen.ex02.domain.CarVO;
 
-//비즈니스 계청 인터페이스
+//비즈니스 계층 인터페이스
 public interface CarService {
 
 	//페이징을 위한 처리
