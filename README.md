@@ -66,6 +66,8 @@
   <summary>접기 & 상세보기</summary><br><br>
   
   <summary>메인</summary><br>
+
+  - CarrotMarket 메인 화면 입니다.
   
   ![carrotmarket_메인](https://github.com/itrecipe/carrotmarket_project/assets/40875025/0459cb81-e3bb-44f4-81bc-2209f6e12ddc)
 
@@ -78,6 +80,8 @@
   ![carrotmarket_회원가입](https://github.com/itrecipe/carrotmarket_project/assets/40875025/6409ab06-9c6e-4c82-a8ef-abff16012c26)
 
   <summary>중고차 직거래_메인</summary><br>
+  - 메인 화면 상단은 BS4의 케러셀을 이용하였으며, 상품이 노출될 아래 페이지에는 이미지 리스트 형식으로 구현하였습니다.<br>
+  - 케러셀 기능 하단에 "게시글 등록" 창으로 이동하여 매물 등록을 할 수 있도록 구현 하였습니다.<br><br>
   
   ![carrotmarket_중고차직거래_메인](https://github.com/itrecipe/carrotmarket_project/assets/40875025/b3a0177b-b698-461f-abd3-e2a2cfae7114)
 
@@ -85,23 +89,23 @@
 
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/90b9a6be-1d6f-4858-bc18-3eb2a192e69d)
 
-
-  <summary>중고차 직거래_상세보기</summary><br>
-
+  <summary>중고차 직거래_상세보기(1)</summary><br>
+  - 중고차 직거래 페이지의 상세보기 입니다.<br>
+  
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/67d84119-9246-4d6f-b327-abf305f63231)
+  
   <summary>중고차 직거래_상세보기(2)</summary><br>
+  
   
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/6da0c9ce-45bb-416a-a7a5-6b5446fc0e05)
   
   <summary>중고차 직거래_상세보기(3)</summary><br>
   
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/ed88f0c5-8859-4eff-bf58-74b2d3f9b5e0)
-  
 
+  
   <summary>중고차 직거래_수정</summary><br>
+  
   <summary>중고차 직거래_삭제</summary><br>
   
-  
 </details>
-
-
