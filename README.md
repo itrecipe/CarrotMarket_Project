@@ -77,6 +77,16 @@
   
   ![carrotmarket_회원가입](https://github.com/itrecipe/carrotmarket_project/assets/40875025/6409ab06-9c6e-4c82-a8ef-abff16012c26)
 
+  <summary>중고차 직거래_메인</summary><br>
+  
+  ![carrotmarket_중고차직거래_메인](https://github.com/itrecipe/carrotmarket_project/assets/40875025/b3a0177b-b698-461f-abd3-e2a2cfae7114)
+
+  <summary>중고차 직거래_게시글 등록</summary><br>
+  <summary>중고차 직거래_상세보기</summary><br>
+  <summary>중고차 직거래_수정</summary><br>
+  <summary>중고차 직거래_삭제</summary><br>
+  <summary>중고차 직거래_파일 업로드</summary><br>
+  
 </details>
 
 
