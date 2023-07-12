@@ -91,15 +91,14 @@
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/90b9a6be-1d6f-4858-bc18-3eb2a192e69d)
 
   <summary>중고차 직거래_상세보기(1)</summary><br>
-  - 게시글 상세보기 페이지 입니다.
-  - 차량 등록에 필요한 정보들을 모두 입력하도록 구현 되었습니다.
-  - 아래쪽에 현재 매물의 위치를 알 수 있도록 카카오맵 api를 사용하여 구현 하였습니다.
-  - 댓글 기능이 구현 되어 있으나, 현재 미완성 입니다. (현재 작업 중)
+  - 게시글 상세보기 페이지 입니다.<br>
+  - 차량 등록에 필요한 정보들을 모두 입력하도록 구현 되었습니다.<br>
+  - 아래쪽에 현재 매물의 위치를 알 수 있도록 카카오맵 api를 사용하여 구현 하였습니다.<br>
+  - 댓글 기능이 구현 되어 있으나, 현재 미완성 입니다. (현재 작업 중)<br><br>
   
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/67d84119-9246-4d6f-b327-abf305f63231)
   
   <summary>중고차 직거래_상세보기(2)</summary><br>
-  
   
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/6da0c9ce-45bb-416a-a7a5-6b5446fc0e05)
   
@@ -110,12 +109,11 @@
   
   <summary>중고차 직거래_수정</summary><br>
   - 수정 버튼을 누르면 alert창이 뜨며 확인을 누를시 수정 페이지로 이동하게 되고,<br>
-    취소를 누르면 종료가 되도록 구현하였습니다.<br>
-
+    취소를 누르면 종료가 되도록 구현하였습니다.<br><br>
 
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/be801a1b-b0f6-4c2e-abc7-3e8ea0d5e484)
 
-
+  ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/0ace3eda-8c50-453b-92fb-db0e30200cf5)
   
   <summary>중고차 직거래_삭제</summary><br>
   
