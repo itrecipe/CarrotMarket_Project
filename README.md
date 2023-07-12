@@ -89,7 +89,12 @@
   <summary>중고차 직거래_상세보기</summary><br>
 
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/67d84119-9246-4d6f-b327-abf305f63231)
+  <summary>중고차 직거래_상세보기(2)</summary><br>
+  
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/6da0c9ce-45bb-416a-a7a5-6b5446fc0e05)
+  
+  <summary>중고차 직거래_상세보기(3)</summary><br>
+  
   ![image](https://github.com/itrecipe/carrotmarket_project/assets/40875025/ed88f0c5-8859-4eff-bf58-74b2d3f9b5e0)
   
 
