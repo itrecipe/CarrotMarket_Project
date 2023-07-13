@@ -22,7 +22,7 @@
 
 ## Development Environment & Libraly
 <details>
-  <summary>프로젝트에 적용한 기술 목록</summary>
+  <summary>프로젝트에 적용한 Skill Set & 개발 도구 목록</summary>
   
 - **BE : Java(jdk15.0.2 version), SpringFramework(5.3.26 version) - Spring Legacy Project, Mybatis**
 - **FE : HTML5, CSS3, JSP(Servlet), J-Query(A-Jax), JavaScript, BootStrap4**
