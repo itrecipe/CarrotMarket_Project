@@ -135,12 +135,16 @@ public class CarController {
 	public ResponseEntity<byte[]> getImage(@PathVariable("cno") Long cno) {
 		
 		CarAttachVO attach = service.getImage(cno);
+		//service.getImage(cno): service 객체를 통해 getImage 메서드를 호출하여 cno 값을 이용해 CarAttachVO 객체를 가져오기.
 		
 		// 실제 이미지 데이터를 바이트 배열로 보냄(외부 경로에 있는 파일에는 직접 접근이 불가능해서 바이트 배열로 데이터를 보냄)
 		// fileName은 전체 경로 보냄(YYYY/MM/DD/S_UUID/이름
 		log.info("fileName: " + attach);
+		//attach 객체의 정보를 로그로 출력.
 
 		File file = new File("c:/upload/" + attach.getUploadPath() + "\\s_" + attach.getUuid()+"_" + attach.getFileName());
+		//attach 객체에서 파일의 업로드 경로, UUID, 파일 이름을 가져와서 해당 파일의 경로를 생성합니다.
+		
 		log.info("file: " + file);
 
 		ResponseEntity<byte[]> result = null;
@@ -153,13 +157,22 @@ public class CarController {
 
 			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
 			// file객체를 byte배열로 변환하여 JSON으로 반환
-
+			
+	
+			
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
 		return result;
 	}
+
+	/*
+	HttpHeaders 객체를 생성하고, Content-Type 헤더에 파일의 MIME 타입을 설정한다..
+	FileCopyUtils.copyToByteArray(file)를 사용하여 파일을 바이트 배열로 읽어온다.
+	ResponseEntity 객체를 생성하여 응답 상태 코드를 HttpStatus.OK로 설정하고, 파일의 바이트 배열과 함께 헤더 정보를 포함시킨다.
+	result를 반환하여 클라이언트에게 JSON 형식으로 응답합니다.
+	*/
 	
 	/*
 	이 코드는 /display/{cno} 경로로 GET 요청이 들어왔을 때 이미지 파일을 서버에서 읽어와 클라이언트에게 전송하는 기능을 구현한 핸들러 메서드입니다.
