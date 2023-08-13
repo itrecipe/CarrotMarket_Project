@@ -133,7 +133,8 @@
             </svg>
 
             <div class="card-body">
-              <p class="card-text">${car.title}</p>
+              <p class="card-text">작성자 : ${car.writer}</p>
+              <p class="card-text">제목 : ${car.title}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
@@ -258,7 +259,7 @@ $(document).ready(function(){
 	
 	$(".move").on("click", function(e){
 		e.preventDefault();
-		actionForm.append("<input type='hidden' name='cno' value='" 
+		actionForm.append("<input type='hidden' name='cno' value='"
 				+ $(this).attr("href") + "'>");
 		//메서드에 의해 구해지는 값이므로 +로 연결을 해준다. 뒤에는 변수 선언시가 아닌 표시를 의미하므로 보이는 대로 표시한다.
 		actionForm.attr("action", "get_car");

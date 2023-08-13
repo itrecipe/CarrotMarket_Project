@@ -58,7 +58,7 @@
 					<h3 class="text-center multiEffect text-success">게시글 (매물) 등록</h3>
 		
 				<form action="register_car" method="post" id="freg" name="freg" role="form" enctype="multipart/form-data">
-					
+										
 					<div class="form-group">
 						<label for="writer">작성자 : </label>
 						<input type="text" class="form-control" id="writer" name="writer" placeholder="Writer" required="required">
