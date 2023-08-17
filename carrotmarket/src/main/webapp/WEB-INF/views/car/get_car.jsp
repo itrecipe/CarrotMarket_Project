@@ -193,7 +193,7 @@
 </div>
 
 <!-- 카카오맵 api 사용 -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=?"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=비밀"></script>
 
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -629,7 +629,7 @@ function showImage(fileCallPath) {
 		     		  modal.modal("hide");
 		     		  return;
 		     		  
-		     	  }
+		     	  }8
 		    	
 		     	  originalReplyer = replyerS;
 		     	

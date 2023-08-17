@@ -22,13 +22,16 @@
 -->
 <select id="getListWithPaging" resultType="org.ezen.ex02.domain.CarVO">
 	<![CDATA[
-		select cno, title, content, writer, regdate, updatedate
+		select
+			cno, title, content, writer, regdate, updatedate
 		from
 		(
-			select /* +INDEX_DESC(carrot_car pk_carrot_car) */
-			rownum cno, title, content, writer, regdate, updatedate
-			from carrot_car
-			where rownum <= #{pageNum} * #{amount}
+			select /* +INDEX_DESC(carrot_car pk_car_seq) */
+				rownum cno, title, content, writer, regdate, updatedate
+			from 
+				carrot_car 
+			where 
+				rownum <= #{pageNum} * #{amount}
 		)
 		where cno > (#{pageNum} -1) * #{amount}
 	]]>

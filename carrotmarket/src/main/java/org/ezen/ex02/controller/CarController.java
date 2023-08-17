@@ -157,9 +157,7 @@ public class CarController {
 
 			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
 			// file객체를 byte배열로 변환하여 JSON으로 반환
-			
-	
-			
+						
 		} catch (IOException e) {
 
 			e.printStackTrace();

@@ -43,6 +43,5 @@ public interface CarMapper {
 	public int getTotalCount(CarCriteria cri);
 	
 	//게시판 댓글 숫자 업데이트 메서드
-	public void updateReplyCnt(@Param("cno") Long cno, @Param("amount") int amount);
-	
+	public void updateReplyCnt(@Param("cno") Long cno, @Param("amount") int amount);	
 }
