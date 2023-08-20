@@ -23,11 +23,11 @@
 <select id="getListWithPaging" resultType="org.ezen.ex02.domain.CarVO" parameterType="org.ezen.ex02.domain.CarCriteria">
 	<![CDATA[
 		select
-			cno, title, content, writer, regdate, updatedate
+			cno, title, writer, content, regdate, updatedate
 		from
 		(
-			select /* +INDEX_DESC(carrot_car pk_car_seq) */
-				rownum cno, title, content, writer, regdate, updatedate
+			select /* +INDEX_ASC(carrot_car pk_carrot_car) */
+				rownum cno, title, writer, content, regdate, updatedate
 			from 
 				carrot_car 
 			where 
