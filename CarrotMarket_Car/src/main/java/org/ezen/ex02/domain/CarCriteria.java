@@ -18,7 +18,7 @@ public class CarCriteria {
 	
 	//페이징 처리
 	public CarCriteria() {
-		this(1, 12);
+		this(1, 9);
 	}
 	
 	//페이징 처리

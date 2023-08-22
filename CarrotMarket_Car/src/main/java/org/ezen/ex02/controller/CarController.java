@@ -161,7 +161,8 @@ public class CarController {
 		return result;
 	}
 	
-	//첨부파일을 삭제하는 메서드
+	//첨부파일을 삭제하는 메서드 (리스트에서 게시물 삭제시 더미 데이터가 남아 버리는 현상 발생)
+	/*
 	private void deleteFiles(List<CarAttachVO> attachList) {
 		
 		if(attachList == null || attachList.size() == 0) {
@@ -179,7 +180,7 @@ public class CarController {
 				
 				if(Files.probeContentType(file).startsWith("image")) {
 					
-					Path thumbNail = Paths.get("c:/uplaod/" + attach.getUploadPath() + "/s_" + attach.getUuid() + "_"
+					Path thumbNail = Paths.get("C:/upload/" + attach.getUploadPath() + "/s_" + attach.getUuid() + "_"
 							+ attach.getFileName());
 					
 					Files.delete(thumbNail);
@@ -189,5 +190,43 @@ public class CarController {
 				log.error("delete file error" + e.getMessage());
 			}
 		});
+	}
+	*/
+
+	//첨부파일을 삭제하는 메서드
+	private void deleteFiles(List<CarAttachVO> attachList) {
+
+	    if (attachList == null || attachList.isEmpty()) {
+	        return;  // 첨부 파일 리스트가 비어있거나 null인 경우 처리 종료
+	    }
+
+	    log.info("delete attach files...");
+	    log.info(attachList);
+
+	    attachList.forEach(attach -> {
+	        try {
+	            Path filePath = Paths.get("c:/upload/" + attach.getUploadPath() + "/" + attach.getUuid() + "_" + attach.getFileName());
+
+	            if (Files.exists(filePath)) {
+	                // 파일이 존재하는 경우에만 삭제 수행
+	                Files.delete(filePath);  // 파일 삭제
+	                log.info("Deleted file: " + filePath);
+
+	                if (Files.probeContentType(filePath).startsWith("image")) {
+	                    // 이미지 파일인 경우 썸네일 파일 삭제 수행
+	                    Path thumbnailPath = Paths.get("C:/upload/" + attach.getUploadPath() + "/s_" + attach.getUuid() + "_" + attach.getFileName());
+	                    if (Files.exists(thumbnailPath)) {
+	                        // 썸네일 파일이 존재하는 경우에만 삭제 수행
+	                        Files.delete(thumbnailPath);  // 썸네일 파일 삭제
+	                        log.info("Deleted thumbnail: " + thumbnailPath);
+	                    }
+	                }
+	            } else {
+	                log.warn("File not found: " + filePath);
+	            }
+	        } catch (Exception e) {
+	            log.error("Error deleting file: " + e.getMessage());
+	        }
+	    });
 	}
 }

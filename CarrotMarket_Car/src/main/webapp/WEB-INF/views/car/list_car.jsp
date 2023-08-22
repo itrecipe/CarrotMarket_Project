@@ -133,7 +133,9 @@
             </svg>
 
             <div class="card-body">
-              <p class="card-text">${car.title}</p>
+              <p class="card-text">글 번호 : ${car.cno}</p>
+              <p class="card-text">작성자 : ${car.writer}</p>
+              <p class="card-text">제목 : ${car.title}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 

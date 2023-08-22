@@ -71,7 +71,7 @@
   				 	
   				 	<div class="form-group">
   				 		<label for="writer">작성자 : </label>
-  				 		<input type="text" class="form-control" id="writer" name="writer" readonly
+  				 		<input type="text" class="form-control" id="writer" name="writer" required="required"
   				 			value='<c:out value="${car.writer}"/>' />
   				 	</div>
 
@@ -153,7 +153,6 @@
   				 		<input type="text" class="form-control" id="updateDate" name="updateDate" readonly
   				 			value='<fmt:formatDate pattern="yyyy/MM/dd" value="${car.updateDate}"/>' />
   				 	</div>
-  				
   				</form>
   				
   				<button type="button" data-oper='modify_car' class="btn btn-info">수정</button>&nbsp;&nbsp;

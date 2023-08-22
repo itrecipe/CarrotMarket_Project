@@ -1,8 +1,4 @@
---테이블 및 제약조건 완전삭제
-drop table carrot_member CASCADE CONSTRAINTS;
-
---시퀀스 삭제
-drop sequence carr_mem_id_seq;
+--중고차 직거래 파트 개인 작업용 쿼리
 
 --carrot_member 테이블 생성
 create table carrot_member(
@@ -24,55 +20,12 @@ insert into carrot_member values(1,'admin','1234','관리자','master','서울','admi
 
 select * from carrot_member;
 
+drop table carrot_member;
+drop sequence carr_mem_id_seq;
+
 --테이블 데이터 삭제 쿼리
 delete from carrot_member
 where carrot_member.id = '21';
-
---게시글 테이블
-drop table carrot_articles CASCADE CONSTRAINTS;
-
-drop sequence carr_art_id_seq;
-
-create table carrot_articles(
-ID NUMBER(10,0) constraint carr_art_id_pk primary key,
-MEMBERNO NUMBER(10,0) NOT NULL, 
-TITLE VARCHAR2(50 BYTE) NOT NULL, 
-BODY VARCHAR2(2000 BYTE) NOT NULL, 
-COST NUMBER(10,0), 
-COSTOFFER CHAR(1 BYTE) DEFAULT 0, 
-REGDATE DATE DEFAULT sysdate, 
-UPDATEDATE DATE DEFAULT sysdate,
-LNG VARCHAR2(25 BYTE),
-LAT VARCHAR2(25 BYTE),
-LOCATIONINFO VARCHAR2(1000 BYTE), 
-SEIL NUMBER(1,0) DEFAULT 0, 
-HITCOUNT NUMBER(10,0) DEFAULT 0, 
-THUMBNAILPATH VARCHAR2(100 BYTE),
-CONSTRAINT CARR_ART_MEM_FK foreign key(MEMBERNO) references carrot_member (id)
-);
-
-create sequence carr_art_id_seq;
-
-select * from carrot_articles;
-
---이미지 테이블
-drop table carrot_img;
-
-drop sequence carr_img_id_seq;
-
-CREATE TABLE CARROT_IMG (	
-ID NUMBER(10,0) CONSTRAINT CARR_IMG_ID_PK PRIMARY KEY, 
-ARTICLENO NUMBER(10,0) NOT NULL, 
-FILEPATH VARCHAR2(200 BYTE) NOT NULL, 
-FILENAME VARCHAR2(100 BYTE) NOT NULL,
-CONSTRAINT CARR_IMG_ART_FK FOREIGN KEY (ARTICLENO)REFERENCES CARROT_ARTICLES (ID)
-);
-
-create sequence carr_img_id_seq;
-
-select c.*, m.nickname, m.address from carrot_articles c left outer join carrot_member m on(c.memberno = m.id);
-
-select * from carrot_img;
 
 --중고차 직거래 테이블 생성
 create table carrot_car(
@@ -94,7 +47,7 @@ kilos varchar2(50) not null,
 mission varchar2(50) not null
 );
 
---시퀀스 생성
+--car_seq 시퀀스 생성
 create sequence car_seq;
 
 --carrot_member테이블의 ID를 참조 하기 위한 외래키 잡기
@@ -107,18 +60,18 @@ drop sequence car_seq;
 
 select * from carrot_car where cno > 0 order by cno desc;
 
-delete carrot_car where cno = 1;
+delete carrot_car where cno = 5;
 
 --select문 뒤에 hint를 붙여서 데이터 검색하기
 select /*+ INDEX_ASC(carrot_car pk_carrot_car) */
-rownum cno, title, content, writer, regdate, updatedate
+rownum cno, title, writer, content, regdate, updatedate
 from carrot_car order by cno;
 
 --test - dummy data 삽입
 insert into carrot_car(cno,writer,title,content,carname,cartype,caryear,carprice,cardate,fuel,disp,kilos,mission)
 values(car_seq.nextval,'국쌤','코란도 팝니다.','23년식 코란도 팔아요','코란도','suv','2023.05.22','1000000','23.05.22','디젤','2000CC','200,000km','오토매틱');
 
---carrot_attach(첨부파일) 테이블 생성
+--carrot_attach(중고차 직거래 파트(carrot_car) - 첨부파일) 테이블 생성
 create table carrot_attach(
 uuid varchar2(200) not null,
 uploadPath varchar2(200) not null,
@@ -134,7 +87,9 @@ alter table carrot_attach add constraint pk_carrot_attach primary key(uuid);
 alter table carrot_attach add constraint fk_carrot_attach foreign key(cno) references carrot_car(cno);
 
 select * from carrot_attach;
+
 select * from carrot_car order by  cno;
+
 drop table carrot_attach;
 
 desc carrot_attach;
@@ -143,7 +98,49 @@ select * from carrot_attach;
 
 select count(cno) from carrot_car;
 
---이미지를 한개씩 가져올때 쓰려고 만든 쿼리
+--이미지를 한개씩 가져올때 사용하려고 만든 쿼리
 select * from carrot_attach where cno = 57 and rownum <= 1;
+
+--carrot_reply (중고차 직거래 파트(carrot_car) - 댓글) 테이블 생성
+create table carrot_reply(
+rno number(10,0) not null, --pk
+cno number(10,0) not null, --fk
+reply varchar2(2000) not null,
+replyer varchar2(100) not null,
+replydate date default sysdate,
+updateDate date default sysdate
+);
+
+--seq_reply_car 시퀀스 생성
+create sequence seq_reply_car nocache;
+
+--carrot_reply 테이블에 pk를 걸기 위해 수정
+alter table carrot_reply add constraint pk_reply_car primary key(rno);
+
+--carrot_reply 테이블에 fk를 걸기 위해 수정
+alter table carrot_reply add constraint fk_reply_car foreign key(cno) references carrot_car(cno); 
+
+--댓글 dummy data - insert_test
+insert into carrot_reply(rno, cno, reply, replyer) values(seq_reply_car.nextval, 1, '댓글 테스트', '작성자');
+
+drop table carrot_reply;
+drop sequence seq_reply_car;
+
+select * from carrot_reply;
+
+--댓글 update_test
+update carrot_reply 
+set reply = '작성자1',
+updateDate = sysdate
+where rno = 1;
+
+--carrot_car 테이블 댓글 - 트랜잭션 설정
+alter table carrot_car add (replycnt number default 0);
+
+--carrot_reply 트랜잭션 설정 후 업데이트 쿼리
+update carrot_car set replycnt = (select count(rno) from carrot_reply
+where carrot_reply.cno = carrot_reply.cno);
+
+select * from carrot_reply;
 
 commit;

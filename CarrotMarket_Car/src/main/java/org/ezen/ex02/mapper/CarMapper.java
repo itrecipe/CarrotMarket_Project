@@ -12,6 +12,9 @@ public interface CarMapper {
 	
 	//페이징 관련 메서드, Criteria객체를 파라미터로 갖는 메서드
 	public List<CarVO> getListWithPaging(CarCriteria cri);
+
+	//새로 바꾼 페이징 처리
+	//public List<CarVO> getListWithPaging(int offset, int amount);
 	
 	//C
 	public void insert(CarVO car);

@@ -66,12 +66,6 @@
 		)
 	</insert>
 	
-	
-	  
-
-	
-	
-	
 	<update id="modifyMember">
 		update carrot_member
 		set usernickname = #{usernickname}

@@ -39,24 +39,24 @@
 					<!-- The slideshow -->
 					<div class="carousel-inner ">
 						<div class="carousel-item active">
-							<img src="../images/bmw520d.jpg" alt="Los Angeles" class="d-block mx-auto">
+							<img src="../images/펠리세이드.jpg" alt="Los Angeles" class="d-block mx-auto">
 							<div class="carousel-caption">
 								<h1>최근 인기 매물 TOP-1</h1>
-								<p>BMW - 520d</p>
+								<p>르노 코리아 - QM6</p>
 							</div>
 						</div>
 						<div class="carousel-item">
 							<img src="../images/펠리세이드.jpg" alt="Chicago" class="d-block mx-auto ">
 							<div class="carousel-caption">
 								<h1>최근 인기 매물 TOP-2</h1>
-								<p>현대 - 펠리세이드</p>
+								<p>볼보 - XC90</p>
 							</div>
 						</div>
 						<div class="carousel-item">
-							<img src="../images/그랜저.jpg" alt="New York" class="d-block mx-auto ">
+							<img src="../images/펠리세이드.jpg" alt="New York" class="d-block mx-auto ">
 							<div class="carousel-caption">
 								<h1>최근 인기 매물 TOP-3</h1>
-								<p>현대 - 그랜저</p>
+								<p>기아 - 스포티지</p>
 							</div>
 						</div>
 					</div>
@@ -133,7 +133,9 @@
             </svg>
 
             <div class="card-body">
+              <p class="card-text">글 번호 : ${car.cno}</p>
               <p class="card-text">작성자 : ${car.writer}</p>
+              <p class="card-text">제목 : ${car.title}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
@@ -258,7 +260,7 @@ $(document).ready(function(){
 	
 	$(".move").on("click", function(e){
 		e.preventDefault();
-		actionForm.append("<input type='hidden' name='cno' value='"
+		actionForm.append("<input type='hidden' name='cno' value='" 
 				+ $(this).attr("href") + "'>");
 		//메서드에 의해 구해지는 값이므로 +로 연결을 해준다. 뒤에는 변수 선언시가 아닌 표시를 의미하므로 보이는 대로 표시한다.
 		actionForm.attr("action", "get_car");

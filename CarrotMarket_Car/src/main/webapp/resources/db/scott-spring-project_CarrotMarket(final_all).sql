@@ -1,4 +1,7 @@
---ë©¤ë²„ í…Œì´ë¸”
+--CarrotMarket Äõ¸®(ÅëÇÕº»)
+
+--¸â¹ö Å×ÀÌºí
+
 drop table carrot_member CASCADE CONSTRAINTS;
 drop sequence carr_mem_id_seq;
 
@@ -12,7 +15,7 @@ useraddress varchar2(40) not null,
 useremail varchar2(60),
 usergender char(1),
 
---ì•„ë˜ ìƒˆë¡­ê²Œ ì¶”ê°€í•œ ê²ƒ
+--¾Æ·¡ »õ·Ó°Ô Ãß°¡ÇÑ °Í
 isbusiness char(1) not null,
 category varchar2(100),
 uuid varchar2(200),
@@ -23,12 +26,16 @@ filePath varchar2(200)
 
 create sequence carr_mem_id_seq;
 
-<<<<<<< Updated upstream
+select * from carrot_car;
 
-=======
->>>>>>> Stashed changes
---ì¤‘ê³ ê±°ë˜ ê²Œì‹œê¸€
+select * from member;
+
+drop table carrot_member;
+drop sequence carr_mem_id_seq;
+
+--Áß°í°Å·¡ °Ô½Ã±Û
 drop table carrot_secondhand_articles CASCADE CONSTRAINTS;
+drop table carrot_articles cascade constraints;
 drop sequence carr_art_id_seq;
 
 create table carrot_secondhand_articles(
@@ -50,12 +57,12 @@ likecount number(10,0) default 0,
 CONSTRAINT CARR_ART_MEM_FK foreign key(MEMBERNO) references carrot_member (id)
 );
 
---å¯ƒëš¯ë–†æ¹²? ?ë–†???ë’ª
+--ê²Œì‹œê¸? ?‹œ???Š¤
 create sequence carr_art_id_seq;
---å¯ƒëš¯ë–†æ¹²? ?ì”¤?ëœ³?ë’ª
+--ê²Œì‹œê¸? ?¸?±?Š¤
 create index carr_sec_art_ind on carrot_secondhand_articles(updatedate desc);
 
---?ì” èª˜ëª„?
+--?´ë¯¸ì?
 drop table CARROT_secondhand_IMG; 
 
 CREATE TABLE CARROT_secondhand_IMG (	
@@ -65,7 +72,7 @@ FILENAME VARCHAR2(200 BYTE) CONSTRAINT CARR_IMG_FILE_PK PRIMARY KEY,
 CONSTRAINT CARR_IMG_ART_FK FOREIGN KEY (ARTICLENO)REFERENCES carrot_secondhand_articles (ID)
 );
  
--- ì¤‘ê³ ê±°ë˜ ê´€ì‹¬ê¸€
+-- Áß°í°Å·¡ °ü½É±Û
 drop table carrot_secondhand_article_like;
 
 create table carrot_secondhand_article_like(
@@ -79,10 +86,7 @@ constraint carr_like_member_fk foreign key (memberno) REFERENCES carrot_member (
 drop sequence carr_like_seq;
 create sequence carr_like_seq;
 
-
-
-
--- ì±„íŒ…ë°© db
+-- Ã¤ÆÃ¹æ db
 drop table carrot_chatroom CASCADE CONSTRAINTS;
 
 create table carrot_chatroom(
@@ -95,9 +99,10 @@ CONSTRAINT CARR_chat_tu_FK FOREIGN KEY (targetuser) REFERENCES CARROT_member (id
 CONSTRAINT CARR_chat_an_FK FOREIGN KEY (articleno) REFERENCES carrot_secondhand_articles (id)
 );
 drop sequence carr_chat_id_seq;
+
 create sequence carr_chat_id_seq;
 
---ì±„íŒ… ë©”ì„¸ì§€ db
+--Ã¤ÆÃ ¸Ş¼¼Áö db
 drop table carrot_chat;
 
 create table carrot_chat(
@@ -108,15 +113,15 @@ regdate varchar2(25) not null,
 CONSTRAINT CARR_chat_id_FK FOREIGN KEY (roomid) REFERENCES carrot_chatroom (roomid)
 );
 
---ë¶€ë™ì‚°
+--ºÎµ¿»ê
 create sequence carr_realestate_seq;
 
 create table carrot_realestate (
 bno number(10,0),
-title varchar2(200) not null, /*ì œëª©*/
-town varchar2(200), /*ì§€ì—­*/ 
-writer varchar2(50) not null, /*íŒë§¤ì  | ë¼ë””ì˜¤*/
-roomType varchar2(50), /*ë£¸ê°œìˆ˜ | ì…€ë ‰íŠ¸*/
+title varchar2(200) not null, /*Á¦¸ñ*/
+town varchar2(200), /*Áö¿ª*/ 
+writer varchar2(50) not null, /*ÆÇ¸ÅÀÚ  | ¶óµğ¿À*/
+roomType varchar2(50), /*·ë°³¼ö | ¼¿·ºÆ®*/
 
 regdate date default sysdate,  
 updatedate date default sysdate
@@ -125,7 +130,7 @@ updatedate date default sysdate
 alter table carrot_realestate add constraint pk_carrot primary key(bno);
 
 
-/*ì²¨ë¶€íŒŒì¼*/
+/*Ã·ºÎÆÄÀÏ*/
 create table carrot_re_attach(
 uuid varchar2(100) not null,
 uploadPath varchar2(200) not null,
@@ -138,8 +143,8 @@ alter table carrot_re_attach add constraint carrot_re_pk_attach primary key (uui
 
 alter table carrot_re_attach add constraint carrot_re_fk_board_attach foreign key (bno) references carrot_realestate(bno);
 
---ë¶€ë™ì‚°
---ì¤‘ê³ ì°¨ ì§ê±°ë˜ í…Œì´ë¸” ìƒì„±
+--ºÎµ¿»ê
+--Áß°íÂ÷ Á÷°Å·¡ Å×ÀÌºí »ı¼º
 create table carrot_car(
 id number(10,0),  
 cno number(10,0) constraint pk_carrot_car primary key,
@@ -159,13 +164,13 @@ kilos varchar2(50) not null,
 mission varchar2(50) not null
 );
 
---car_seq ì‹œí€€ìŠ¤ ìƒì„±
+--car_seq ½ÃÄö½º »ı¼º
 create sequence car_seq;
 
---carrot_memberí…Œì´ë¸”ì˜ IDë¥¼ ì°¸ì¡° í•˜ê¸° ìœ„í•œ ì™¸ë˜í‚¤ ì¡ê¸°
+--carrot_memberÅ×ÀÌºíÀÇ ID¸¦ ÂüÁ¶ ÇÏ±â À§ÇÑ ¿Ü·¡Å° Àâ±â
 alter table carrot_car add constraint fk_carrot_car_id foreign key (id) references carrot_member(id);
 
---carrot_attach(ì¤‘ê³ ì°¨ ì§ê±°ë˜ íŒŒíŠ¸(carrot_car) - ì²¨ë¶€íŒŒì¼) í…Œì´ë¸” ìƒì„±
+--carrot_attach(Áß°íÂ÷ Á÷°Å·¡ ÆÄÆ®(carrot_car) - Ã·ºÎÆÄÀÏ) Å×ÀÌºí »ı¼º
 create table carrot_attach(
 uuid varchar2(200) not null,
 uploadPath varchar2(200) not null,
@@ -174,16 +179,16 @@ filetype char(1) default '1',
 cno number(10,0)
 );
 
---pk_carrot_attach, ê¸°ë³¸í‚¤ ì¡ê¸°
+select * from carrot_attach;
+
+--pk_carrot_attach, ±âº»Å° Àâ±â
 alter table carrot_attach add constraint pk_carrot_attach primary key(uuid);
 
---fk_car_attach, ì™¸ë˜í‚¤ ì¡ê¸°
+--fk_car_attach, ¿Ü·¡Å° Àâ±â
 alter table carrot_attach add constraint fk_carrot_attach foreign key(cno) references carrot_car(cno);
 
-
-
 drop table carrot_stores CASCADE CONSTRAINTS;
----ìŠ¤í† ì–´ í…Œì´ë¸”
+---½ºÅä¾î Å×ÀÌºí
 create table CARROT_STORES(
   bno number(10,0),
   notice varchar2(200),
@@ -196,13 +201,13 @@ create table CARROT_STORES(
   storeName varchar2(200)
 );
 
---1ì”© ìë™ ì¦ê°€ ì‹œí€€ìŠ¤
+--1¾¿ ÀÚµ¿ Áõ°¡ ½ÃÄö½º
 CREATE SEQUENCE seq_carrot_stores START WITH 1 INCREMENT BY 1;
 
---bno PKë§Œë“¤ê¸°
+--bno PK¸¸µé±â
 alter table carrot_stores add constraint pk_carrot_stores primary key (bno);
 
---ìŠ¤í† ì–´ ì´ë¯¸ì§€ í…Œì´ë¸”
+--½ºÅä¾î ÀÌ¹ÌÁö Å×ÀÌºí
 create table CARROT_STORES_IMAGES (
   bno number(10,0),
   uuid varchar2(200) not null,
@@ -211,8 +216,10 @@ create table CARROT_STORES_IMAGES (
   filetype char(1) default 'I'
 );
 
---UUID PKë§Œë“¤ê¸°
+--UUID PK¸¸µé±â
 alter table CARROT_STORES_IMAGES add constraint PK_CARROT_STORES_IMAGES primary key (uuid);
 
---ìŠ¤í† ì–´ (ê²Œì‹œíŒ) FKí‚¤ ë§Œë“¤ê¸°
+--½ºÅä¾î (°Ô½ÃÆÇ) FKÅ° ¸¸µé±â
 alter table CARROT_STORES_IMAGES add constraint FK_CARROT_STORES_IMAGES foreign key (bno) references CARROT_STORES(bno);
+
+commit;

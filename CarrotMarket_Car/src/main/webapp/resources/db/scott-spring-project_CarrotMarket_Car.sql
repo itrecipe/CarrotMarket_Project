@@ -1,5 +1,3 @@
-<내 파트>
-
 --중고차 직거래 파트 개인 작업용 쿼리
 
 --carrot_member 테이블 생성
@@ -8,7 +6,7 @@ id number(10) constraint carr_mem_id_pk primary key,
 userid varchar2(20) not null,
 userpwd varchar2(60) not null,
 username varchar2(10) not null,
-usernickname varchar2(20) noat null,
+usernickname varchar2(20) not null,
 useraddress varchar2(40) not null,
 useremail varchar2(60),
 usergender char(1)
@@ -21,6 +19,9 @@ create sequence carr_mem_id_seq;
 insert into carrot_member values(1,'admin','1234','관리자','master','서울','admin@naver.com','1');
 
 select * from carrot_member;
+
+drop table carrot_member;
+drop sequence carr_mem_id_seq;
 
 --테이블 데이터 삭제 쿼리
 delete from carrot_member
@@ -59,11 +60,11 @@ drop sequence car_seq;
 
 select * from carrot_car where cno > 0 order by cno desc;
 
-delete carrot_car where cno = 1;
+delete carrot_car where cno = 5;
 
 --select문 뒤에 hint를 붙여서 데이터 검색하기
 select /*+ INDEX_ASC(carrot_car pk_carrot_car) */
-rownum cno, title, content, writer, regdate, updatedate
+rownum cno, title, writer, content, regdate, updatedate
 from carrot_car order by cno;
 
 --test - dummy data 삽입
@@ -133,36 +134,13 @@ set reply = '작성자1',
 updateDate = sysdate
 where rno = 1;
 
-===================================================================================
+--carrot_car 테이블 댓글 - 트랜잭션 설정
+alter table carrot_car add (replycnt number default 0);
 
-<공통 파트>
+--carrot_reply 트랜잭션 설정 후 업데이트 쿼리
+update carrot_car set replycnt = (select count(rno) from carrot_reply
+where carrot_reply.cno = carrot_reply.cno);
 
---테이블 및 제약조건 완전삭제
-drop table carrot_member CASCADE CONSTRAINTS;
+select * from carrot_reply;
 
---시퀀스 삭제
-drop sequence carr_mem_id_seq;
-
---carrot_member 테이블 생성
-create table carrot_member(
-id number(10) constraint carr_mem_id_pk primary key,
-userid varchar2(20) not null,
-userpwd varchar2(60) not null,
-username varchar2(10) not null,
-usernickname varchar2(20) not null,
-useraddress varchar2(40) not null,
-useremail varchar2(60),
-usergender char(1)
-);
-
---carr_mem_id_seq 시퀀스 생성
-create sequence carr_mem_id_seq;
-
---dummy 데이터 삽입
-insert into carrot_member values(1,'admin','1234','관리자','master','서울','admin@naver.com','1');
-
-select * from carrot_member;
-
---테이블 데이터 삭제 쿼리
-delete from carrot_member
-where carrot_member.id = '21';
+commit;

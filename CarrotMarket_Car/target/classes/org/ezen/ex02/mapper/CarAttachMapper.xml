@@ -5,8 +5,8 @@
 
 <!-- java의 boolean인 fileType은 문자 '0'이나 '1'로 처리(true는 '1') -->
 <insert id="insert">
-	insert into carrot_attach(uuid,uploadpath,filename,filetype,cno)
-	values(#{uuid},#{uploadPath},#{fileName},#{fileType},#{cno})
+	insert into carrot_attach(uuid, uploadpath, filename, filetype, cno)
+	values(#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{cno})
 </insert>
 
 <!-- uuid가 pk인 첨부 파일 하나를 지우기 -->

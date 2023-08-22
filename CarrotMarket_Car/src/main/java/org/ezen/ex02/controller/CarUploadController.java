@@ -48,7 +48,7 @@ public class CarUploadController {
 
 		log.info("PostMapping uploadFormAction");
 		
-		String uploadFolder = "c:/upload";
+		String uploadFolder = "C:/upload";
 		
 		for(MultipartFile multipartFile : uploadFile) {
 			log.info("----------------------------");
@@ -251,7 +251,7 @@ public class CarUploadController {
 		File file = null;
 		
 		try {
-			file = new File("c:/upload/" + URLDecoder.decode(fileName, "UTF-8"));
+			file = new File("C:/upload/" + URLDecoder.decode(fileName, "UTF-8"));
 			// file = new File("c:/upload/" + fileName);
 			
 			file.delete(); //섬네일 또는 일반 파일을 지운다.
@@ -262,7 +262,7 @@ public class CarUploadController {
 			log.info("largeFileName" + largeFileName);
 			
 			file = new File(largeFileName);
-			
+		
 			file.delete(); //원본 파일 삭제
 			}
 
