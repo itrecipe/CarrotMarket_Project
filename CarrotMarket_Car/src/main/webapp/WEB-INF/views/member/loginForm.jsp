@@ -18,10 +18,10 @@
 			
 			<div style="color : red; font-size : 1.5rem">${message}</div>
 			
-			<div class="form-check mb-3 mt-3" style="margin-left : 9px;">
+			<div class="form-check mb-5 mt-5" style="margin-left : -5px;">
 				<div>
-					<input class="form-check-input" name="rememberMe" type="checkbox" id="rememberMe" style="padding : 7px;">
-					<label class="form-check-label ms-1" for="rememberMe"> 로그인 유지</label>
+					<input class="form-check-input" name="rememberMe" type="checkbox" id="rememberMe" style="padding : 10px;">
+					<label class="form-check-label ms-1" for="rememberMe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 로그인 유지</label>
 				</div>
 			</div>
 			<div>
