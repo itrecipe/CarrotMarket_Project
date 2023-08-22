@@ -1,4 +1,4 @@
-# Spring Final Project - CarrotMarket
+# Spring Final Project Name : CarrotMarket_Car
 
 ## 주제 : 당근마켓 웹 클론코딩(Back-End) 팀 프로젝트 - 중고차 직거래 파트 구현
 <details>
