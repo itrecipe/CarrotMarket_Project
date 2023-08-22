@@ -77,7 +77,7 @@ public class MemberController {
 		}
 		System.out.println(rememberMe);
 		
-		if (rememberMe == true) { // 로그인 유지에 체크 했을 떄
+		if (rememberMe == true) { // 로그인 유지에 체크 했을 때
 			// 쿠키등록하기
 			Cookie cookie = new Cookie("userId", memberVO.getUserid());
 			cookie.setMaxAge(60 * 60 * 24 * 7); // 쿠키 수명 설정 초단위

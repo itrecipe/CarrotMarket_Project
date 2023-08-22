@@ -3,7 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>    
 
-<div id="footer-root">
+
+
+<div id="footer-root" style="padding-top: 30px;">
 	<div class="light-theme">
 		<footer class="_1trxeqs0">
 			<div class="_1trxeqs1 _1y9kelh2">
@@ -71,9 +73,12 @@
 						<ul class="_1trxeqsa">
 							<li class="_1trxeqsp"><a href="https://business.daangn.com"
 								target="_blank" class="undefined _1trxeqso">당근비즈니스</a></li>
+							<!--  
 							<li class="_1trxeqsp"><a
 								href="https://chat.daangn.com/onboarding" target="_blank"
 								class="undefined _1trxeqso">채팅하기</a></li>
+							-->
+							
 						</ul>
 						<ul class="_1trxeqsa">
 							<li class="_1trxeqsp"><a
@@ -91,41 +96,41 @@
 					<section>
 						<section class="_1trxeqsb">
 							<div class="_1s38h9c0">
-								<span><b>대표</b> <!-- -->김용현, 황도연</span><span class="_1trxeqsc"><svg
+								<span><b>대표 : </b> <!-- -->이양, 도양</span><span class="_1trxeqsc"><svg
 										width="2" height="10" viewBox="0 0 2 10" fill="none"
 										xmlns="http://www.w3.org/2000/svg">
 										<rect opacity="0.5" x="0.535767" width="1.03646" height="10"
-											fill="#868B94"></rect></svg></span><span><b>사업자번호</b> <!-- -->375-87-00088</span>
+											fill="#868B94"></rect></svg></span><span><b>사업자번호 : </b> <!-- -->123-45-6789</span>
 							</div>
 							<div>
-								<b>직업정보제공사업 신고번호</b>
+								<b>직업정보제공사업 신고번호 : </b>
 								<!-- -->
-								2016-서울서초-0051
+								12345678
 							</div>
 							<address class="_1trxeqsd">
 								<div>
-									<b>주소</b>
+									<b>주소 : </b>
 									<!-- -->
-									서울특별시 구로구 디지털로 30길 28, 609호 (당근서비스)
+									서울특별시 00구 00동
 								</div>
 								<div>
-									<span><b>전화</b> <!-- -->1544-9796</span><span class="_1trxeqsc"><svg
+									<span><b>전화 : </b> <!-- -->1234-5678</span><span class="_1trxeqsc"><svg
 											width="2" height="10" viewBox="0 0 2 10" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
 											<rect opacity="0.5" x="0.535767" width="1.03646" height="10"
-												fill="#868B94"></rect></svg></span><span><b>고객문의</b> <!-- -->cs@daangnservice.com</span>
+												fill="#868B94"></rect></svg></span><span><b>고객문의 : </b> <!-- -->master@dg.com</span>
 								</div>
 							</address>
 						</section>
 						<section class="_1trxeqsj">
 							<a href="mailto:contact@daangn.com" target="_blank"
-								class="_1trxeqsf _1trxeqso">제휴 문의</a><a
+								class="_1trxeqsf _1trxeqso">제휴 문의 : </a><a
 								href="mailto:ad@daangn.com" target="_blank"
-								class="_1trxeqsf _1trxeqso">광고 문의</a><a
+								class="_1trxeqsf _1trxeqso">광고 문의 : </a><a
 								href="mailto:pr@daangn.com" target="_blank"
-								class="_1trxeqsf _1trxeqso">PR 문의</a><a
+								class="_1trxeqsf _1trxeqso">PR 문의 : </a><a
 								href="mailto:ir@daangn.com" target="_blank"
-								class="_1trxeqsf _1trxeqso">IR 문의</a>
+								class="_1trxeqsf _1trxeqso">IR 문의 : </a>
 						</section>
 						<section class="_1trxeqse">
 							<div class="_1trxeqsf">
@@ -134,15 +139,15 @@
 							</div>
 							<div class="_1trxeqsf _1trxeqsg">
 								<a href="https://www.daangn.com/policy/privacy" target="_blank"
-									class="_1trxeqsf _1trxeqsg _1trxeqso">개인정보처리방침</a>
+									class="_1trxeqsf _1trxeqsg _1trxeqso">개인정보 처리 방침</a>
 							</div>
 							<div class="_1trxeqsf">
 								<a href="https://www.daangn.com/policy/location" target="_blank"
-									class="_1trxeqsf _1trxeqso">위치기반서비스 이용약관</a>
+									class="_1trxeqsf _1trxeqso">위치 기반 서비스 이용약관</a>
 							</div>
 							<div class="_1trxeqsf">
 								<a href="https://www.daangn.com/wv/faqs/3994" target="_blank"
-									class="_1trxeqsf _1trxeqso">이용자보호 비전과 계획</a>
+									class="_1trxeqsf _1trxeqso">이용자 보호 비전과 계획</a>
 							</div>
 						</section>
 					</section>
