@@ -29,9 +29,9 @@
 <details>
   <summary>프로젝트에 적용한 Skill Set & 개발 도구 목록</summary>
   
-- **BE : Java(JDK15.0.2 version), SpringFramework(5.3.26 version) - Spring Legacy Project, Mybatis**
-- **FE : HTML5, CSS3, JSP(Servlet), J-Query(A-Jax), JavaScript, BootStrap4**
-- **DB & Server(WEB, WAS) : Oracle (DB & SQL), Apache Tomcat 9.0**
+- **Back-End : Java(JDK15.0.2 version), SpringFramework(5.3.26 version) - Spring Legacy Project, Mybatis**
+- **Front-End : HTML5, CSS3, JSP(Servlet), J-Query(A-Jax), JavaScript, BootStrap4**
+- **DataBase & Server(WEB, WAS) : Oracle (DB & SQL), Apache Tomcat 9.0**
 - **Build & Tool(IDE) : Maven, STS(3.9.18 version), SQLDEVELOPER(Oracle11g)**
 
 </details>
