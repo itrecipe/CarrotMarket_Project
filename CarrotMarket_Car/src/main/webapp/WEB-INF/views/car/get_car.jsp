@@ -663,11 +663,7 @@ function showImage(fileCallPath) {
 	</script>
 
 <%@ include file="../include/footer.jspf" %>
-  
-  
-<%-- <%@ include file="../include/replyModal_car.jsp" %> --%>
-
-
+<%@ include file="../include/replyModal_car.jsp" %>
 <%@ include file="../include/imageModal_car.jsp" %>
 
 <!-- CarReply.js 외부 js 파일 import! -->

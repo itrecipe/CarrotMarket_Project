@@ -3,8 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>    
 
-
-
 <div id="footer-root" style="padding-top: 30px;">
 	<div class="light-theme">
 		<footer class="_1trxeqs0">
@@ -15,7 +13,7 @@
 						<div class="_1trxeqs7">
 							<a href="https://apps.apple.com/kr/app/%EB%8B%B9%EA%B7%BC%EB%A7%88%EC%BC%93-%EC%A4%91%EA%B3%A0%EA%B1%B0%EB%9E%98-%ED%95%84%EC%88%98%EC%95%B1/id1018769995"
 								target="_blank" class="_1trxeqs4 _1trxeqso">
-								<div class="_1trxeqs5">iOS</div>
+								<div class="_1trxeqs5">iO</div>
 								<span class="_1trxeqs6">
 									<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" data-karrot-ui-icon="true" width="16" height="16">
 										<path d="M19.0189 5.25376C18.9947 5.21362 18.9667 5.17515 18.9348 5.13887C18.9228 5.12522 18.9103 5.11198 18.8974 5.09918C18.7369 4.9395 18.5255 4.862 18.3155 4.86665L7.0002 4.86662C6.55837 4.86662 6.20019 5.22479 6.20019 5.66661C6.20019 6.10844 6.55836 6.46662 7.00019 6.46662L16.4018 6.46665L5.10101 17.7674C4.78859 18.0799 4.78859 18.5864 5.10101 18.8988C5.41343 19.2112 5.91996 19.2112 6.23238 18.8988L17.5336 7.59763V17C17.5336 17.4418 17.8917 17.8 18.3336 17.8C18.7754 17.8 19.1336 17.4418 19.1336 17V5.66665C19.1336 5.51558 19.0917 5.37429 19.0189 5.25376Z" fill="currentColor"></path>
@@ -32,7 +30,7 @@
 								</div></a><a
 								href="https://play.google.com/store/apps/details?id=com.towneers.www&amp;hl=ko"
 								target="_blank" class="_1trxeqs4 _1trxeqso"><div
-									class="_1trxeqs5">Android</div>
+									class="_1trxeqs5">And</div>
 								<span class="_1trxeqs6"><svg viewBox="0 0 24 24"
 										fill="none" xmlns="http://www.w3.org/2000/svg"
 										data-karrot-ui-icon="true" width="16" height="16">
@@ -73,12 +71,9 @@
 						<ul class="_1trxeqsa">
 							<li class="_1trxeqsp"><a href="https://business.daangn.com"
 								target="_blank" class="undefined _1trxeqso">당근비즈니스</a></li>
-							<!--  
 							<li class="_1trxeqsp"><a
 								href="https://chat.daangn.com/onboarding" target="_blank"
 								class="undefined _1trxeqso">채팅하기</a></li>
-							-->
-							
 						</ul>
 						<ul class="_1trxeqsa">
 							<li class="_1trxeqsp"><a
@@ -96,41 +91,41 @@
 					<section>
 						<section class="_1trxeqsb">
 							<div class="_1s38h9c0">
-								<span><b>대표 : </b> <!-- -->이양, 도양</span><span class="_1trxeqsc"><svg
+								<span><b>대표 : </b> <!-- -->김씨, 이씨</span><span class="_1trxeqsc"><svg
 										width="2" height="10" viewBox="0 0 2 10" fill="none"
 										xmlns="http://www.w3.org/2000/svg">
 										<rect opacity="0.5" x="0.535767" width="1.03646" height="10"
-											fill="#868B94"></rect></svg></span><span><b>사업자번호 : </b> <!-- -->123-45-6789</span>
+											fill="#868B94"></rect></svg></span><span><b>사업자번호</b> <!-- -->123-45-678910</span>
 							</div>
 							<div>
-								<b>직업정보제공사업 신고번호 : </b>
+								<b>?</b>
 								<!-- -->
-								12345678
+								2023-서울-0001
 							</div>
 							<address class="_1trxeqsd">
 								<div>
-									<b>주소 : </b>
+									<b>주소</b>
 									<!-- -->
-									서울특별시 00구 00동
+									서울특별시
 								</div>
 								<div>
-									<span><b>전화 : </b> <!-- -->1234-5678</span><span class="_1trxeqsc"><svg
+									<span><b>전화</b> <!-- -->1234-5678</span><span class="_1trxeqsc"><svg
 											width="2" height="10" viewBox="0 0 2 10" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
 											<rect opacity="0.5" x="0.535767" width="1.03646" height="10"
-												fill="#868B94"></rect></svg></span><span><b>고객문의 : </b> <!-- -->master@dg.com</span>
+												fill="#868B94"></rect></svg></span><span><b>고객문의</b> <!-- -->admin@admin.com</span>
 								</div>
 							</address>
 						</section>
 						<section class="_1trxeqsj">
 							<a href="mailto:contact@daangn.com" target="_blank"
-								class="_1trxeqsf _1trxeqso">제휴 문의 : </a><a
+								class="_1trxeqsf _1trxeqso">제휴 문의</a><a
 								href="mailto:ad@daangn.com" target="_blank"
-								class="_1trxeqsf _1trxeqso">광고 문의 : </a><a
+								class="_1trxeqsf _1trxeqso">광고 문의</a><a
 								href="mailto:pr@daangn.com" target="_blank"
-								class="_1trxeqsf _1trxeqso">PR 문의 : </a><a
+								class="_1trxeqsf _1trxeqso">PR 문의</a><a
 								href="mailto:ir@daangn.com" target="_blank"
-								class="_1trxeqsf _1trxeqso">IR 문의 : </a>
+								class="_1trxeqsf _1trxeqso">IR 문의</a>
 						</section>
 						<section class="_1trxeqse">
 							<div class="_1trxeqsf">
@@ -139,15 +134,15 @@
 							</div>
 							<div class="_1trxeqsf _1trxeqsg">
 								<a href="https://www.daangn.com/policy/privacy" target="_blank"
-									class="_1trxeqsf _1trxeqsg _1trxeqso">개인정보 처리 방침</a>
+									class="_1trxeqsf _1trxeqsg _1trxeqso">개인정보처리방침</a>
 							</div>
 							<div class="_1trxeqsf">
 								<a href="https://www.daangn.com/policy/location" target="_blank"
-									class="_1trxeqsf _1trxeqso">위치 기반 서비스 이용약관</a>
+									class="_1trxeqsf _1trxeqso">위치기반서비스 이용약관</a>
 							</div>
 							<div class="_1trxeqsf">
 								<a href="https://www.daangn.com/wv/faqs/3994" target="_blank"
-									class="_1trxeqsf _1trxeqso">이용자 보호 비전과 계획</a>
+									class="_1trxeqsf _1trxeqso">이용자보호 비전과 계획</a>
 							</div>
 						</section>
 					</section>

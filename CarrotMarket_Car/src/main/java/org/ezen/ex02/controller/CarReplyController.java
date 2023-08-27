@@ -34,6 +34,8 @@ public class CarReplyController {
 		
 		int insertCount = service.register(vo);
 		
+		log.info("Reply INSERT COUNT : " + insertCount);
+		
 		return insertCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
@@ -42,7 +44,7 @@ public class CarReplyController {
 			produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<CarReplyPageDTO> getList(@PathVariable("page") int page, @PathVariable("cno") Long cno) {
 		
-		CarCriteria cri = new CarCriteria(page, 10);
+		CarCriteria cri = new CarCriteria(page, 12);
 		
 		log.info("get Reply List cno : " + cno);
 		log.info("cri : " + cri);
