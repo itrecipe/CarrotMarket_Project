@@ -260,7 +260,6 @@ public class BusinessProfilesController {
 		return "stores/storesModify";
 	}
 	
-	
 	//게시물 수정하기 액션
 	@PostMapping("/storesModify")
 	public String ModifyAction(Model model, HttpServletRequest request, StoresVO storesVO, @RequestParam("bno") Long bno) {
@@ -278,7 +277,5 @@ public class BusinessProfilesController {
 		
 		return "redirect:/stores/stores";
 	}
-	
-	
 	
 }//BusinessProfilesController;
