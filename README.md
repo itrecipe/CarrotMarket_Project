@@ -34,7 +34,7 @@
 - **Back-End : Java (15), Spring Framework (5.3.26) - Spring Legacy Project, Mybatis**
 - **Front-End : HTML5, CSS3, JSP, J-Query (A-Jax), JavaScript, BootStrap4**
 - **DataBase & Server (DBMS, WEB, WAS) : Oracle (DB & SQL), Apache Tomcat 9.0**
-- **Build & Tool(IDE) : Maven, SpringToolSuite3, SQLDEVELOPER (Oracle 11g), Eclipse,GitHub**
+- **Build & Tool(IDE) : Maven, SpringToolSuite3, SQLDEVELOPER (Oracle 11g), Eclipse, GitHub**
 
 </details>
 
