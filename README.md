@@ -5,7 +5,9 @@
   <summary>프로젝트 소개</summary>
   
   - 국비 교육원 시절 파이널 프로젝트를 진행하며, 팀원들과 협의하여 무엇을 만들어 볼까?<br>
-    하고 고민 하다가 팀원 모두가 FE 보다는 BE쪽에 더 많은 흥미를 가지고 있었습니다.
+    하고 고민 하다가 정확한 데이터 처리 및 안정적인 서버와의 통신을 위하여<br>
+    Back-End 부분에 조금 더 공을 들여서 작업 해본 첫 프로젝트 입니다.<br>
+    (그렇다고 해서 Front-End 부분을 소홀히 한것은 당연히 아닙니다!)
 	
   - 각자 만들어 보고 싶은 기능들과 플랫폼들을 생각해보면서 토론하고 생각을 정리해보니<br>
     중고거래 플랫폼으로 유명한 "**당근마켓 웹 사이트**"가 적합 하다는 결론이 나오게 되어<br>
@@ -29,10 +31,10 @@
 <details>
   <summary>프로젝트에 적용한 Skill Set & 개발 도구 목록</summary>
   
-- **Back-End : Java(JDK15.0.2 version), SpringFramework(5.3.26 version) - Spring Legacy Project, Mybatis**
-- **Front-End : HTML5, CSS3, JSP(Servlet), J-Query(A-Jax), JavaScript, BootStrap4**
-- **DataBase & Server(WEB, WAS) : Oracle (DB & SQL), Apache Tomcat 9.0**
-- **Build & Tool(IDE) : Maven, STS(3.9.18 version), SQLDEVELOPER(Oracle11g), GitHub**
+- **Back-End : Java (15), Spring Framework (5.3.26) - Spring Legacy Project, Mybatis**
+- **Front-End : HTML5, CSS3, JSP, J-Query (A-Jax), JavaScript, BootStrap4**
+- **DataBase & Server (DBMS, WEB, WAS) : Oracle (DB & SQL), Apache Tomcat 9.0**
+- **Build & Tool(IDE) : Maven, SpringToolSuite3, SQLDEVELOPER (Oracle 11g), Eclipse, GitHub**
 
 </details>
 
