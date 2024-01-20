@@ -1,6 +1,7 @@
 # Spring Final Project Name : CarrotMarket_Car
 
-## 주제 : 당근마켓 웹 클론코딩(Back-End) 팀 프로젝트 - 중고차 직거래 파트 구현
+## 주제 : 당근마켓 웹 사이트 클론코딩 - 중고차 직거래 PART 구현
+
 <details>
   <summary>프로젝트 소개</summary>
   
