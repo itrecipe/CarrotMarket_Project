@@ -3,7 +3,8 @@
 ## 주제 : 당근마켓 웹 사이트 구현 - 중고차 직거래 PART 구현
 
 <details>
-  <summary>프로젝트 소개</summary>
+<!--   <summary>프로젝트 소개</summary> -->
+    프로젝트 소개
   
   - 해당 프로젝트를 진행하며, 팀원들과 협의하여 무엇을 만들어 볼까?<br>
     하고 고민 하다가 각자 만들어 보고 싶은 기능들과 플랫폼들을 생각해보면서 토론하고 생각을 정리해보니<br>
@@ -35,7 +36,7 @@
 
 ## 설계의 주안점
 <details>
-  <summary>접기 & 상세보기</summary><br>
+<!--   <summary>접기 & 상세보기</summary><br> -->
 
   - **당근마켓 웹 사이트에는 로그인/회원가입 기능이 QR코드로 인증받아서 앱과 연동되도록<br>
       처리 되어 있어서 별도로 로그인/회원가입 기능을 추가하였습니다.**
@@ -45,7 +46,7 @@
 
 ## 중고차 직거래 - 구현 기능
 <details>
-  <summary>접기 & 상세보기</summary><br>
+<!--   <summary>접기 & 상세보기</summary><br> -->
   
 - **로그인/회원가입**
 - **게시판 (C, R, U, D) 기능 구현 (쇼핑몰 이미지 리스트 형식)**
@@ -57,7 +58,8 @@
 
 ## CarrotMarket - 중고차 직거래 - 테이블 구조
 <details>
-<summary>테이블명 : Carrot_Car 구조</summary><br><br>
+<!-- <summary>테이블명 : Carrot_Car 구조</summary><br><br> -->
+테이블명 : Carrot_Car 구조
   
 ![carrot_car - DB 테이블 구조](https://github.com/itrecipe/carrotmarket_project/assets/40875025/5174a4fc-688b-47e5-b287-f3bcd23016b3)
 </details>
@@ -66,7 +68,8 @@
 
 ### DB (Oracle_SQL)
 <details>
-<summary>CarrotMarket.sql</summary>
+<!-- <summary>CarrotMarket.sql</summary> -->
+CarrotMarket.sql
 
 ```sql
 --중고차 직거래 파트 개인 작업용 쿼리
