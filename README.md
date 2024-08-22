@@ -24,7 +24,7 @@
 
 ## Development Environment & Libraly
 <details>
-  <summary>프로젝트에 적용한 Skill Set & 개발 도구 목록</summary>
+  <summary>프로젝트에 적용한 Skill Set & 개발 도구 목록</summary><br/>
   
 - **Back-End : Java (15), Spring Framework (5.3.26) - Spring Legacy Project, Mybatis**
 - **Front-End : HTML5, CSS3, JSP, J-Query (A-Jax), JavaScript, BootStrap4**
