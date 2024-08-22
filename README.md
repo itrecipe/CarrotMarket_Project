@@ -68,7 +68,6 @@
 ### DB (Oracle_SQL)
 <details>
 <summary>CarrotMarket.sql</summary>
-CarrotMarket.sql
 
 ```sql
 --중고차 직거래 파트 개인 작업용 쿼리
