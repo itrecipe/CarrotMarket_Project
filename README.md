@@ -58,7 +58,6 @@
 ## CarrotMarket - 중고차 직거래 - 테이블 구조
 <details>
 <summary>테이블명 : Carrot_Car 구조</summary><br><br>
-테이블명 : Carrot_Car 구조
   
 ![carrot_car - DB 테이블 구조](https://github.com/itrecipe/carrotmarket_project/assets/40875025/5174a4fc-688b-47e5-b287-f3bcd23016b3)
 </details>
@@ -2930,5 +2929,5 @@ Spring Security와 댓글, 대댓글 기능을 구현 해보려고 계획 헀으
 공부를 게을리 하지 않기 위해, 향후 추가 구현 계획 중입니다.<br><br>
 </details>
 
-- 처음으로 작업해본 프로젝트이며 처음으로 만들어본 ReadMe 파일이라<br>
-  많이 초라하고 부족하지만 읽어봐 주신 분들께 감사 드립니다.<br> -itrecipe-
+- 토이 프로젝트 느낌으로 작업해 본 프로젝트이며 많이 초라하고 부족해 보이지만<br/>
+  그럼에도 불구하고 읽어 주신 분들께 감사 드립니다.<br> -itrecipe-
